@@ -32,7 +32,7 @@ public class joincon extends HttpServlet {
 		
 		if(cnt > 0) {
 			System.out.println("회원가입 성공!");
-			response.sendRedirect("join.jsp");
+			response.sendRedirect("login.jsp");
 		}else {
 			System.out.println("회원가입 실패!");
 			
