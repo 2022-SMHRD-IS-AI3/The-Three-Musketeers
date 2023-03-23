@@ -1,4 +1,4 @@
 driver=oracle.jdbc.driver.OracleDriver
-url=jdbc:oracle:thin:project-db-stu3.ddns.net:1521:XE
+url=jdbc:oracle:thin:@project-db-stu.ddns.net:1524:XE
 username=campus_c_230315_5
 password=smhrd5
