@@ -186,7 +186,6 @@ body {
 </style>
 
 </head>
-
 <body>
 	<div class="login-box">
   <h2>오늘도 화이팅~</h2>
@@ -223,7 +222,6 @@ body {
     	</td>
     </tr>
     </table>
-    
   </form>
 </div>
 <script>
