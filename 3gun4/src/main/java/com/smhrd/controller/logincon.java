@@ -23,17 +23,18 @@ public class logincon extends HttpServlet {
 
 		memberDTO loginDTO = dao.login(dto);
 		
-		String name = loginDTO.getName();
+		
 		
 		if (loginDTO != null) {
 			System.out.println("로그인 성공");
-
+			String name = loginDTO.getName();
 			HttpSession session = request.getSession();
 			session.setAttribute("name", name);
 			response.sendRedirect("main.jsp");
 		} else {
 			System.out.println("로그인 실패");
-			response.sendRedirect("login.jsp");
+			
+			response.sendRedirect("login_fail.jsp");
 		}
 	}
 
