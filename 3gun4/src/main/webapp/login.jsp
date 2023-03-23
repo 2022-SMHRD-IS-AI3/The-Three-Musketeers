@@ -72,7 +72,7 @@
         title="페이지에 링크가 연결된 객체가 있을 경우 화면을 터치/클릭하면 표시됩니다.">
 
         <div style="position: absolute; left: 640px; width: 640px; height:1080px; background-color: rgb(255, 255, 255); line-height: 1.5em;">
-                <img src="dd.png" style="position: absolute; top: 160px; left: 95px; width: 460px; height: 210px;">
+                <img src="img/dd.png" style="position: absolute; top: 160px; left: 95px; width: 460px; height: 210px;">
         </div>
         <div class="a" style="left:825px;">
             <input class="b" type="submit" value="회원가입">
