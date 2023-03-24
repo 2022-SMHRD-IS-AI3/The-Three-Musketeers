@@ -10,6 +10,8 @@ import javax.servlet.http.HttpSession;
 import com.smhrd.model.memberDAO;
 import com.smhrd.model.memberDTO;
 
+import oracle.net.ns.SessionAtts;
+
 public class logincon extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -17,7 +19,7 @@ public class logincon extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
-
+		
 		memberDTO dto = new memberDTO(id, pw);
 		memberDAO dao = new memberDAO();
 
@@ -27,9 +29,20 @@ public class logincon extends HttpServlet {
 		
 		if (loginDTO != null) {
 			System.out.println("로그인 성공");
-			String name = loginDTO.getName();
+			
+//			String name = loginDTO.getName();
+//			String id_main = loginDTO.getId();
+//			String pw_main = loginDTO.getPw();
+//			String phoneNum = loginDTO.getPhonenum();
+//			String class_name = loginDTO.getClass_name();
+
+			
+			
+			
 			HttpSession session = request.getSession();
-			session.setAttribute("name", name);
+			session.setAttribute("info", loginDTO);
+//			session.setAttribute("name", name);
+//			session.setAttribute("id", id_main);
 			response.sendRedirect("main.jsp");
 		} else {
 			System.out.println("로그인 실패");

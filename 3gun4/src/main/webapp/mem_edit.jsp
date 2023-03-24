@@ -1,10 +1,12 @@
+<%@page import="com.smhrd.model.memberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 
 <head>
-<title>로그인</title>
+<title>정보수정</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <link href="/static/package/view.min.css?1678183911374" rel="stylesheet"
@@ -72,8 +74,10 @@ body {
   transition: .5s;
 }
 
+
+
 .login-box .user-box input:focus ~ label,
-.login-box .user-box input:valid ~ label {
+.login-box .user-box input:valid ~ label{
   top: -20px;
   left: 0;
   color: #03e9f4;
@@ -183,20 +187,50 @@ body {
     bottom: 100%;
   }
 }
+.pl{
+    width: 300px;
+    border: 1px solid rgba(30,30,30,.5);
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 12px 13px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.pl:focus{
+    border: 1px solid rgba(30,30,30,.5);
+    box-sizing: border-box;
+    border-radius: 10px;
+    outline: 3px solid rgba(30,30,30,.5);
+    border-radius: 10px;
+}
 </style>
 
 </head>
+
 <body>
+<% memberDTO info = (memberDTO)session.getAttribute("info"); 
+System.out.println(info);
+
+%>
 	<div class="login-box">
-  <h2>오늘도 화이팅~</h2>
-  <form id="frm" action="logincon">
-    <div class="user-box">
-      <input type="text" name="id" required="">
-      <label>아이디</label>
-    </div>
+  <h2><%=info.getId()%>님의 정보수정입니다.</h2>
+  <form action="editcon">
+    
     <div class="user-box">
       <input type="password" name="pw" required="">
       <label>비밀번호</label>
+    </div>
+    <div class="user-box">
+      <input type="text" name="name" required="" value="<%=info.getName()%>" read>
+      <label>이름</label>
+    </div>
+    <div class="user-box">
+      <input type="text" name="phonenum" required="" value="<%=info.getPhonenum()%>">
+      <label>전화번호</label>
     </div>
     <table align="center">
     <tr>
@@ -206,28 +240,27 @@ body {
     			<span></span>
       			<span></span>
       			<span></span>
-      			로그인
+      			정보수정
    			 </a>
-   			 <input style="display: none" type="submit" id="login_btn">
+   			 <input style="display: none" type="submit" id="join_btn">
     	</td>
     	<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
     	<td>
-    		<a href="join.jsp">
+    		<a href="main.jsp">
      			<span></span>
     			<span></span>
       			<span></span>
       			<span></span>
-      			회원가입
+      			뒤로가기
    			 </a>
     	</td>
     </tr>
     </table>
+    
   </form>
 </div>
 <script>
-function chk_form() {
-document.getElementById('login_btn').click();
-}
+
 </script>
 </body>
 
