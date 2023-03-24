@@ -1,10 +1,12 @@
+<%@page import="com.smhrd.model.memberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 
 <head>
-<title>회원가입</title>
+<title>정보수정</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <link href="/static/package/view.min.css?1678183911374" rel="stylesheet"
@@ -72,8 +74,10 @@ body {
   transition: .5s;
 }
 
+
+
 .login-box .user-box input:focus ~ label,
-.login-box .user-box input:valid ~ label {
+.login-box .user-box input:valid ~ label{
   top: -20px;
   left: 0;
   color: #03e9f4;
@@ -203,57 +207,30 @@ body {
     outline: 3px solid rgba(30,30,30,.5);
     border-radius: 10px;
 }
-
-#check{
- float: right; margin: -72px 0 0 100px; 
- position: relative;
-}
 </style>
 
 </head>
 
 <body>
+<% memberDTO info = (memberDTO)session.getAttribute("info"); 
+System.out.println(info);
 
+%>
 	<div class="login-box">
-  <h2>회원가입</h2>
-  
-  <form action="joincon">
-   
-    <div class="user-box">
-      <input type="text" name="id" required="">
-      <label>아이디</label>
-    </div>
-   		 <td>
-    		<a href="#" onclick="check()" id="check">
-     			<span></span>
-    			<span></span>
-      			<span></span>
-      			<span></span>
-      			중복확인
-   			 </a>
-    	</td>
-    
+  <h2><%=info.getId()%>님의 정보수정입니다.</h2>
+  <form action="editcon">
+    <input type="hidden" name="id" value="<%=info.getId()%>">
     <div class="user-box">
       <input type="password" name="pw" required="">
       <label>비밀번호</label>
     </div>
     <div class="user-box">
-      <input type="text" name="name" required="">
+      <input type="text" name="name" required="" value="<%=info.getName()%>">
       <label>이름</label>
     </div>
     <div class="user-box">
-      <input type="text" name="phonenum" required="">
+      <input type="text" name="phonenum" required="" value="<%=info.getPhonenum()%>">
       <label>전화번호</label>
-    </div>
-    <div class="user-box">
-        <select name="class_name" id="" class="pl">
-            <option value="0" selected>담임선생님 성함을 선택해주세요.</option>
-            <option value="python">임승환</option>
-            <option value="java">박우빈</option>
-            <option value="javascript">김태경</option>
-            <option value="c#">서승현</option>
-        </select>
-      <label></label>
     </div>
     <table align="center">
     <tr>
@@ -263,13 +240,13 @@ body {
     			<span></span>
       			<span></span>
       			<span></span>
-      			회원가입
+      			정보수정
    			 </a>
-   			 <input style="display: none" type="submit" id="join_btn">
+   			 <input style="display: none" type="submit" id="edit_btn">
     	</td>
     	<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
     	<td>
-    		<a href="login.jsp">
+    		<a href="main.jsp">
      			<span></span>
     			<span></span>
       			<span></span>
@@ -277,43 +254,17 @@ body {
       			뒤로가기
    			 </a>
     	</td>
-    	
     </tr>
     </table>
     
   </form>
 </div>
-<script src="jquery-3.6.4.min.js"></script>
 <script>
+
 function chk_form() {
-document.getElementById('join_btn').click();
+document.getElementById('edit_btn').click();
 }
 
-function check() {
-	/* name="email"인 친구가. 2개라서 1번째 인덱스에 있는 친구 가져오기! */
-	var id = $('input[name=id]').val();
-	console.log(id);
-	 	$.ajax({
-			url : "idcheckcon", /* 어디로 보낼건지? */
-			data : {
-				id : id
-			}, /* 어떤 데이터를 보낼 것인지? */
-			//System.out.println(id);
-			dataType : "text", /* 데이터를 어떤 형태로 받아올 것인지 */
-			success : function(data){ /* 성공 시 */
-				if(data=='false'){
-					alert('중복되는 아이디가 없습니다~!'); 
-				}else{
-					alert('아이디가 중복됩니다!');
-				}
-			},
-			error:function(e){
-				alert('실패');
-				console.log(e);
-			}
-			
-		}) 
-};
 </script>
 </body>
 

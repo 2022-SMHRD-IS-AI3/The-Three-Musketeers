@@ -4,7 +4,7 @@
 <html>
 
 <head>
-<title>login (2 of 4)</title>
+<title>로그인</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <link href="/static/package/view.min.css?1678183911374" rel="stylesheet"

@@ -9,3 +9,5 @@ class_name varchar2(100) not null
 select * from members;
 
 drop table members;
+
+select * from user_tables;
