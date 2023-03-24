@@ -203,18 +203,36 @@ body {
     outline: 3px solid rgba(30,30,30,.5);
     border-radius: 10px;
 }
+
+#check{
+ float: right; margin: -72px 0 0 100px; 
+ position: relative;
+}
 </style>
 
 </head>
 
 <body>
+
 	<div class="login-box">
   <h2>회원가입</h2>
+  
   <form action="joincon">
+   
     <div class="user-box">
       <input type="text" name="id" required="">
       <label>아이디</label>
     </div>
+   		 <td>
+    		<a href="#" onclick="check()" id="check">
+     			<span></span>
+    			<span></span>
+      			<span></span>
+      			<span></span>
+      			중복확인
+   			 </a>
+    	</td>
+    
     <div class="user-box">
       <input type="password" name="pw" required="">
       <label>비밀번호</label>
@@ -259,15 +277,43 @@ body {
       			뒤로가기
    			 </a>
     	</td>
+    	
     </tr>
     </table>
     
   </form>
 </div>
+<script src="jquery-3.6.4.min.js"></script>
 <script>
 function chk_form() {
 document.getElementById('join_btn').click();
 }
+
+function check() {
+	/* name="email"인 친구가. 2개라서 1번째 인덱스에 있는 친구 가져오기! */
+	var id = $('input[name=id]').val();
+	console.log(id);
+	 	$.ajax({
+			url : "idcheckcon", /* 어디로 보낼건지? */
+			data : {
+				id : id
+			}, /* 어떤 데이터를 보낼 것인지? */
+			//System.out.println(id);
+			dataType : "text", /* 데이터를 어떤 형태로 받아올 것인지 */
+			success : function(data){ /* 성공 시 */
+				if(data=='false'){
+					alert('중복되는 아이디가 없습니다~!'); 
+				}else{
+					alert('아이디가 중복됩니다!');
+				}
+			},
+			error:function(e){
+				alert('실패');
+				console.log(e);
+			}
+			
+		}) 
+};
 </script>
 </body>
 

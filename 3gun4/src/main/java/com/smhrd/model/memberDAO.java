@@ -1,5 +1,7 @@
 package com.smhrd.model;
 
+import java.sql.ResultSet;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -23,4 +25,18 @@ public class memberDAO {
 		
 		return info;
 	}
+	
+	// 아이디 중복확인
+		public boolean check(String id) {
+			boolean check = false;
+			SqlSession session = sqlSessionFactory.openSession(true);
+			String name = session.selectOne("check", id);
+			session.close();
+			
+			if(name!= null) {
+				check = true;
+			}
+			
+			return check;
+		}
 }

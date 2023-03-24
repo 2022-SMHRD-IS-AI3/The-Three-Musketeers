@@ -22,6 +22,12 @@
   	<description></description>
   	<servlet-class>com.smhrd.controller.editcon</servlet-class>
   </servlet>
+   <servlet>
+  	<servlet-name>idcheckcon</servlet-name>
+  	<display-name>idcheckcon</display-name>
+  	<description></description>
+  	<servlet-class>com.smhrd.controller.idcheckcon</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>joincon</servlet-name>
   	<url-pattern>/joincon</url-pattern>
@@ -33,6 +39,10 @@
   <servlet-mapping>
   	<servlet-name>editcon</servlet-name>
   	<url-pattern>/editcon</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
+  	<servlet-name>idcheckcon</servlet-name>
+  	<url-pattern>/idcheckcon</url-pattern>
   </servlet-mapping>
 </web-app>
 
