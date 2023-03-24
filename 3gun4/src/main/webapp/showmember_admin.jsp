@@ -30,7 +30,7 @@
 									<td><%=list.get(i).getId() %></td>
 									<td><%=list.get(i).getName() %></td>
 									<td><%=list.get(i).getPhonenum() %></td>
-									<td><a href="DeleteCon?email=<%=list.get(i).getId()%>">회원삭제</a></td>
+									<td><a href="deletecon?id=<%=list.get(i).getId()%>">회원삭제</a></td>
 								</tr>
 							<%} %>
 						</table>
