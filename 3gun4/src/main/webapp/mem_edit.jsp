@@ -219,13 +219,13 @@ System.out.println(info);
 	<div class="login-box">
   <h2><%=info.getId()%>님의 정보수정입니다.</h2>
   <form action="editcon">
-    
+    <input type="hidden" name="id" value="<%=info.getId()%>">
     <div class="user-box">
       <input type="password" name="pw" required="">
       <label>비밀번호</label>
     </div>
     <div class="user-box">
-      <input type="text" name="name" required="" value="<%=info.getName()%>" read>
+      <input type="text" name="name" required="" value="<%=info.getName()%>">
       <label>이름</label>
     </div>
     <div class="user-box">
@@ -242,7 +242,7 @@ System.out.println(info);
       			<span></span>
       			정보수정
    			 </a>
-   			 <input style="display: none" type="submit" id="join_btn">
+   			 <input style="display: none" type="submit" id="edit_btn">
     	</td>
     	<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
     	<td>
@@ -260,6 +260,10 @@ System.out.println(info);
   </form>
 </div>
 <script>
+
+function chk_form() {
+document.getElementById('edit_btn').click();
+}
 
 </script>
 </body>

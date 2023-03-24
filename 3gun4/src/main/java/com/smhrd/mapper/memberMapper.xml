@@ -11,4 +11,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="login" parameterType="memberDTO" resultType="memberDTO">
    		select * from members where id=#{id} and pw=#{pw}	
 	</select>
+	<update id="update" parameterType="memberDTO">
+   		update members set pw=#{pw}, name=#{name}, phonenum=#{phonenum} 
+   		where id=#{id}
+   	</update>
+   	<select id="selectAll" resultType="memberDTO">
+   		select * from members
+   	</select>
+   	<delete id="delete" parameterType="String">
+   		delete from members where id=#{id}
+   	</delete>
 </mapper>
