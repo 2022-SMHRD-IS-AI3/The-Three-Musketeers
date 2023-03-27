@@ -1,10 +1,15 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
+<%@page import="java.util.List"%>
+<%@page import="com.smhrd.model.boardDAO"%>
+<%@page import="com.smhrd.model.boardDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>board</title>
 </head>
 <body>
 	<!DOCTYPE html>
@@ -18,14 +23,8 @@
         <div class="container managergrounp" id="container" name="container" >
             <h3>게시글 목록</h3>
             <hr>         
-            <a class="btn" href="#" target="_blank">공지사항</a>
-			<a class="btn" href="#" target="_blank">실습</a>
-			<a class="btn" href="#" target="_blank">식당후기</a>
-            <div class="right">
-                <select class="select_btn">
-                    <option value="">10개씩 보기</option>    
-                </select>
-            </div>
+            
+            
 
             <table class="bbsList" summary="">
                 <caption>게시글 목록</caption>           
@@ -37,83 +36,85 @@
 						<th>제목</th>
 						<th>작성자</th>
 						<th>등록일</th>
-						
 					</tr>
                     </tr>    
                 </thead>
                 <tbody class="body">
-               
-                    <tr>
-                        <td class="">123</td>
-                        <td class="">공지</td>
-                        <td class=""><a href="#" target="_blank"><span class="txt_org">ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</span></a></td>
-                        <td class="">이름</td>
-                        <td class="">2023/05/26</td>                                                           
-                    </tr>
-                    <tr>
-                        <td class="">123</td>
-                        <td class="">공지</td>
-                        <td class=""><a href="#" target="_blank"><span class="txt_org">제목</span></a></td>
-                        <td class="">이름</td>
-                        <td class="">2023/05/26</td>                                                           
-                    </tr>
-                    <tr>
-                        <td class="">123</td>
-                        <td class="">공지</td>
-                        <td class=""><a href="#" target="_blank"><span class="txt_org">제목</span></a></td>
-                        <td class="">이름</td>
-                        <td class="">2023/05/26</td>                                                           
-                    </tr>
-                    <tr>
-                        <td class="">123</td>
-                        <td class="">공지</td>
-                        <td class=""><a href="#" target="_blank"><span class="txt_org">제목</span></a></td>
-                        <td class="">이름</td>
-                        <td class="">2023/05/26</td>                                                           
-                    </tr>
-                    <tr>
-                        <td class="">123</td>
-                        <td class="">공지</td>
-                        <td class=""><a href="#" target="_blank"><span class="txt_org">제목</span></a></td>
-                        <td class="">이름</td>
-                        <td class="">2023/05/26</td>                                                           
-                    </tr>
-                    <tr>
-                        <td class="">123</td>
-                        <td class="">공지</td>
-                        <td class=""><a href="#" target="_blank"><span class="txt_org">제목</span></a></td>
-                        <td class="">이름</td>
-                        <td class="">2023/05/26</td>                                                           
-                    </tr>
-                    <tr>
-                        <td class="">123</td>
-                        <td class="">공지</td>
-                        <td class=""><a href="#" target="_blank"><span class="txt_org">제목</span></a></td>
-                        <td class="">이름</td>
-                        <td class="">2023/05/26</td>                                                           
-                    </tr>
-                    
-                   
-                </tbody>
+    				<tr>
+    				<% 
+    				boardDAO dao = new boardDAO();
+    				List<boardDTO> dto_array= dao.selectAll_board();
+    				int page_count = 1;
+    				for(int i = 1;i<dto_array.size(); i++){
+    					if(dto_array.get(i).getCategory().toString().equals("공지")){%>
+    				
+    				<tr>
+						<td><%=dto_array.get(i).getBoard_num().toString()%></td>
+						<td><%=dto_array.get(i).getCategory().toString()%></td>
+						<td><%=dto_array.get(i).getBoard_title().toString()%></td>
+						<td><%=dto_array.get(i).getId().toString()%></td>
+						<td><%=dto_array.get(i).getBoard_datetime().toString()%></td>
+					</tr>
+					
+					<%		}
+    					}
+							try{
+								page_count = Integer.parseInt(request.getParameter("page"));
+								System.out.println(page_count);
+							}catch(Exception e){
+								
+							}
+							%>
+    				<%
+    				try{
+    				for(int i=dto_array.size()-((page_count-1)*10)-1; i>=dto_array.size()-((page_count)*10-1)-1 ; i--) {%>
+                     <tr>
+						<td><%=dto_array.get(i).getBoard_num().toString()%></td>
+						<td><%=dto_array.get(i).getCategory().toString()%></td>
+						<td><%=dto_array.get(i).getBoard_title().toString()%></td>
+						<td><%=dto_array.get(i).getId().toString()%></td>
+						<td><%=dto_array.get(i).getBoard_datetime().toString()%></td>
+					</tr>
+					<%}
+    				}catch(Exception e){
+    					for(int i = i=dto_array.size()-((page_count-1)*10)-1;i>=dto_array.size()%10;i--){%>
+    						<tr>
+    						<td><%=dto_array.get(i).getBoard_num().toString()%></td>
+    						<td><%=dto_array.get(i).getCategory().toString()%></td>
+    						<td><%=dto_array.get(i).getBoard_title().toString()%></td>
+    						<td><%=dto_array.get(i).getId().toString()%></td>
+    						<td><%=dto_array.get(i).getBoard_datetime().toString()%></td>
+    						</tr>
+    					<%}
+    				}%>
+					
+					
+                    </tr>   
+				</tbody>
                 <tfoot class="foot">
                     <tr>
                         <td colspan="9">
-                            <span class="arrow radius-right">≪</span>
-                            <span class="arrow radius-left">＜</span>
+                        	<%if(page_count > 3){ %>
+                            <a href="board.jsp?page=1" class="arrow radius-right">≪</a><!-- 맨앞으로 이동 -->
                             
-                            <a href="javascript:;" class="num_box txt_point">1</a>
-                            <a href="javascript:;" class="num_box ">2</a>
-                            <a href="javascript:;" class="num_box ">3</a>
-                            <a href="javascript:;" class="num_box ">4</a>
-                            <a href="javascript:;" class="num_box ">5</a>
-                            <a href="javascript:;" class="num_box ">6</a>
-                            <a href="javascript:;" class="num_box ">7</a>
-                            <a href="javascript:;" class="num_box ">8</a>
-                            <a href="javascript:;" class="num_box ">9</a>
-                            <a href="javascript:;" class="num_box ">10</a>
-
-                            <span class="arrow radius-right">＞</span>
-                            <span class="arrow radius-left">≫</span>
+                            <%}
+                            if(page_count <= 3 && page_count >= 1){/* 1~3 */
+                           	 	for(int i = 1; i<=5; i++) {%>
+                            		<a href="board.jsp?page=<%=i %>" class="num_box"><%=i %></a>
+                            	<%} /* 처음꺼 다뜨기(5개) */ System.out.println("처음꺼 다뜨기(5개)");
+                            }else if(dto_array.size()/10-1 <= page_count && page_count <= dto_array.size()/10+1){/* max_page-2 <= page_count <= max_page */
+                            	for(int i = dto_array.size()/10-3; i<=dto_array.size()/10+1; i++) {%>
+                        		<a href="board.jsp?page=<%=i %>" class="num_box"><%=i %></a>
+                        	<%} /* 뒤에꺼 다뜨기(5개) */System.out.println("뒤에꺼 다뜨기(5개)");
+                            }else{
+                            	for(int i = page_count-2; i<= page_count+2; i++) {%>
+                        		<a href="board.jsp?page=<%=i %>" class="num_box"><%=i %></a>
+                        	<%} /* 자기중심5개까지만뜨기 */System.out.println("자기중심5개까지만뜨기");
+                            } 
+                            %>
+							<%if(dto_array.size()/10-2 >= page_count && page_count <= dto_array.size()/10+1){ %>
+                            <a href="board.jsp?page=<%=dto_array.size()/10+1 %>" class="arrow radius-left">≫</a><!-- 맨뒤로 이동 -->
+                            <%} %>
                         </td>
                     </tr>    
                 </tfoot>

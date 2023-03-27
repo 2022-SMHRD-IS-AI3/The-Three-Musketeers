@@ -30,19 +30,8 @@ public class logincon extends HttpServlet {
 		if (loginDTO != null) {
 			System.out.println("로그인 성공");
 			
-//			String name = loginDTO.getName();
-//			String id_main = loginDTO.getId();
-//			String pw_main = loginDTO.getPw();
-//			String phoneNum = loginDTO.getPhonenum();
-//			String class_name = loginDTO.getClass_name();
-
-			
-			
-			
 			HttpSession session = request.getSession();
 			session.setAttribute("info", loginDTO);
-//			session.setAttribute("name", name);
-//			session.setAttribute("id", id_main);
 			response.sendRedirect("main.jsp");
 		} else {
 			System.out.println("로그인 실패");
