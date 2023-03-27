@@ -18,11 +18,13 @@
     %>
 
 		<!-- Wrapper -->
+		
 			<div id="wrapper">
 
 				<!-- Menu -->
 					<section id="menu">
-
+					
+	
 						<!-- Search -->
 							<section>
 								<form class="search" method="get" action="#">
@@ -75,11 +77,9 @@
 						<!-- Post -->
 							<article class="post">
 								<header>
-									
 									<div class="meta">
 									</div>
 									<div class="meta">
-
 									</div>
 									<div class="meta"></div>
 								</header>
@@ -99,7 +99,7 @@
 
 						<!-- Post -->
 							<article class="post">
-								<iframe src="board.jsp" title="게시판" width="100%" height="620px"></iframe>
+								<iframe src="board.jsp" title="게시판" width="100%" height="700px"></iframe>
 							</article>
 
 						<!-- Post -->
@@ -154,6 +154,7 @@
   								<div class="button-container" style="display: flex;">
   									<%if(info.getId().equals("admin")){  %>
     								<button onclick = "location.href = 'showmember_admin.jsp'">학생관리</button>
+    								<button onclick = "location.href = 'board_admin.jsp'">게시판관리</button>
     								<%} %>
   								</div>
 								</div>

@@ -30,6 +30,13 @@ public class boardDAO {
 		sqlsession.close();
 		return list; 
 	}
+
+	public int delete(String board_num) {
+		SqlSession sqlsession = sqlSessionFactory.openSession(true);
+		int cnt = sqlsession.delete("delete_board", board_num);
+		sqlsession.close();
+		return cnt;
+	}
 	
 	
 }
