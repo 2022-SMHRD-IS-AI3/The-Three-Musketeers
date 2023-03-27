@@ -35,10 +35,11 @@ table.table2 {
 	line-height: 1.5;
 	border-top: 1px solid #ccc;
 	margin: 20px 10px;
+	width: 500px;
 }
 
 table.table2 tr {
-	width: 100px;
+	width: 500px;
 	padding: 10px;
 	font-weight: bold;
 	vertical-align: top;
@@ -63,6 +64,7 @@ table.table2 td {
 </style>
 </head>
 <body>
+	<!-- 부트스트랩 연결 -->
 	<link
 		href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
 		rel="stylesheet" id="bootstrap-css">
@@ -89,32 +91,26 @@ table.table2 td {
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
 		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 		crossorigin="anonymous"></script>
-
+	<!-- 게시글 -->
 	<form>
-		<table style="padding-top: 50px" align=center width=700 border=0
-			cellpadding=2>
-			<tr>
-				<td height=50 align=center bgcolor=#86acd9
-					style="border-radius: 4px;"><font size=3px color=white>카테고리</font></td>
-			</tr>
+		<table style="padding-top:50px; align:center; width:1020px; border:0; cellpadding:2;" >
+                <tr>
+                <td height=30 align= center bgcolor=#86acd9 style="border-radius:4px;"><font size=3px color=white >카테고리</font></td>
+                </tr>
 			<tr>
 				<td bgcolor=white>
 					<table class="table2">
-
-
 						<tr>
-							<td><span style="text-align: left; font-size: 25px">rkrkdddddddddddddd
-							</span></td>
-							<td><span style="text-align: right; font-size: 25px">rkrk
-							</span></td>
+							<td>
+							<span style="text-align: left; font-size: 20px; width: 650px;">제목 어엉어어엉</span>							
+							<span style="text-align: right; font-size: 15px; width: 200px; float: right; align-content:center;">작성자</span>
+							<span style="text-align: right; font-size: 15px; width: 200px; float: right; align-content:center;">작성일 2212112</span>
+							</td>
 						</tr>
-
 						<tr>
-							
-							<td><div style="position: relative; width: 900px; height: 400px;">
-									<span
-										style="position: absolute; text-align: left; font-size: 15px; white-space: pre-wrap;">
-									</span> jioqajwiejaqio3jaioqj3wqaiwekhai0kq90weka90k90hkaokhoqakop
+							<td><div style="position: relative; width: 1020px; height: 400px;">
+									<span style="position: absolute; text-align: left; font-size: 15px; white-space: normal;">
+									 내용이이이이이이이</span>
 								</div></td>
 						</tr>
 					</table>
@@ -125,9 +121,9 @@ table.table2 td {
 		<input style="display: none" type="text" value="" name="id">
 	</form>
 
-	<!-- 댓글 기능-->
+	<!-- 댓글 작성-->
 	<div class="card mb-2">
-		<div class="card-header bg-light" style="color:#86acd9;">
+		<div class="card-header bg-light" style="color: #86acd9;">
 			<i class="fa fa-comment fa" style="color: #86acd9;"></i> 댓글
 		</div>
 		<div class="card-body">
@@ -145,60 +141,31 @@ table.table2 td {
 			</form>
 		</div>
 	</div>
-	<!-- Single comment-->
-	<!-- <div class="media mb-4"> -->
+	<!-- 댓글 -->
 	<div class="d-flex justify-content-between align-items-center">
 		<div class="d-flex justify-content-between align-items-center">
-			<div class="mr-2">
-				<img class="rounded-circle" width="45"
-					src="https://picsum.photos/50/50" alt="">
-			</div>
 			<div class="ml-2">
 				<div class="h5 m-0">
-					<a href="" style="color: rgb(0, 0, 0);">닉네임</a>
+					<a href="" style="color: rgb(0, 0, 0);">아이디1</a>
 				</div>
 				<!-- <div class="h7 text-muted">Miracles Lee Cross</div> -->
-				<h5 class="mt-0">댓글</h5>
+				<h5 class="mt-0">댓글1</h5>
 			</div>
 		</div>
-		<!-- </div> -->
-		<!-- <div class="media-body">
-                            <h5 class="mt-0"><a href="" style="color: rgb(0, 0, 0);"> 닉네임 </a></h5>
-                            댓글
-                        </div> -->
 	</div>
 
-	<!-- Comment with nested comments-->
-	<div class="media mb-4">
-		<img class="d-flex mr-3 rounded-circle"
-			src="https://via.placeholder.com/50x50" alt="..." />
-		<div class="media-body">
-			<h5 class="mt-0">
-				<a href="" style="color: rgb(0, 0, 0);"> 닉네임 </a>
-			</h5>
-			댓글
-			<div class="media mt-4">
-				<img class="d-flex mr-3 rounded-circle"
-					src="https://via.placeholder.com/50x50" alt="..." />
-				<div class="media-body">
-					<h5 class="mt-0">
-						<a href="" style="color: rgb(0, 0, 0);"> 닉네임 </a>
-					</h5>
-					대댓글
+	<div class="d-flex justify-content-between align-items-center">
+		<div class="d-flex justify-content-between align-items-center">
+			<div class="ml-2">
+				<div class="h5 m-0">
+					<a href="" style="color: rgb(0, 0, 0);">아이디2</a>
 				</div>
-			</div>
-			<div class="media mt-4">
-				<img class="d-flex mr-3 rounded-circle"
-					src="https://via.placeholder.com/50x50" alt="..." />
-				<div class="media-body">
-					<h5 class="mt-0">
-						<a href="" style="color: rgb(0, 0, 0);"> 닉네임 </a>
-					</h5>
-					대댓글
-				</div>
+				<h5 class="mt-0">댓글2</h5>
 			</div>
 		</div>
 	</div>
+
+
 </body>
 
 </html>
