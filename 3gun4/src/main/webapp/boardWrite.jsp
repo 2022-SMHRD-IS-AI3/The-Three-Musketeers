@@ -1,3 +1,5 @@
+<%@page import="com.smhrd.model.memberDTO"%>
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -62,7 +64,7 @@
 </style>
 </head>
 <body>
-  <form method = "get" action = "write_action.php">
+  <form action = "upload_boardcon" method="POST" enctype="multipart/form-data">
         <table  style="padding-top:50px" align = center width=700 border=0 cellpadding=2 >
                 <tr>
                 <td height=50 align= center bgcolor=#86acd9 style="border-radius:4px;"><font size=5px color=white >글쓰기</font></td>
@@ -73,33 +75,37 @@
                         <tr>
                         <td>카테고리</td>
                         <td>
-        					<select name="board_name" id="" class="pl">
+        					<select name="category" id="" class="pl">
             					<option value="0" selected>게시판 종류</option>
-            					<option value="notice">공지사항</option>
-            					<option value="practice">실습</option>
-            					<option value="review">식당후기</option>
+            					<option value="공지">공지</option>
+            					<option value="실습">실습</option>
+            					<option value="식당후기">식당후기</option>
         					</select>
+        					<input name="board_photo" type="file" style="float: right; align-content: center;">
       					<label></label>
     					</td>
+    					
                         </tr>
  
                         <tr>
                         <td>제목</td>
-                        <td><input type = text name = title size=90 ></td>
+                        <td><input type = text name = "board_title" size=90 ></td>
                         </tr>
  
                         <tr>
                         <td>내용</td>
-                        <td><textarea name = content cols=92 rows=15></textarea></td>
+                        <td><textarea name = "board_content" cols=92 rows=15></textarea></td>
                         </tr>
- 
+ 						
                         </table>
                           <center>
-                        <button  class="btn" type = "submit">작성</button>
-                        </center>
+                        	<button  class="btn" type = "submit">작성</button>
+                       	  </center>
                 </td>
                 </tr>
         </table>
+        					<% memberDTO info = (memberDTO)session.getAttribute("info");%>
+                        	<input style="display: none" type="text" value="<%=info.getId() %>" name="id">
         </form>
  
 </body>

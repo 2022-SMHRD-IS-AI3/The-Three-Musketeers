@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.smhrd.mapper.boardMapper">
 	<insert id="upload" parameterType="boardDTO">
-		insert into web_board values(board_num.nextval, #{board_title}, #{board_content}, #{board_photo}, sysdate, #{category}, #{id})
+		insert into board_posts values(board_posts_num.nextval, #{board_title}, #{board_content}, #{board_photo}, sysdate, #{category}, #{id})
 	</insert>
 	<select id="selectAll_board" resultType="boardDTO">
    		select * from board_posts

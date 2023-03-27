@@ -31,11 +31,11 @@
                 <thead class="head">
                     <tr>
                      <tr>
-						<th>번호</th>
-						<th>카테고리</th>
-						<th>제목</th>
-						<th>작성자</th>
-						<th>등록일</th>
+						<th style="width: 55px;">번호</th>
+						<th style="width: 95px;">카테고리</th>
+						<th style="width: 500px;">제목</th>
+						<th style="width: 75px;">작성자</th>
+						<th style="width: 270px;">등록일</th>
 					</tr>
                     </tr>    
                 </thead>
@@ -45,11 +45,11 @@
     				boardDAO dao = new boardDAO();
     				List<boardDTO> dto_array= dao.selectAll_board();
     				int page_count = 1;
-    				for(int i = 1;i<dto_array.size(); i++){
+    				for(int i = 0;i<dto_array.size(); i++){
     					if(dto_array.get(i).getCategory().toString().equals("공지")){%>
     				
-    				<tr>
-						<td><%=dto_array.get(i).getBoard_num().toString()%></td>
+    				<tr style="color: red; background-color: #F2F3F5;">
+						<td><%=dto_array.get(i).getBoard_num()%></td>
 						<td><%=dto_array.get(i).getCategory().toString()%></td>
 						<td><%=dto_array.get(i).getBoard_title().toString()%></td>
 						<td><%=dto_array.get(i).getId().toString()%></td>
@@ -69,7 +69,7 @@
     				try{
     				for(int i=dto_array.size()-((page_count-1)*10)-1; i>=dto_array.size()-((page_count)*10-1)-1 ; i--) {%>
                      <tr>
-						<td><%=dto_array.get(i).getBoard_num().toString()%></td>
+						<td><%=dto_array.get(i).getBoard_num()%></td>
 						<td><%=dto_array.get(i).getCategory().toString()%></td>
 						<td><%=dto_array.get(i).getBoard_title().toString()%></td>
 						<td><%=dto_array.get(i).getId().toString()%></td>
@@ -79,7 +79,7 @@
     				}catch(Exception e){
     					for(int i = i=dto_array.size()-((page_count-1)*10)-1;i>=dto_array.size()%10;i--){%>
     						<tr>
-    						<td><%=dto_array.get(i).getBoard_num().toString()%></td>
+    						<td><%=dto_array.get(i).getBoard_num()%></td>
     						<td><%=dto_array.get(i).getCategory().toString()%></td>
     						<td><%=dto_array.get(i).getBoard_title().toString()%></td>
     						<td><%=dto_array.get(i).getId().toString()%></td>
@@ -99,7 +99,7 @@
                             
                             <%}
                             if(page_count <= 3 && page_count >= 1){/* 1~3 */
-                           	 	for(int i = 1; i<=5; i++) {%>
+                           	 	for(int i = 1; i<=dto_array.size()/10+1; i++) {%>
                             		<a href="board.jsp?page=<%=i %>" class="num_box"><%=i %></a>
                             	<%} /* 처음꺼 다뜨기(5개) */ System.out.println("처음꺼 다뜨기(5개)");
                             }else if(dto_array.size()/10-1 <= page_count && page_count <= dto_array.size()/10+1){/* max_page-2 <= page_count <= max_page */
@@ -120,7 +120,7 @@
                 </tfoot>
             </table>
             <div class="btn_wrap">
-                <a class="btn_org" href="javascript:;"><span class="txt_white">게시글 작성</span></a>
+                <a class="btn_org" href="boardWrite.jsp"><span class="txt_white">게시글 작성</span></a>
             </div>
         </div>
        

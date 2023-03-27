@@ -1,6 +1,7 @@
 package com.smhrd.controller;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
@@ -29,23 +30,20 @@ public class upload_boardcon extends HttpServlet {
 		
 		MultipartRequest multi = new MultipartRequest(request, path, maxSize, encoding, rename);
 		
-		String board_title = request.getParameter("board_title");
-		String board_content = request.getParameter("board_content");
-		String board_photo = request.getParameter("board_photo");
+		String board_title = multi.getParameter("board_title");
+		String board_content = multi.getParameter("board_content");
+		String board_photo = multi.getFilesystemName("board_photo");
 		String board_photo_en = URLEncoder.encode(board_photo, "UTF-8");
-		String category = request.getParameter("category");
-		String id = request.getParameter("id");
+		String category = multi.getParameter("category");
+		String id = multi.getParameter("id");
 	
 		boardDTO dto = new boardDTO(0, board_title, board_content, board_photo_en, null, category, id);
 		
 		int cnt = new boardDAO().upload(dto);
 		
-		HttpSession session = request.getSession();
-		session.setAttribute("info", boardDTO);
-		response.sendRedirect("main.jsp");
-		
 		if(cnt > 0) {
 			System.out.println("업로드 성공");
+			response.sendRedirect("board.jsp");
 		}else {
 			System.out.println("업로드 실패");
 		}
