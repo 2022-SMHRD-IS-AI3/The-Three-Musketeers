@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+<style>
 	.pl{
     		width: 300px;
     		border: 1px solid #ccc;
@@ -60,6 +61,7 @@
         }
  
 </style>
+</style>
 </head>
 <body>
   <form method = "get" action = "write_action.php">
@@ -85,7 +87,7 @@
  
                         <tr>
                         <td>제목</td>
-                        <td><input type = text name = title size=90 ></td>
+                        <td  type = text name = title size=90 ></td>
                         </tr>
  
                         <tr>

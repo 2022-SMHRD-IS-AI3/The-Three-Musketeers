@@ -1,5 +1,5 @@
  .container {
-     width: 1200px;
+     width: 1098px;
  }
 
  h1, h2, h3, h4, h5, h6 {
@@ -38,7 +38,7 @@
             .bbsList { 
                 display: table;
                 clear:both; 
-                width:1200px; 
+                width:1098px; 
                 border-collapse: collapse; 
               }
             
@@ -351,7 +351,7 @@
 
              .btn_wrap {
                 clear: both;
-                width: 1200px;
+                width: 1098px;
                 height: 48px;
                 padding: 15px 0 25px 0;
                 text-align: center;
@@ -458,7 +458,7 @@
             }
 
             .group_mod {
-            width: 1200px;
+            width: 1098px;
             margin-bottom: 50px;
         }
 
@@ -601,7 +601,7 @@
 
         .chart {
             position: relative;
-            width: 1200px;
+            width: 1098px;
             height: auto;
             line-height: normal;
         }
@@ -804,7 +804,7 @@
 
 
             .campaign {
-                width: 1200px;
+                width: 1098px;
             }
 
             .top_wrap {
@@ -1059,11 +1059,11 @@
             }
 
             .campaign_ad {
-                width: 1200px;
+                width: 1098px;
             }
 
             .campaign_ad .main {
-                width: 1200px;
+                width: 1098px;
                 margin-top: 60px;
             }
 
