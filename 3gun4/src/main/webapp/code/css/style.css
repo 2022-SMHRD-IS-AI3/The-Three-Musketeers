@@ -1,5 +1,6 @@
  .container {
-     width: 1098px;
+
+     width: 1020px;
  }
 
  h1, h2, h3, h4, h5, h6 {
@@ -38,8 +39,9 @@
             .bbsList { 
                 display: table;
                 clear:both; 
-                width:1098px; 
+                width:1020px; 
                 border-collapse: collapse; 
+                vertical-align: middle;
               }
             
             .bbsList th { 
@@ -52,7 +54,6 @@
                 border-top-style: solid;
                 border-bottom-style: solid;
 
-                font-weight: 400;
              }
 
             .bbsList .checkbox {
@@ -351,9 +352,9 @@
 
              .btn_wrap {
                 clear: both;
-                width: 1098px;
+                width: 1020px;
                 height: 48px;
-                padding: 15px 0 25px 0;
+                padding: 15px 0 0 0;
                 text-align: center;
             }
 

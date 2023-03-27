@@ -5,13 +5,15 @@ import java.sql.Timestamp;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 
 @AllArgsConstructor
+@NoArgsConstructor
 public class boardDTO {
 
-	private BigDecimal board_num;
+	private int board_num;
 	private String board_title;
 	private String board_content;
 	private String board_photo;

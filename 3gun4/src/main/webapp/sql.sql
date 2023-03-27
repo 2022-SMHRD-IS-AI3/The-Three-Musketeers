@@ -10,18 +10,30 @@ select * from members;
 
 drop table members;
 
-<<<<<<< HEAD
 
 create table board_posts(
-board_num number(5) primary key,
+board_num number primary key,
 board_title varchar2(100) not null,
 board_content varchar2(100) not null,
 board_photo varchar2(100),
 board_datetime date not null,
 category varchar2(100),
 id varchar2(100),
-constraint id foreign key(id) references members(id)
+constraint id2 foreign key(id) references members(id)
 );
+
+drop table board_posts;
+commit;
+
+CREATE SEQUENCE board_posts_num
+start with 1
+increment by 1;
+
+drop sequence board_posts_num;
+
+select * from user_tables;
+
+select * from board_posts;
 
 select * from VOTES;
 
