@@ -99,28 +99,7 @@
 
 						<!-- Post -->
 							<article class="post">
-								<header>
-									<div class="title">
-										<h2><a href="single.html">Ultricies sed magna euismod enim vitae gravida</a></h2>
-										<p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
-									</div>
-									<div class="meta">
-										<time class="published" datetime="2015-10-25">October 25, 2015</time>
-										<a href="#" class="author"><span class="name">Jane Doe</span><img src="images/avatar.jpg" alt="" /></a>
-									</div>
-								</header>
-								<a href="single.html" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
-								<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper.</p>
-								<footer>
-									<ul class="actions">
-										<li><a href="single.html" class="button large">Continue Reading</a></li>
-									</ul>
-									<ul class="stats">
-										<li><a href="#">General</a></li>
-										<li><a href="#" class="icon solid fa-heart">28</a></li>
-										<li><a href="#" class="icon solid fa-comment">128</a></li>
-									</ul>
-								</footer>
+								<iframe src="board.jsp" title="게시판" width="100%" height="620px"></iframe>
 							</article>
 
 						<!-- Post -->
@@ -167,10 +146,13 @@
 								<div class="profile-card">
 								<% memberDTO info = (memberDTO)session.getAttribute("info");%>
  								<h2><%=info.getName()%>(<%=info.getId() %>)<br>님 환영합니다.</h2>
-  								<div class="button-container">
+  								<div class="button-container" style="display: flex;">
     								<button onclick = "location.href = 'mem_edit.jsp'">정보수정</button>
     								<button onclick = "location.href = 'logout.jsp'">로그아웃</button>
-    								<%if(info.getId().equals("admin")){  %>
+    								
+  								</div>
+  								<div class="button-container" style="display: flex;">
+  									<%if(info.getId().equals("admin")){  %>
     								<button onclick = "location.href = 'showmember_admin.jsp'">학생관리</button>
     								<%} %>
   								</div>
