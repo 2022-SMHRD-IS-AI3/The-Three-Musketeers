@@ -1,108 +1,204 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-<style>
-	.pl{
-    		width: 300px;
-    		border: 1px solid #ccc;
-    		box-sizing: border-box;
-    		border-radius: 5px;
-    		padding: 12px 13px;
-    		font-family: 'Roboto';
-    		font-style: normal;
-    		font-weight: 400;
-    		font-size: 14px;
-    		line-height: 16px;
-    		margin-top:4%    		
-		}
+.pl {
+	width: 300px;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	border-radius: 5px;
+	padding: 12px 13px;
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 16px;
+	margin-top: 4%
+}
 
-		.pl:focus{
-    		border: 1px solid rgba(30,30,30,.5);
-    		box-sizing: border-box;
-    		border-radius: 10px;
-    		outline: 3px solid rgba(30,30,30,.5);
-    		border-radius: 10px;
-		}
-		
-        table.table2{
-                border-collapse: separate;
-                border-spacing: 1px;
-                text-align: left;
-                line-height: 1.5;
-                border-top: 1px solid #ccc;
-                margin : 20px 10px;
-        }
-        table.table2 tr {
-                 width: 100px;
-                 padding: 10px;
-                font-weight: bold;
-                vertical-align: top;
-                border-bottom: 1px solid #ccc;
-        }
-        table.table2 td {
-                 width: 300px;            
-                 padding: 10px;
-   
-                 border-bottom: 1px solid #ccc;
-        }
-        .btn {
-        	background-color:#86acd9;
-        	color:#fff;
-        	border: 1px solid #86acd9;
-        	width: 100px;
-        	height: 50px;
-        	font-size: 18px;
-        	border-radius: 4px;
-        }
- 
-</style>
+.pl:focus {
+	border: 1px solid rgba(30, 30, 30, .5);
+	box-sizing: border-box;
+	border-radius: 10px;
+	outline: 3px solid rgba(30, 30, 30, .5);
+	border-radius: 10px;
+}
+
+table.table2 {
+	border-collapse: separate;
+	border-spacing: 1px;
+	text-align: left;
+	line-height: 1.5;
+	border-top: 1px solid #ccc;
+	margin: 20px 10px;
+}
+
+table.table2 tr {
+	width: 100px;
+	padding: 10px;
+	font-weight: bold;
+	vertical-align: top;
+	border-bottom: 1px solid #ccc;
+}
+
+table.table2 td {
+	width: 300px;
+	padding: 10px;
+	border-bottom: 1px solid #ccc;
+}
+
+.btn {
+	background-color: #86acd9;
+	color: #fff;
+	border: 1px solid #86acd9;
+	width: 100px;
+	height: 50px;
+	font-size: 18px;
+	border-radius: 4px;
+}
 </style>
 </head>
 <body>
-  <form method = "get" action = "write_action.php">
-        <table  style="padding-top:50px" align = center width=700 border=0 cellpadding=2 >
-                <tr>
-                <td height=50 align= center bgcolor=#86acd9 style="border-radius:4px;"><font size=5px color=white >글쓰기</font></td>
-                </tr>
-                <tr>
-                <td bgcolor=white>
-                <table class="table2">
-                        <tr>
-                        <td style="padding-bottom:52px; position:fixed"><div>카테고리</div></td>
-                        <td align = center style="text-align: left;">
-        					<select name="board_name" id="" class="pl" style="margin-top:20px; margin-left:35px;">
-            					<option value="0" selected>게시판 종류</option>
-            					<option value="notice">공지사항</option>
-            					<option value="practice">실습</option>
-            					<option value="review">식당후기</option>
-        					</select>
-      					<label></label>
-    					</td>
-                        </tr>
- 
-                        <tr>
-                        <td>제목</td>
-                        <td  type = text name = title size=90 ></td>
-                        </tr>
- 
-                        <tr>
-                        <td>내용</td>
-                        <td><textarea name = content cols=92 rows=15></textarea></td>
-                        </tr>
- 
-                        </table>
-                          <center>
-                        <button  class="btn" type = "submit">작성</button>
-                        </center>
-                </td>
-                </tr>
-        </table>
-        </form>
- 
+	<link
+		href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+		rel="stylesheet" id="bootstrap-css">
+	<script
+		src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script
+		src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!------ Include the above in your HEAD tag ---------->
+
+	<link
+		href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+		rel="stylesheet"
+		integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+		crossorigin="anonymous">
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+		crossorigin="anonymous"></script>
+
+	<form>
+		<table style="padding-top: 50px" align=center width=700 border=0
+			cellpadding=2>
+			<tr>
+				<td height=50 align=center bgcolor=#86acd9
+					style="border-radius: 4px;"><font size=3px color=white>카테고리</font></td>
+			</tr>
+			<tr>
+				<td bgcolor=white>
+					<table class="table2">
+
+
+						<tr>
+							<td><span style="text-align: left; font-size: 25px">rkrkdddddddddddddd
+							</span></td>
+							<td><span style="text-align: right; font-size: 25px">rkrk
+							</span></td>
+						</tr>
+
+						<tr>
+							
+							<td><div style="position: relative; width: 900px; height: 400px;">
+									<span
+										style="position: absolute; text-align: left; font-size: 15px; white-space: pre-wrap;">
+									</span> jioqajwiejaqio3jaioqj3wqaiwekhai0kq90weka90k90hkaokhoqakop
+								</div></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+
+		<input style="display: none" type="text" value="" name="id">
+	</form>
+
+	<!-- 댓글 기능-->
+	<div class="card mb-2">
+		<div class="card-header bg-light" style="color:#86acd9;">
+			<i class="fa fa-comment fa" style="color: #86acd9;"></i> 댓글
+		</div>
+		<div class="card-body">
+			<form>
+				<div class="form-group">
+					<textarea class="form-control" rows="3"></textarea>
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col text-center">
+							<button class="btn btn-outline-primary" type="submit">작성</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!-- Single comment-->
+	<!-- <div class="media mb-4"> -->
+	<div class="d-flex justify-content-between align-items-center">
+		<div class="d-flex justify-content-between align-items-center">
+			<div class="mr-2">
+				<img class="rounded-circle" width="45"
+					src="https://picsum.photos/50/50" alt="">
+			</div>
+			<div class="ml-2">
+				<div class="h5 m-0">
+					<a href="" style="color: rgb(0, 0, 0);">닉네임</a>
+				</div>
+				<!-- <div class="h7 text-muted">Miracles Lee Cross</div> -->
+				<h5 class="mt-0">댓글</h5>
+			</div>
+		</div>
+		<!-- </div> -->
+		<!-- <div class="media-body">
+                            <h5 class="mt-0"><a href="" style="color: rgb(0, 0, 0);"> 닉네임 </a></h5>
+                            댓글
+                        </div> -->
+	</div>
+
+	<!-- Comment with nested comments-->
+	<div class="media mb-4">
+		<img class="d-flex mr-3 rounded-circle"
+			src="https://via.placeholder.com/50x50" alt="..." />
+		<div class="media-body">
+			<h5 class="mt-0">
+				<a href="" style="color: rgb(0, 0, 0);"> 닉네임 </a>
+			</h5>
+			댓글
+			<div class="media mt-4">
+				<img class="d-flex mr-3 rounded-circle"
+					src="https://via.placeholder.com/50x50" alt="..." />
+				<div class="media-body">
+					<h5 class="mt-0">
+						<a href="" style="color: rgb(0, 0, 0);"> 닉네임 </a>
+					</h5>
+					대댓글
+				</div>
+			</div>
+			<div class="media mt-4">
+				<img class="d-flex mr-3 rounded-circle"
+					src="https://via.placeholder.com/50x50" alt="..." />
+				<div class="media-body">
+					<h5 class="mt-0">
+						<a href="" style="color: rgb(0, 0, 0);"> 닉네임 </a>
+					</h5>
+					대댓글
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
+
 </html>

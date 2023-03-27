@@ -81,7 +81,7 @@
             					<option value="실습">실습</option>
             					<option value="식당후기">식당후기</option>
         					</select>
-        					<input name="board_photo" type="file" style="float: right; align-content: center;">
+        					<input name="board_photo" type="file" style="float: right; align-content:center;">
       					<label></label>
     					</td>
     					
@@ -89,12 +89,12 @@
  
                         <tr>
                         <td>제목</td>
-                        <td><input type = text name = "board_title" size=90 ></td>
+                        <td><input type = text name = "board_title" size=71 ></td>
                         </tr>
  
                         <tr>
                         <td>내용</td>
-                        <td><textarea name = "board_content" cols=92 rows=15></textarea></td>
+                        <td><textarea name = "board_content" cols=71 rows=15></textarea></td>
                         </tr>
  						
                         </table>
