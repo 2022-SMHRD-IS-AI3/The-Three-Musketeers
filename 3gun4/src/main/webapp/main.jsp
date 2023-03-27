@@ -163,7 +163,7 @@
 								<div class="mini-posts">
 									<!-- Mini Post -->
 										<article class="mini-post">
-											<iframe src=".jsp"></iframe>
+											<iframe src="poll.jsp" width="100%" height="400px"></iframe>
 										</article>
 
 									<!-- Mini Post -->
