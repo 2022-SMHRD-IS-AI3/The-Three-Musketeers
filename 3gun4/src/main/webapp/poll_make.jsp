@@ -6,6 +6,32 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+table { 
+                display: table;
+                clear:both; 
+                width:auto;
+                border-top: 1px solid #444444;
+                border-collapse: collapse; 
+                vertical-align: middle;
+              }
+  td{ 
+                border-color:#333333; 
+                text-align:center; 
+                border-top-style: solid;
+                border-bottom-style: solid;
+             }
+              .btn {
+        	background-color:#86acd9;
+        	color:#fff;
+        	border: 1px solid #86acd9;
+        	width: 80px;
+        	height: 30px;
+        	font-size: 15px;
+        	border-radius: 4px;
+        }
+        a{
+        padding:10px
+        }
 </style>
 </head>
 <body>
@@ -30,22 +56,22 @@
 				<tr>
 					<td>복수</td>
 					<td colspan=2>
-					<input type="radio" name="overlap" value="1" checked>yes <br>
+					<input type="radio" name="overlap" value="1" checked>yes 
 						<input type="radio" name="overlap" value="0">no
 					</td>
 				</tr>
 				<tr>
 					<td>익명</td>
 					<td colspan=2>
-					<input type="radio" name="type" value="1" checked>yes <br>
+					<input type="radio" name="type" value="1" checked>yes 
 						<input type="radio" name="type" value="0">no
 					</td>
 				</tr>
-				<tr>
-					<td colspan=3><input type="button" value="작성하기">
-					 <a href="poll_list.jsp"><input type="button" value="리스트"></a></td>
-				</tr>
 			</table>
+				<tr>
+					<a href="poll_list.jsp"><button class="btn">작성하기</button></a>
+					 <a href="poll_list.jsp"><button class="btn">리스트</button></a>
+				</tr>
 		</form>
 	</div>
 </body>
