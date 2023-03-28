@@ -1,3 +1,6 @@
+<%@page import="com.smhrd.model.pollDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="com.smhrd.model.pollDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -53,15 +56,18 @@ th {
 						</tr>
 
 						<tr align="center">
-							<td>1</td>
-							<td><a href="poll.jsp">오늘뭐먹지</a></td>
-							<td>먹보</td>
-						</tr>
-						<tr align="center">
-							<td>2</td>
-							<td><a href="poll.jsp">오늘뭐하지</a></td>
-							<td>먹보</td>
-						</tr>
+						<% 
+    				pollDAO dao = new pollDAO();
+    				List<pollDTO> dto_array= dao.selectAll_poll();
+    				for(int i = 0;i<dto_array.size(); i++){
+    					%>
+						<td><%=dto_array.get(i).getVote_num()%></td>
+						<td><a href="poll.jsp?vote_nums=<%=dto_array.get(i).getVote_num() %>"><%=dto_array.get(i).getVote_title().toString()%></a></td>
+						<td><%=dto_array.get(i).getId().toString()%></td>
+					</tr>
+					
+					<%}%>
+			
 					</table>
 				</td>
 			</tr>

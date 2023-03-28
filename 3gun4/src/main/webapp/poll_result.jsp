@@ -42,9 +42,6 @@ td {
 	font-size: 15px;
 	border-radius: 4px;
 }
-a{
-margin-top: 10px;
-}
 
 </style>
 </head>
@@ -66,10 +63,11 @@ margin-top: 10px;
 			</tr>
 
 		</table>
-	</div>
-<div>
+<tr>
 		<a href="poll.jsp"><button class="btn">다시투표</button></a> 
 		<a href="poll_list.jsp"><button class="btn">닫기</button></a>
-		</div>
+	</tr>
+	</div>
+	
 </body>
 </html>
