@@ -10,6 +10,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into board_comments values(board_comments_num.nextval, #{board_num}, #{com_content}, sysdate, #{id})
 	</insert>
 	<select id="selectAll_comment" resultType="commentDTO">
-   		select * from board_comments
+   		select * from board_comments order by com_num
    	</select>
 </mapper>
