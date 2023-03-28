@@ -22,6 +22,8 @@ id varchar2(100),
 constraint id2 foreign key(id) references members(id)
 );
 
+select * from board_posts where board_num = 1;
+
 drop table board_posts;
 commit;
 
@@ -31,9 +33,37 @@ increment by 1;
 
 drop sequence board_posts_num;
 
+select * from board_posts;
+
+create table board_comments(
+com_num number primary key,
+board_num number,
+com_content varchar2(100),
+com_datetime date not null,
+id varchar2(100),
+constraint id3 foreign key(id) references members(id),
+constraint board_num2 foreign key(board_num) references board_posts(board_num)
+);
+
+CREATE SEQUENCE board_comments_num
+start with 1
+increment by 1;
+
+select * from BOARD_COMMENTS;
+
+
+
+
+
+
+
+
+
+
+
+
 select * from user_tables;
 
-select * from board_posts;
 
 select * from VOTES;
 
@@ -47,13 +77,7 @@ constraint id_vote_fk foreign key(id_vote) references members(id)
 );
 
 
-insert into board_posts values(116,'1','1','1',sysdate,'1','admin');
-insert into board_posts values(2156,'2','2','2',sysdate,'2','admin');
-insert into board_posts values(3116,'3','3','3',sysdate,'3','admin');
-insert into board_posts values(4126,'4','4','4',sysdate,'4','admin');
-insert into board_posts values(156,'5','5','5',sysdate,'5','admin');
-insert into board_posts values(6156,'6','6','6',sysdate,'6','admin');
-insert into board_posts values(17156,'7','7','7',sysdate,'7','admin');
+
 
 select * from BOARD_POSTS;
 

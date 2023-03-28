@@ -37,6 +37,14 @@ public class boardDAO {
 		sqlsession.close();
 		return cnt;
 	}
+
+	public boardDTO selectone(boardDTO dto) {
+		SqlSession sqlsession = sqlSessionFactory.openSession(true);
+		boardDTO info_board = sqlsession.selectOne("selectone",dto);
+		sqlsession.close();
+		
+		return info_board;
+	}
 	
 	
 }
