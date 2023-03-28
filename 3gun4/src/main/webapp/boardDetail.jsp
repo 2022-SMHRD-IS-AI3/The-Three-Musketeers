@@ -43,10 +43,11 @@ table.table2 {
 	line-height: 1.5;
 	border-top: 1px solid #ccc;
 	margin: 20px 10px;
+	width: 500px;
 }
 
 table.table2 tr {
-	width: 100px;
+	width: 500px;
 	padding: 10px;
 	font-weight: bold;
 	vertical-align: top;
@@ -71,6 +72,7 @@ table.table2 td {
 </style>
 </head>
 <body>
+	<!-- 부트스트랩 연결 -->
 	<link
 		href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
 		rel="stylesheet" id="bootstrap-css">
@@ -105,9 +107,10 @@ table.table2 td {
 		
 		boardDTO board_content = dao.selectone(dto);
 	%>
+
 	<form>
-		<table style="padding-top: 50px" align=center width=700 border=0
-			cellpadding=2>
+
+		<table style="padding-top:50px; align:center; width:1020px; border:0; cellpadding:2;">
 			<tr>
 				<td height=50 align=center bgcolor=#86acd9
 					style="border-radius: 4px;"><font size=3px color=white><%=board_content.getCategory() %></font></td>
@@ -116,19 +119,17 @@ table.table2 td {
 				<td bgcolor=white>
 					<table class="table2">
 						<tr>
-							<td><span style="text-align: left; font-size: 25px"><%=board_content.getBoard_title() %>
-							</span></td>
-							<td><span style="text-align: right; font-size: 25px"><%=board_content.getId() %>
-							</span></td>
+							<td>
+							<span style="text-align: left; font-size: 20px; width: 650px;"><%=board_content.getBoard_title() %></span>							
+							<span style="text-align: right; font-size: 15px; width: 200px; float: right; align-content:center;"><%=board_content.getId() %></span>
+							<span style="text-align: right; font-size: 15px; width: 200px; float: right; align-content:center;"><%=board_content.getBoard_datetime() %></span>
+							</td>
 						</tr>
 						<tr>
-							<td>
-								<div style="position: relative; width: 900px; height: 400px;">
-									<span
-										style="position: absolute; text-align: left; font-size: 15px; white-space: pre-wrap;">
-									</span> <%=board_content.getBoard_content() %>
-								</div>
-							</td>
+							<td><div style="position: relative; width: 1020px; height: 400px;">
+									<span style="position: absolute; text-align: left; font-size: 15px; white-space: normal;">
+									 <%=board_content.getBoard_content() %></span>
+								</div></td>
 						</tr>
 					</table>
 					<center>
@@ -141,9 +142,9 @@ table.table2 td {
 		
 	</form>
 
-	<!-- 댓글 기능-->
+	<!-- 댓글 작성-->
 	<div class="card mb-2">
-		<div class="card-header bg-light" style="color:#86acd9;">
+		<div class="card-header bg-light" style="color: #86acd9;">
 			<i class="fa fa-comment fa" style="color: #86acd9;"></i> 댓글
 		</div>
 		<div class="card-body">
@@ -165,16 +166,19 @@ table.table2 td {
 			</form>
 		</div>
 	</div>
+
 	<% 
 	commentDAO dao_com = new commentDAO();
 	List<commentDTO> dto_com_array= dao_com.selectAll_comment();
 	 %>
 	<!-- Single comment-->
 	<!-- <div class="media mb-4"> -->
+
 	<div class="d-flex justify-content-between align-items-center">
 		<div class="justify-content-between align-items-center">
  			<%for(int i = 0; i<dto_com_array.size();i++){
 				if(dto_com_array.get(i).getBoard_num() == board_nums){%>
+
 			<div class="ml-2">
 				<div class="h5 m-0">
 					<a href="" style="color: blue;"><%=dto_com_array.get(i).getId() %></a>
@@ -184,7 +188,6 @@ table.table2 td {
 			<%}} %>
 		</div>
 	</div>
-
 </body>
 
 </html>

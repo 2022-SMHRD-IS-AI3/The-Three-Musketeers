@@ -39,14 +39,14 @@
                 margin : 20px 10px;
         }
         table.table2 tr {
-                 width: 100px;
+                 width: 300px;
                  padding: 10px;
                 font-weight: bold;
                 vertical-align: top;
                 border-bottom: 1px solid #ccc;
         }
         table.table2 td {
-                 width: 300px;            
+                 width: 100px;            
                  padding: 10px;
    
                  border-bottom: 1px solid #ccc;
@@ -65,7 +65,7 @@
 </head>
 <body>
   <form action = "upload_boardcon" method="POST" enctype="multipart/form-data">
-        <table  style="padding-top:50px" align = center width=700 border=0 cellpadding=2 >
+        <table  style="padding-top:50px; align:center; width:1020px; border:0; cellpadding:2;" >
                 <tr>
                 <td height=50 align= center bgcolor=#86acd9 style="border-radius:4px;"><font size=5px color=white >글쓰기</font></td>
                 </tr>
@@ -89,12 +89,12 @@
  
                         <tr>
                         <td>제목</td>
-                        <td><input type = text name = "board_title" size=71 ></td>
+                        <td><input type = text name = "board_title" size=120 ></td>
                         </tr>
  
                         <tr>
                         <td>내용</td>
-                        <td><textarea name = "board_content" cols=71 rows=15></textarea></td>
+                        <td><textarea name = "board_content" cols=122 rows=18></textarea></td>
                         </tr>
  						
                         </table>
