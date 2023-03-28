@@ -13,7 +13,7 @@
                 border-collapse: collapse; 
                 vertical-align: middle;
               }
-  th { 
+  th{ 
                 border-color:#333333; 
                 background: #fcfcfc;
                 padding:10px 0 10px 0; 
@@ -24,6 +24,7 @@
                 border-bottom-style: solid;
 
              }
+            
 </style>
 </head>
 <body>
@@ -45,6 +46,13 @@
 				<td>1</td>
 				<td>
 				<a href="poll.jsp">오늘뭐먹지</a>
+				</td>
+				<td>먹보</td>
+			</tr>
+			<tr align="center">
+				<td>2</td>
+				<td>
+				<a href="poll.jsp">오늘뭐하지</a>
 				</td>
 				<td>먹보</td>
 			</tr>
