@@ -128,7 +128,7 @@ table.table2 td {
 						<tr>
 							<td><div style="position: relative; width: 1020px; height: 400px;">
 									<span style="position: absolute; text-align: left; font-size: 15px; white-space: normal;">
-									 <%=board_content.getBoard_content() %></span>
+									 <img alt="안나와!" src="./file/<%=board_content.getBoard_photo() %>"> <br> <%=board_content.getBoard_content() %></span>
 								</div></td>
 						</tr>
 					</table>
