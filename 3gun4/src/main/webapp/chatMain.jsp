@@ -36,7 +36,7 @@
 }
 .usersChatList .card-header{
   background: #86acd9;
-  font-size: 13px;
+  font-size: 19px;
 }
 .chatBox{
   position: absolute;
@@ -44,15 +44,17 @@
   right: 0;
   width: 300px;
   margin: 40px;
-  margin-bottom: 0;
-  font-size: 13px;
+  margin-bottom: 10px;
+  font-size: 17px;
+  border-radius: 15px;
 }
 .chat-content{
   overflow: auto;
   height: 300px;
 }
 .chatBox .card{
-  border-radius: 4px;
+  border-radius: 5px;
+  background: #f4f4f4;
 }
 .chatBox .card-header{
   background: #86acd9;
