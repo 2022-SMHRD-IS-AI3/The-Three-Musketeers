@@ -45,6 +45,8 @@ constraint id3 foreign key(id) references members(id),
 constraint board_num2 foreign key(board_num) references board_posts(board_num)
 );
 
+select * from board_posts order by board_num;
+
 CREATE SEQUENCE board_comments_num
 start with 1
 increment by 1;

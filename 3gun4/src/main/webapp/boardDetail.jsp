@@ -14,60 +14,58 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-.pl {
-	width: 300px;
-	border: 1px solid #ccc;
-	box-sizing: border-box;
-	border-radius: 5px;
-	padding: 12px 13px;
-	font-family: 'Roboto';
-	font-style: normal;
-	font-weight: 400;
-	font-size: 14px;
-	line-height: 16px;
-	margin-top: 4%
+table {
+	border-collapse: collapse;
+	width: 100%;
 }
 
-.pl:focus {
-	border: 1px solid rgba(30, 30, 30, .5);
-	box-sizing: border-box;
-	border-radius: 10px;
-	outline: 3px solid rgba(30, 30, 30, .5);
-	border-radius: 10px;
-}
-
-table.table2 {
-	border-collapse: separate;
-	border-spacing: 1px;
-	text-align: left;
-	line-height: 1.5;
-	border-top: 1px solid #ccc;
-	margin: 20px 10px;
-	width: 500px;
-}
-
-table.table2 tr {
-	width: 500px;
-	padding: 10px;
-	font-weight: bold;
-	vertical-align: top;
-	border-bottom: 1px solid #ccc;
-}
-
-table.table2 td {
-	width: 300px;
-	padding: 10px;
-	border-bottom: 1px solid #ccc;
-}
-
-.btn {
+button {
 	background-color: #86acd9;
-	color: #fff;
-	border: 1px solid #86acd9;
-	width: 100px;
-	height: 50px;
+	color: white;
+	font-weight: bold;
 	font-size: 18px;
+	padding: 12px;
+	text-align: center;
+	border: 0;
+}
+
+th {
+	background-color: #86acd9;
 	border-radius: 4px;
+	color: white;
+	font-weight: bold;
+	font-size: 18px;
+	padding: 12px;
+	text-align: center;
+}
+
+td {
+	padding: 12px;
+	border: 1px solid #ddd;
+}
+
+.board_title {
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.board_info {
+	font-size: 14px;
+	color: #999;
+	margin-bottom: 10px;
+}
+
+.board_photo {
+	max-width: 100%;
+	height: auto;
+	margin-bottom: 10px;
+}
+
+.board_content {
+	font-size: 16px;
+	line-height: 1.5;
+	margin-bottom: 20px;
 }
 </style>
 </head>
@@ -99,48 +97,38 @@ table.table2 td {
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
 		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 		crossorigin="anonymous"></script>
-	<% 
-		int board_nums = Integer.parseInt(request.getParameter("board_nums")); 
-		System.out.println(board_nums);
-		boardDTO dto = new boardDTO(board_nums);
-		boardDAO dao = new boardDAO();
-		
-		boardDTO board_content = dao.selectone(dto);
+	<%
+	int board_nums = Integer.parseInt(request.getParameter("board_nums"));
+	System.out.println(board_nums);
+	boardDTO dto = new boardDTO(board_nums);
+	boardDAO dao = new boardDAO();
+
+	boardDTO board_content = dao.selectone(dto);
 	%>
+	<table>
+		<tr>
+			<th colspan="2" style="text-align: center; "><font size=5px
+				color=white><%=board_content.getCategory()%></font></th>
+		</tr>
+		<tr height="5px"></tr>
+		<tr>
+			<td style="text-align: center;"><span class="board_title"><%=board_content.getBoard_title()%></span></td>
+			<td width="25%" style="text-align: right;"><span><%=board_content.getId()%></span><br> <span><%=board_content.getBoard_datetime()%></span></td>
+		</tr>
+		<tr>
+			<td colspan="2"><img alt=""
+				src="./file/<%=board_content.getBoard_photo()%>"> <br> <span>
+					<%=board_content.getBoard_content()%>
+			</span></td>
+		</tr>
+	</table>
+	<tr>
+		<center>
+			<button type="button" onclick="location.href='board.jsp'" style="border-radius: 8px; margin: 5px;">목록으로</button>
+		</center>
+	</tr>
 
-	<form>
 
-		<table style="padding-top:50px; align:center; width:1020px; border:0; cellpadding:2;">
-			<tr>
-				<td height=50 align=center bgcolor=#86acd9
-					style="border-radius: 4px;"><font size=3px color=white><%=board_content.getCategory() %></font></td>
-			</tr>
-			<tr>
-				<td bgcolor=white>
-					<table class="table2">
-						<tr>
-							<td>
-							<span style="text-align: left; font-size: 20px; width: 650px;"><%=board_content.getBoard_title() %></span>							
-							<span style="text-align: right; font-size: 15px; width: 200px; float: right; align-content:center;"><%=board_content.getId() %></span>
-							<span style="text-align: right; font-size: 15px; width: 200px; float: right; align-content:center;"><%=board_content.getBoard_datetime() %></span>
-							</td>
-						</tr>
-						<tr>
-							<td><div style="position: relative; width: 1020px; height: 400px;">
-									<span style="position: absolute; text-align: left; font-size: 15px; white-space: normal;">
-									 <img alt="안나와!" src="./file/<%=board_content.getBoard_photo() %>"> <br> <%=board_content.getBoard_content() %></span>
-								</div></td>
-						</tr>
-					</table>
-					<center>
-                    	<button class="btn" type="button" onclick = "location.href='board.jsp'">목록으로</button>
-                    </center>
-				</td>
-			</tr>
-		</table>
-
-		
-	</form>
 
 	<!-- 댓글 작성-->
 	<div class="card mb-2">
@@ -151,7 +139,7 @@ table.table2 td {
 			<form action="board_com_con">
 				<div class="form-group">
 					<textarea class="form-control" rows="3" name="com_content"></textarea>
-					
+
 				</div>
 				<div class="container">
 					<div class="row">
@@ -160,32 +148,41 @@ table.table2 td {
 						</div>
 					</div>
 				</div>
-				<% memberDTO info = (memberDTO)session.getAttribute("info");%>
-                <input style="display: none" type="text" value="<%=info.getId() %>" name="id">
-                <input style="display: none" type="text" value="<%=board_content.getBoard_num() %>" name="board_num">
+				<%
+				memberDTO info = (memberDTO) session.getAttribute("info");
+				%>
+				<input style="display: none" type="text" value="<%=info.getId()%>"
+					name="id"> <input style="display: none" type="text"
+					value="<%=board_content.getBoard_num()%>" name="board_num">
 			</form>
 		</div>
 	</div>
 
-	<% 
+	<%
 	commentDAO dao_com = new commentDAO();
-	List<commentDTO> dto_com_array= dao_com.selectAll_comment();
-	 %>
+	List<commentDTO> dto_com_array = dao_com.selectAll_comment();
+	%>
 	<!-- Single comment-->
 	<!-- <div class="media mb-4"> -->
 
 	<div class="d-flex justify-content-between align-items-center">
-		<div class="justify-content-between align-items-center">
- 			<%for(int i = 0; i<dto_com_array.size();i++){
-				if(dto_com_array.get(i).getBoard_num() == board_nums){%>
+		<div class="justify-content-between align-items-center" style="width: 900px">
+			<%
+			for (int i = dto_com_array.size()-1; i > 0; i--) {
+				if (dto_com_array.get(i).getBoard_num() == board_nums) {
+			%>
 
-			<div class="ml-2">
+			<div class="ml-2" style="display: flex;">
 				<div class="h5 m-0">
-					<a href="" style="color: blue;"><%=dto_com_array.get(i).getId() %></a>
+					<a href="" style="color: blue;"><%=dto_com_array.get(i).getId()%>&nbsp&nbsp</a>
 				</div>
-				<h5 class="mt-0"><%=dto_com_array.get(i).getCom_content() %></h5>
+				<h5 class="mt-0"><%=dto_com_array.get(i).getCom_content()%></h5>
 			</div>
-			<%}} %>
+			<hr>
+			<%
+			}
+			}
+			%>
 		</div>
 	</div>
 </body>
