@@ -14,4 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    	<delete id="delete_board" parameterType="String">
    		delete from board_posts where board_num=#{board_num}
    	</delete>
+   	<select id="selectone" parameterType="boardDTO" resultType="boardDTO">
+   		select * from board_posts where board_num=#{board_num}
+   	</select>
 </mapper>

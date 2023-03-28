@@ -8,6 +8,7 @@
 	<typeAliases>
 		<typeAlias type="com.smhrd.model.memberDTO" alias="memberDTO"/>
 		<typeAlias type="com.smhrd.model.boardDTO" alias="boardDTO"/>
+		<typeAlias type="com.smhrd.model.commentDTO" alias="commentDTO"/>
 	</typeAliases>
 	
 	<environments default="development">
@@ -24,5 +25,6 @@
 	<mappers>
 		<mapper resource="com/smhrd/mapper/memberMapper.xml" />
 		<mapper resource="com/smhrd/mapper/boardMapper.xml" />
+		<mapper resource="com/smhrd/mapper/commentMapper.xml" />
 	</mappers>
 </configuration>

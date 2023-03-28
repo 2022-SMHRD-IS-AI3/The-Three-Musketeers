@@ -99,7 +99,8 @@
  						
                         </table>
                           <center>
-                        	<button  class="btn" type = "submit">작성</button>
+                        	<button class="btn" type = "submit">작성</button>
+                        	<button class="btn" type="button" onclick = "location.href='board.jsp'">목록으로</button>
                        	  </center>
                 </td>
                 </tr>

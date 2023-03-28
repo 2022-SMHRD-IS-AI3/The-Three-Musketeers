@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.smhrd.mapper.commentMapper">
+	
+	<insert id="upload_com" parameterType="commentDTO">
+		insert into board_comments values(board_comments_num.nextval, #{board_num}, #{com_content}, sysdate, #{id})
+	</insert>
+	<select id="selectAll_comment" resultType="commentDTO">
+   		select * from board_comments
+   	</select>
+</mapper>
