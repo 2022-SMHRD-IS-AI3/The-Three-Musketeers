@@ -31,4 +31,11 @@ SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
 		sqlsession.close();
 		return cnt;
 	}
+	public pollDTO selectone_poll(pollDTO dto) {
+		SqlSession sqlsession = sqlSessionFactory.openSession(true);
+		pollDTO info_poll = sqlsession.selectOne("selectone_poll",dto);
+		sqlsession.close();
+		
+		return info_poll;
+	}
 }

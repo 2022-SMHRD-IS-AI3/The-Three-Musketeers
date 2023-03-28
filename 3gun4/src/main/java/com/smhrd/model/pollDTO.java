@@ -19,5 +19,7 @@ public class pollDTO {
 	private int anonymity;
 	private String id;
 	
-	
+	public pollDTO(int vote_num) {
+		this.vote_num = vote_num;
+	}
 }
