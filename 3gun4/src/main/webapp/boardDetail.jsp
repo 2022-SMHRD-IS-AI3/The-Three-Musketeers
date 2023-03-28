@@ -1,3 +1,11 @@
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.smhrd.model.commentDAO"%>
+<%@page import="com.smhrd.model.commentDTO"%>
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
+<%@page import="com.smhrd.model.memberDTO"%>
+<%@page import="com.smhrd.model.boardDAO"%>
+<%@page import="com.smhrd.model.boardDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -91,34 +99,47 @@ table.table2 td {
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
 		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 		crossorigin="anonymous"></script>
-	<!-- 게시글 -->
+	<% 
+		int board_nums = Integer.parseInt(request.getParameter("board_nums")); 
+		System.out.println(board_nums);
+		boardDTO dto = new boardDTO(board_nums);
+		boardDAO dao = new boardDAO();
+		
+		boardDTO board_content = dao.selectone(dto);
+	%>
+
 	<form>
-		<table style="padding-top:50px; align:center; width:1020px; border:0; cellpadding:2;" >
-                <tr>
-                <td height=30 align= center bgcolor=#86acd9 style="border-radius:4px;"><font size=3px color=white >카테고리</font></td>
-                </tr>
+
+		<table style="padding-top:50px; align:center; width:1020px; border:0; cellpadding:2;">
+			<tr>
+				<td height=50 align=center bgcolor=#86acd9
+					style="border-radius: 4px;"><font size=3px color=white><%=board_content.getCategory() %></font></td>
+			</tr>
 			<tr>
 				<td bgcolor=white>
 					<table class="table2">
 						<tr>
 							<td>
-							<span style="text-align: left; font-size: 20px; width: 650px;">제목 어엉어어엉</span>							
-							<span style="text-align: right; font-size: 15px; width: 200px; float: right; align-content:center;">작성자</span>
-							<span style="text-align: right; font-size: 15px; width: 200px; float: right; align-content:center;">작성일 2212112</span>
+							<span style="text-align: left; font-size: 20px; width: 650px;"><%=board_content.getBoard_title() %></span>							
+							<span style="text-align: right; font-size: 15px; width: 200px; float: right; align-content:center;"><%=board_content.getId() %></span>
+							<span style="text-align: right; font-size: 15px; width: 200px; float: right; align-content:center;"><%=board_content.getBoard_datetime() %></span>
 							</td>
 						</tr>
 						<tr>
 							<td><div style="position: relative; width: 1020px; height: 400px;">
 									<span style="position: absolute; text-align: left; font-size: 15px; white-space: normal;">
-									 내용이이이이이이이</span>
+									 <%=board_content.getBoard_content() %></span>
 								</div></td>
 						</tr>
 					</table>
+					<center>
+                    	<button class="btn" type="button" onclick = "location.href='board.jsp'">목록으로</button>
+                    </center>
 				</td>
 			</tr>
 		</table>
 
-		<input style="display: none" type="text" value="" name="id">
+		
 	</form>
 
 	<!-- 댓글 작성-->
@@ -127,9 +148,10 @@ table.table2 td {
 			<i class="fa fa-comment fa" style="color: #86acd9;"></i> 댓글
 		</div>
 		<div class="card-body">
-			<form>
+			<form action="board_com_con">
 				<div class="form-group">
-					<textarea class="form-control" rows="3"></textarea>
+					<textarea class="form-control" rows="3" name="com_content"></textarea>
+					
 				</div>
 				<div class="container">
 					<div class="row">
@@ -138,34 +160,34 @@ table.table2 td {
 						</div>
 					</div>
 				</div>
+				<% memberDTO info = (memberDTO)session.getAttribute("info");%>
+                <input style="display: none" type="text" value="<%=info.getId() %>" name="id">
+                <input style="display: none" type="text" value="<%=board_content.getBoard_num() %>" name="board_num">
 			</form>
 		</div>
 	</div>
-	<!-- 댓글 -->
-	<div class="d-flex justify-content-between align-items-center">
-		<div class="d-flex justify-content-between align-items-center">
-			<div class="ml-2">
-				<div class="h5 m-0">
-					<a href="" style="color: rgb(0, 0, 0);">아이디1</a>
-				</div>
-				<!-- <div class="h7 text-muted">Miracles Lee Cross</div> -->
-				<h5 class="mt-0">댓글1</h5>
-			</div>
-		</div>
-	</div>
+
+	<% 
+	commentDAO dao_com = new commentDAO();
+	List<commentDTO> dto_com_array= dao_com.selectAll_comment();
+	 %>
+	<!-- Single comment-->
+	<!-- <div class="media mb-4"> -->
 
 	<div class="d-flex justify-content-between align-items-center">
-		<div class="d-flex justify-content-between align-items-center">
+		<div class="justify-content-between align-items-center">
+ 			<%for(int i = 0; i<dto_com_array.size();i++){
+				if(dto_com_array.get(i).getBoard_num() == board_nums){%>
+
 			<div class="ml-2">
 				<div class="h5 m-0">
-					<a href="" style="color: rgb(0, 0, 0);">아이디2</a>
+					<a href="" style="color: blue;"><%=dto_com_array.get(i).getId() %></a>
 				</div>
-				<h5 class="mt-0">댓글2</h5>
+				<h5 class="mt-0"><%=dto_com_array.get(i).getCom_content() %></h5>
 			</div>
+			<%}} %>
 		</div>
 	</div>
-
-
 </body>
 
 </html>

@@ -33,12 +33,16 @@ public class upload_boardcon extends HttpServlet {
 		String board_title = multi.getParameter("board_title");
 		String board_content = multi.getParameter("board_content");
 		String board_photo = multi.getFilesystemName("board_photo");
+		System.out.println("1");
+		
 		String board_photo_en = URLEncoder.encode(board_photo, "UTF-8");
+		System.out.println("2");
 		String category = multi.getParameter("category");
 		String id = multi.getParameter("id");
 	
-		boardDTO dto = new boardDTO(0, board_title, board_content, board_photo_en, null, category, id);
 		
+		boardDTO dto = new boardDTO(0, board_title, board_content, board_photo_en, null, category, id);
+		System.out.println("3");
 		int cnt = new boardDAO().upload(dto);
 		
 		if(cnt > 0) {

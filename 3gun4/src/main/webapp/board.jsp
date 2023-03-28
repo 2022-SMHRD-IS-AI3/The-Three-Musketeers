@@ -49,7 +49,7 @@
     				<tr style="color: red; background-color: #F2F3F5;">
 						<td><%=dto_array.get(i).getBoard_num()%></td>
 						<td><%=dto_array.get(i).getCategory().toString()%></td>
-						<td><%=dto_array.get(i).getBoard_title().toString()%></td>
+						<td><a href="boardDetail.jsp?board_nums=<%=dto_array.get(i).getBoard_num() %>"><%=dto_array.get(i).getBoard_title().toString()%></a></td>
 						<td><%=dto_array.get(i).getId().toString()%></td>
 						<td><%=dto_array.get(i).getBoard_datetime().toString()%></td>
 					</tr>
@@ -69,7 +69,7 @@
                      <tr>
 						<td><%=dto_array.get(i).getBoard_num()%></td>
 						<td><%=dto_array.get(i).getCategory().toString()%></td>
-						<td><%=dto_array.get(i).getBoard_title().toString()%></td>
+						<td><a href="boardDetail.jsp?board_nums=<%=dto_array.get(i).getBoard_num() %>"><%=dto_array.get(i).getBoard_title().toString()%></a></td>
 						<td><%=dto_array.get(i).getId().toString()%></td>
 						<td><%=dto_array.get(i).getBoard_datetime().toString()%></td>
 					</tr>
@@ -79,7 +79,7 @@
     						<tr>
     						<td><%=dto_array.get(i).getBoard_num()%></td>
     						<td><%=dto_array.get(i).getCategory().toString()%></td>
-    						<td><%=dto_array.get(i).getBoard_title().toString()%></td>
+    						<td><a href="boardDetail.jsp?board_nums=<%=dto_array.get(i).getBoard_num() %>"><%=dto_array.get(i).getBoard_title().toString()%></a></td>
     						<td><%=dto_array.get(i).getId().toString()%></td>
     						<td><%=dto_array.get(i).getBoard_datetime().toString()%></td>
     						</tr>
