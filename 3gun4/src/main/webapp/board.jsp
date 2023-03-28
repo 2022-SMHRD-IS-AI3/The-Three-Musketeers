@@ -4,7 +4,7 @@
 <%@page import="com.smhrd.model.boardDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,17 +14,15 @@
 <body>
 	<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title></title>
-        <meta charset="UTF-8">
-        <link href="code/css/style.css" rel="stylesheet"/>
-    </head>
-    <body>
-        <div class="container managergrounp" id="container" name="container" >
-            <h3>게시글 목록</h3>
-            <hr>         
-            
-            
+<head>
+<title></title>
+<meta charset="UTF-8">
+<link href="code/css/style.css" rel="stylesheet" />
+</head>
+<body>
+	<div class="container managergrounp" id="container" name="container">
+		<h3>게시글 목록</h3>
+		<hr>
 
             <table class="bbsList" summary="">
                 <caption>게시글 목록</caption>           
@@ -65,7 +63,7 @@
 								
 							}
 							%>
-    				<%
+				<%
     				try{
     				for(int i=dto_array.size()-((page_count-1)*10)-1; i>=dto_array.size()-((page_count)*10-1)-1 ; i--) {%>
                      <tr>
@@ -87,29 +85,26 @@
     						</tr>
     					<%}
     				}%>
-					
-					
-                    </tr>   
-				</tbody>
-                <tfoot class="foot">
-                    <tr>
-                        <td colspan="9">
-                        	<%if(page_count > 3){ %>
-                            <a href="board.jsp?page=1" class="arrow radius-right">≪</a><!-- 맨앞으로 이동 -->
-                            
-                            <%}
+
+
+				</tr>
+			</tbody>
+			<tfoot class="foot">
+				<tr>
+					<td colspan="9">
+						<%if(page_count > 3){ %> <a href="board.jsp?page=1"
+						class="arrow radius-right">≪</a>
+					<!-- 맨앞으로 이동 --> <%}
                             if(page_count <= 3 && page_count >= 1){/* 1~3 */
                            	 	for(int i = 1; i<=dto_array.size()/10+1; i++) {%>
                             		<a href="board.jsp?page=<%=i %>" class="num_box"><%=i %></a>
                             	<%} /* 처음꺼 다뜨기(5개) */ System.out.println("처음꺼 다뜨기(5개)");
                             }else if(dto_array.size()/10-1 <= page_count && page_count <= dto_array.size()/10+1){/* max_page-2 <= page_count <= max_page */
                             	for(int i = dto_array.size()/10-3; i<=dto_array.size()/10+1; i++) {%>
-                        		<a href="board.jsp?page=<%=i %>" class="num_box"><%=i %></a>
-                        	<%} /* 뒤에꺼 다뜨기(5개) */System.out.println("뒤에꺼 다뜨기(5개)");
+						<a href="board.jsp?page=<%=i %>" class="num_box"><%=i %></a> <%} /* 뒤에꺼 다뜨기(5개) */System.out.println("뒤에꺼 다뜨기(5개)");
                             }else{
                             	for(int i = page_count-2; i<= page_count+2; i++) {%>
-                        		<a href="board.jsp?page=<%=i %>" class="num_box"><%=i %></a>
-                        	<%} /* 자기중심5개까지만뜨기 */System.out.println("자기중심5개까지만뜨기");
+						<a href="board.jsp?page=<%=i %>" class="num_box"><%=i %></a> <%} /* 자기중심5개까지만뜨기 */System.out.println("자기중심5개까지만뜨기");
                             } 
                             %>
 							<%if(dto_array.size()/10-2 >= page_count && page_count <= dto_array.size()/10+1){ %>
