@@ -40,6 +40,14 @@ th {
 </style>
 </head>
 <body>
+<% 
+		int vote_nums = Integer.parseInt(request.getParameter("vote_nums")); 
+		System.out.println(vote_nums);
+		pollDTO dto = new pollDTO(vote_nums);
+		pollDAO dao = new pollDAO();
+		
+		pollDTO vote_content = dao.selectone_poll(dto);
+	%>
 	<div align="center">
 		<br />
 		<h2>투표 리스트</h2>

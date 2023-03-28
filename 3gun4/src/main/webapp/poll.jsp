@@ -48,14 +48,7 @@ td {
 </style>
 </head>
 <body>
-<% 
-		int vote_nums = Integer.parseInt(request.getParameter("vote_nums")); 
-		System.out.println(vote_nums);
-		pollDTO dto = new pollDTO(vote_nums);
-		pollDAO dao = new pollDAO();
-		
-		pollDTO vote_content = dao.selectone_poll(dto);
-	%>
+
 	<div align="center">
 		<br /> <b>투표</b>
 		<hr width="auto" />
@@ -63,11 +56,11 @@ td {
 			<table border="1" width="100px">
 				<tr>
 					<th><b>질문</b></th>
-					<th colspan="2"><span><%=vote_content.getVote_title()%></span></th>
+					<th colspan="2"><span></span></th>
 				</tr>
 				<tr>
 					<td rowspan="8"><b>항목</b></td>
-					<span><%=vote_content.getVote_content()%></span>
+					<span></span>
 				</tr>
 			</table>
 			<tr>
