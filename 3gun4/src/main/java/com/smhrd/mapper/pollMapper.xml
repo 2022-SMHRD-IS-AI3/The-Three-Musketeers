@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.smhrd.mapper.pollMapper">
+	<insert id="upload_poll" parameterType="pollDTO">
+		insert into votes values(vote_num.nextval, #{vote_title}, #{vote_content}, #{overlap}, #{anonymity}, #{id})
+	</insert>
+	<select id="selectAll_poll" resultType="pollDTO">
+   		select * from votes
+   	</select>
+   	<delete id="delete_poll" parameterType="String">
+   		delete from votes where vote_num=#{vote_num}
+   	</delete>
+	
+</mapper>

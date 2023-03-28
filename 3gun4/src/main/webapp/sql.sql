@@ -57,7 +57,7 @@ insert into board_posts values(17156,'7','7','7',sysdate,'7','admin');
 
 select * from BOARD_POSTS;
 
-drop table vote_options;
+drop table votes;
 
 select * from user_tables;
 
@@ -65,23 +65,21 @@ select * from board_posts;
 
 select * from votes;
 
-create table votes (
+create table votes(
 vote_num number(5) primary key,
 vote_title varchar2(100) not null,
-sdate DATE NULL DEFAULT NULL,
-edate DATE NULL DEFAULT NULL,
-wdate DATE NULL DEFAULT NULL,
-overlap SMALLINT(6) NULL DEFAULT '1',
-actvie SMALLINT(6) NULL DEFAULT '1', 
+vote_content varchar2(100) not null,
+overlap SMALLINT NULL,
+anonymity SMALLINT NULL, 
 id varchar2(100),
 foreign key(id) references members(id)
 );
 
 create table vote_options (
-vote_list number(5) not null,
-vote_num number(5) NOT NULL DEFAULT '0',, 
+vote_num number(5), 
 foreign key(vote_num) references votes(vote_num),
 vote_cotent varchar2(100),
-count INT(11) NULL DEFAULT NULL,
+id varchar2(100),
+vote_result varchar2(100)
 );
 
