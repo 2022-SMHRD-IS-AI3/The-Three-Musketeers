@@ -77,9 +77,35 @@
 		<description></description>
 		<servlet-class>com.smhrd.controller.accept_msgcon</servlet-class>
 	</servlet>
+	<servlet>
 
+		<servlet-name>upload_pollcon</servlet-name>
+		<display-name>upload_pollcon</display-name>
+		<description></description>
+		<servlet-class>com.smhrd.controller.upload_pollcon</servlet-class>
+	</servlet>
 
-	
+	<servlet>
+		<servlet-name>delete_pollcon</servlet-name>
+		<display-name>delete_pollcon</display-name>
+		<description></description>
+		<servlet-class>com.smhrd.controller.delete_pollcon</servlet-class>
+	</servlet>
+
+	<servlet>
+
+		<servlet-name>savedataCon</servlet-name>
+		<display-name>savedataCon</display-name>
+		<description></description>
+		<servlet-class>com.smhrd.controller.savedataCon</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>getdataCon</servlet-name>
+		<display-name>getdataCon</display-name>
+		<description></description>
+		<servlet-class>com.smhrd.controller.getdataCon</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>joincon</servlet-name>
 		<url-pattern>/joincon</url-pattern>
@@ -127,5 +153,21 @@
 	<servlet-mapping>
 		<servlet-name>accept_msgcon</servlet-name>
 		<url-pattern>/accept_msgcon</url-pattern>
+		</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>upload_pollcon</servlet-name>
+		<url-pattern>/upload_pollcon</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>delete_pollcon</servlet-name>
+		<url-pattern>/delete_pollcon</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>savedataCon</servlet-name>
+		<url-pattern>/savedataCon</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>getdataCon</servlet-name>
+		<url-pattern>/getdataCon</url-pattern>
 	</servlet-mapping>
 </web-app>

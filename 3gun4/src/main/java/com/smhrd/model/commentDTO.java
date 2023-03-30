@@ -17,6 +17,4 @@ public class commentDTO {
 	private String com_content;
 	private Timestamp com_datetime;
 	private String id;
-
-
 }

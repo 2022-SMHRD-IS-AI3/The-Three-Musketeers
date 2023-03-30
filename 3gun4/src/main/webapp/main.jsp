@@ -1,287 +1,252 @@
 <%@page import="com.smhrd.model.memberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-	
+   pageEncoding="UTF-8"%>
+
 <!DOCTYPE HTML>
 
 <html>
-	<head>
-		<title>Future Imperfect by HTML5 UP</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="main.css" />
-	</head>
-	<body class="is-preload">
-	<%
-  		String name = (String)session.getAttribute("name");
-  		String id = (String)session.getAttribute("id");
-    %>
+<head>
+<title>Future Imperfect by HTML5 UP</title>
+<meta charset="utf-8" />
+<meta name="viewport"
+   content="width=device-width, initial-scale=1, user-scalable=no" />
+<style>
+body {
+   margin: 0;
+   padding: 0;
+   font-family: sans-serif;
+   background: linear-gradient(#FFFFFF, #86acd9);
+}
 
-		<!-- Wrapper -->
-		
-			<div id="wrapper">
+.login-box {
+   width: 300px;
+   padding: 20px;
+   background: rgba(0, 0, 0, .5);
+   box-sizing: border-box;
+   box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+   border-radius: 10px;
+}
 
-				<!-- Menu -->
-					<section id="menu">
-					
-	
-						<!-- Search -->
-							<section>
-								<form class="search" method="get" action="#">
-									<input type="text" name="query" placeholder="Search" />
-								</form>
-							</section>
+.login-box h2 {
+   margin: 0 0 0px;
+   padding: 0;
+   color: #fff;
+   text-align: center;
+}
 
-						<!-- Links -->
-							<section>
-								<ul class="links">
-									<li>
-										<a href="#">
-											<h3>Lorem ipsum</h3>
-											<p>Feugiat tempus veroeros dolor</p>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<h3>Dolor sit amet</h3>
-											<p>Sed vitae justo condimentum</p>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<h3>Feugiat veroeros</h3>
-											<p>Phasellus sed ultricies mi congue</p>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<h3>Etiam sed consequat</h3>
-											<p>Porta lectus amet ultricies</p>
-										</a>
-									</li>
-								</ul>
-							</section>
+.login-box .user-box {
+   position: relative;
+}
 
-						<!-- Actions -->
-							<section>
-								<ul class="actions stacked">
-									<li><a href="#" class="button large fit">Log In</a></li>
-								</ul>
-							</section>
+.login-box .user-box input {
+   width: 100%;
+   padding: 10px 0;
+   font-size: 16px;
+   color: #fff;
+   margin-bottom: 30px;
+   border: none;
+   border-bottom: 1px solid #fff;
+   outline: none;
+   background: transparent;
+}
 
-					</section>
+.login-box .user-box label {
+   position: absolute;
+   top: 0;
+   left: 0;
+   padding: 10px 0;
+   font-size: 16px;
+   color: #fff;
+   pointer-events: none;
+   transition: .5s;
+}
 
-				<!-- Main -->
-					<div id="main">
+.login-box .user-box input:focus ~ label, .login-box .user-box input:valid 
+    ~ label {
+   top: -20px;
+   left: 0;
+   color: #03e9f4;
+   font-size: 12px;
+}
 
-						<!-- Post -->
-							<article class="post">
-								<header>
-									<div class="meta">
-									</div>
-									<div class="meta">
-									</div>
-									<div class="meta"></div>
-								</header>
-								<a href="single.html" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-								<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-								<footer>
-									<ul class="actions">
-										<li><a href="single.html" class="button large">Continue Reading</a></li>
-									</ul>
-									<ul class="stats">
-										<li><a href="#">General</a></li>
-										<li><a href="#" class="icon solid fa-heart">28</a></li>
-										<li><a href="#" class="icon solid fa-comment">128</a></li>
-									</ul>
-								</footer>
-							</article>
+.login-box form a {
+   position: relative;
+   display: inline-block;
+   padding: 10px 20px;
+   color: #03e9f4;
+   font-size: 16px;
+   text-decoration: none;
+   text-transform: uppercase;
+   overflow: hidden;
+   transition: .5s;
+   margin-top: 10px;
+   letter-spacing: 4px
+}
 
-						<!-- Post -->
-							<article class="post">
-								<iframe src="board.jsp" title="게시판" width="100%" height="700px"></iframe>
-							</article>
+.login-box a:hover {
+   background: #03e9f4;
+   color: #fff;
+   border-radius: 5px;
+   box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0
+      100px #03e9f4;
+}
 
-						<!-- Post -->
-							<article class="post">
-								<header>
-									<div class="title">
-										<h2><a href="single.html">Euismod et accumsan</a></h2>
-										<p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
-									</div>
-									<div class="meta">
-										<time class="published" datetime="2015-10-22">October 22, 2015</time>
-										<a href="#" class="author"><span class="name">Jane Doe</span><img src="images/avatar.jpg" alt="" /></a>
-									</div>
-								</header>
-								<a href="single.html" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
-								<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla. Cras vehicula tellus eu ligula viverra, ac fringilla turpis suscipit. Quisque vestibulum rhoncus ligula.</p>
-								<footer>
-									<ul class="actions">
-										<li><a href="single.html" class="button large">Continue Reading</a></li>
-									</ul>
-									<ul class="stats">
-										<li><a href="#">General</a></li>
-										<li><a href="#" class="icon solid fa-heart">28</a></li>
-										<li><a href="#" class="icon solid fa-comment">128</a></li>
-									</ul>
-								</footer>
-							</article>
+.login-box a span {
+   position: absolute;
+   display: block;
+}
 
-						
+.login-box a span:nth-child(1) {
+   top: 0;
+   left: -100%;
+   width: 100%;
+   height: 2px;
+   background: linear-gradient(90deg, transparent, #03e9f4);
+   animation: btn-anim1 1s linear infinite;
+}
 
-						<!-- Pagination -->
-							<ul class="actions pagination">
-								<li><a href="" class="disabled button large previous">Previous Page</a></li>
-								<li><a href="#" class="button large next">Next Page</a></li>
-							</ul>
+@keyframes btn-anim1 {
+  0% {
+    left: -100%;
+  }
+  50%,100% {
+    left: 100%;
+  }
+}
 
-					</div>
+.login-box a span:nth-child(2) {
+   top: -100%;
+   right: 0;
+   width: 2px;
+   height: 100%;
+   background: linear-gradient(180deg, transparent, #03e9f4);
+   animation: btn-anim2 1s linear infinite;
+   animation-delay: .25s
+}
 
-				<!-- Sidebar -->
-					<section id="sidebar">
+@keyframes btn-anim2 {
+  0% {
+    top: -100%;
+  }
+  50%,100% {
+    top: 100%;
+  }
+}
+.login-box a span:nth-child(3) {
+   bottom: 0;
+   right: -100%;
+   width: 100%;
+   height: 2px;
+   background: linear-gradient(270deg, transparent, #03e9f4);
+   animation: btn-anim3 1s linear infinite;
+   animation-delay: .5s
+}
 
-						<!-- Intro = 프로필 공간 --> 
-							<section id="intro"> 
-								<div class="profile-card">
-								<% memberDTO info = (memberDTO)session.getAttribute("info");%>
- 								<h2><%=info.getName()%>(<%=info.getId() %>)<br>님 환영합니다.</h2>
-  								<div class="button-container" style="display: flex;">
-    								<button onclick = "location.href = 'mem_edit.jsp'">정보수정</button>
-    								<button onclick = "location.href = 'logout.jsp'">로그아웃</button>
-    								
-  								</div>
-  								<div class="button-container" style="display: flex;">
-  									<%if(info.getId().equals("admin")){  %>
-    								<button onclick = "location.href = 'showmember_admin.jsp'">학생관리</button>
-    								<button onclick = "location.href = 'board_admin.jsp'">게시판관리</button>
-    								<%} %>
-  								</div>
-								</div>
-							</section>
-						<!-- Mini Posts -->
-							<section>
-								<div class="mini-posts">
-									<!-- Mini Post -->
-										<article class="mini-post">
-											<iframe src="poll_list.jsp" width="100%" height="400px"></iframe>
-										</article>
+@keyframes btn-anim3 {
+  0% {
+    right: -100%;
+  }
+  50%,100% {
+    right: 100%;
+  }
+}
+.login-box a span:nth-child(4) {
+   bottom: -100%;
+   left: 0;
+   width: 2px;
+   height: 100%;
+   background: linear-gradient(360deg, transparent, #03e9f4);
+   animation: btn-anim4 1s linear infinite;
+   animation-delay: .75s
+}
 
-									<!-- Mini Post -->
-										<article class="mini-post">
-											<header>
-												<h3><a href="single.html">Rutrum neque accumsan</a></h3>
-												<time class="published" datetime="2015-10-19">October 19, 2015</time>
-												<a href="#" class="author"><img src="images/avatar.jpg" alt="" /></a>
-											</header>
-											<a href="single.html" class="image"><img src="images/pic05.jpg" alt="" /></a>
-										</article>
+@keyframes btn-anim4 {
+  0% {
+    bottom: -100%;
+  }
+  50%,100% {
+    bottom: 100%;
+  }
+}
+</style>
+</head>
+<body>
+   <%
+   String name = (String) session.getAttribute("name");
+   String id = (String) session.getAttribute("id");
+   %>
 
-									<!-- Mini Post -->
-										<article class="mini-post">
-											<header>
-												<h3><a href="single.html">Odio congue mattis</a></h3>
-												<time class="published" datetime="2015-10-18">October 18, 2015</time>
-												<a href="#" class="author"><img src="images/avatar.jpg" alt="" /></a>
-											</header>
-											<a href="single.html" class="image"><img src="images/pic06.jpg" alt="" /></a>
-										</article>
+   
+   
+   
+   
+<div>
+<div style="height: 2000px;float: left;">
+   <div class="login-box" style="float:left; margin-left: 50px;margin-top: 180px;">
+      <form id="frm">
+         <%
+         memberDTO info = (memberDTO) session.getAttribute("info");
+         %>
+         <h2><%=info.getName()%>(<%=info.getId()%>)<br>님 환영합니다.
+         </h2>
+         <table align="center">
+            <tr>
+               <td><a href="mem_edit.jsp"> <span></span> <span></span> <span></span>
+                     <span></span> 정보수정
+               </a></td>
+               <td><a href="logout.jsp"> <span></span> <span></span> <span></span>
+                     <span></span> 로그아웃
+               </a></td>
+            </tr>
+            <%
+            if (info.getId().equals("admin")) {
+            %>
+            <tr>
+               <td><a href="showmember_admin.jsp"> <span></span> <span></span>
+                     <span></span> <span></span> 학생관리
+               </a></td>
+               <td><a href="board_admin.jsp"> <span></span> <span></span>
+                     <span></span> <span></span> 보드관리
+               </a></td>
+            </tr>
+            <tr>
+               <td><a href="calendar_admin.jsp"> <span></span> <span></span>
+                     <span></span> <span></span> 일정관리
+               </a></td>
+               <td><a href="#"> <span></span> <span></span> <span></span>
+                     <span></span> 화면관리
+               </a></td>
+            </tr>
+            <%
+            }
+            %>
+         </table>
+      </form>
+   </div>
+   </div>
+   <div class="login-box" style="float:left; margin-left: 50px; margin-top: 180px; width: 1100px">
+      <form id="frm">
+         <iframe src='calendar_view.jsp' id="ContentUrl" name="ContentUrl" scrolling="auto" frameborder="0" onload="setFrameHeight()" title="캘린더" width="100%"
+            style="display: block;"></iframe>
+      </form>
+   </div>
+   <div class="login-box" style="float:left; margin-left: 50px; margin-top: 50px; width: 1100px">
+      <form id="frm">
+         <iframe src="board.jsp" id="ContentUrl1" name="ContentUrl1" scrolling="auto" frameborder="0" onload="setFrameHeight1()" title="게시판" width="100%" style="display: block;"></iframe>
+      </form>
+   </div>
+     <div class="login-box" style="float:left; margin-left: 50px; margin-top: 50px; width: 1100px">
+      <form id="frm">
+         <iframe src="poll_list.jsp" id="ContentUrl2" name="ContentUrl1" scrolling="auto" frameborder="0" onload="setFrameHeight1()" title="게시판" width="100%" style="display: block;"></iframe>
+      </form>
+   </div>
 
-									<!-- Mini Post -->
-										<article class="mini-post">
-											<header>
-												<h3><a href="single.html">Enim nisl veroeros</a></h3>
-												<time class="published" datetime="2015-10-17">October 17, 2015</time>
-												<a href="#" class="author"><img src="images/avatar.jpg" alt="" /></a>
-											</header>
-											<a href="single.html" class="image"><img src="images/pic07.jpg" alt="" /></a>
-										</article>
-
-								</div>
-							</section>
-
-						<!-- Posts List -->
-							<section>
-								<ul class="posts">
-									<li>
-										<article>
-											<header>
-												<h3><a href="single.html">Lorem ipsum fermentum ut nisl vitae</a></h3>
-												<time class="published" datetime="2015-10-20">October 20, 2015</time>
-											</header>
-											<a href="single.html" class="image"><img src="images/pic08.jpg" alt="" /></a>
-										</article>
-									</li>
-									<li>
-										<article>
-											<header>
-												<h3><a href="single.html">Convallis maximus nisl mattis nunc id lorem</a></h3>
-												<time class="published" datetime="2015-10-15">October 15, 2015</time>
-											</header>
-											<a href="single.html" class="image"><img src="images/pic09.jpg" alt="" /></a>
-										</article>
-									</li>
-									<li>
-										<article>
-											<header>
-												<h3><a href="single.html">Euismod amet placerat vivamus porttitor</a></h3>
-												<time class="published" datetime="2015-10-10">October 10, 2015</time>
-											</header>
-											<a href="single.html" class="image"><img src="images/pic10.jpg" alt="" /></a>
-										</article>
-									</li>
-									<li>
-										<article>
-											<header>
-												<h3><a href="single.html">Magna enim accumsan tortor cursus ultricies</a></h3>
-												<time class="published" datetime="2015-10-08">October 8, 2015</time>
-											</header>
-											<a href="single.html" class="image"><img src="images/pic11.jpg" alt="" /></a>
-										</article>
-									</li>
-									<li>
-										<article>
-											<header>
-												<h3><a href="single.html">Congue ullam corper lorem ipsum dolor</a></h3>
-												<time class="published" datetime="2015-10-06">October 7, 2015</time>
-											</header>
-											<a href="single.html" class="image"><img src="images/pic12.jpg" alt="" /></a>
-										</article>
-									</li>
-								</ul>
-							</section>
-
-						<!-- About -->
-							<section class="blurb">
-								<h2>About</h2>
-								<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod amet placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at phasellus sed ultricies.</p>
-								<ul class="actions">
-									<li><a href="#" class="button">Learn More</a></li>
-								</ul>
-							</section>
-
-						<!-- Footer -->
-							<section id="footer">
-								<ul class="icons">
-									<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon solid fa-rss"><span class="label">RSS</span></a></li>
-									<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-								</ul>
-								<p class="copyright">&copy; Untitled. Design: <a href="http://html5up.net">HTML5 UP</a>. Images: <a href="http://unsplash.com">Unsplash</a>.</p>
-							</section>
-
-					</section>
-			
-			
-			</div>
-			</div>
 			<div class="container" style="position:fixed; top:30px; left:1450px" >
 			<table style="position:absolute;top:100px; margin:30px; width:400px; height:600px; ">
 			<td style=" color:pink;"></td>
-			
 			</table>
+			</div>
+			
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
@@ -291,4 +256,18 @@
 			<script src="assets/js/main.js"></script>
 
 	</body>
+</div>
+<script>
+function setFrameHeight(){
+    if (ContentUrl.document != null) {
+        document.all.ContentUrl.style.height = ContentUrl.document.body.scrollHeight + 30 + "px";
+    }
+}
+function setFrameHeight1(){
+    if (ContentUrl1.document != null) {
+        document.all.ContentUrl1.style.height = ContentUrl1.document.body.scrollHeight + 30 + "px";
+    }
+}
+</script>
+</body>
 </html>

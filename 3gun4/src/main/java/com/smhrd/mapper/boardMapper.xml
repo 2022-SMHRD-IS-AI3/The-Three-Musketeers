@@ -11,7 +11,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectAll_board" resultType="boardDTO">
    		select * from board_posts order by board_num
    	</select>
-   	<delete id="delete_board" parameterType="String">
+   	<delete id="delete_co">
+   		delete from board_comments where board_num=#{board_num}
+   	</delete>
+   	<delete id="delete_bor">
    		delete from board_posts where board_num=#{board_num}
    	</delete>
    	<select id="selectone" parameterType="boardDTO" resultType="boardDTO">
