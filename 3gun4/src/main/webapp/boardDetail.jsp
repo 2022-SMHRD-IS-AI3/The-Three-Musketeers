@@ -67,9 +67,112 @@ td {
 	line-height: 1.5;
 	margin-bottom: 20px;
 }
+.login-box form a {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: #03e9f4;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  margin-top: 5px;
+  letter-spacing: 4px
+}
+
+.login-box a:hover {
+  background: #03e9f4;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #03e9f4,
+              0 0 25px #03e9f4,
+              0 0 50px #03e9f4,
+              0 0 100px #03e9f4;
+}
+
+.login-box a span {
+  position: absolute;
+  display: block;
+}
+
+.login-box a span:nth-child(1) {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #03e9f4);
+  animation: btn-anim1 1s linear infinite;
+}
+
+@keyframes btn-anim1 {
+  0% {
+    left: -100%;
+  }
+  50%,100% {
+    left: 100%;
+  }
+}
+
+.login-box a span:nth-child(2) {
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #03e9f4);
+  animation: btn-anim2 1s linear infinite;
+  animation-delay: .25s
+}
+
+@keyframes btn-anim2 {
+  0% {
+    top: -100%;
+  }
+  50%,100% {
+    top: 100%;
+  }
+}
+
+.login-box a span:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, #03e9f4);
+  animation: btn-anim3 1s linear infinite;
+  animation-delay: .5s
+}
+
+@keyframes btn-anim3 {
+  0% {
+    right: -100%;
+  }
+  50%,100% {
+    right: 100%;
+  }
+}
+
+.login-box a span:nth-child(4) {
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #03e9f4);
+  animation: btn-anim4 1s linear infinite;
+  animation-delay: .75s
+}
+
+@keyframes btn-anim4 {
+  0% {
+    bottom: -100%;
+  }
+  50%,100% {
+    bottom: 100%;
+  }
+}
 </style>
 </head>
-<body>
+<body style="background:transparent;">
 	<!-- 부트스트랩 연결 -->
 	<link
 		href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
@@ -112,20 +215,31 @@ td {
 		</tr>
 		<tr height="5px"></tr>
 		<tr>
-			<td style="text-align: center;"><span class="board_title"><%=board_content.getBoard_title()%></span></td>
-			<td width="25%" style="text-align: right;"><span><%=board_content.getId()%></span><br> <span><%=board_content.getBoard_datetime()%></span></td>
+			<td style="text-align: center;"><span class="board_title" style="color: #fff;"><%=board_content.getBoard_title()%></span></td>
+			<td width="25%" style="text-align: right;"><span style="color: #fff;"><%=board_content.getId()%></span><br> <span style="color: #fff;"><%=board_content.getBoard_datetime()%></span></td>
 		</tr>
 		<tr>
 			<td colspan="2"><img alt=""
-				src="./file/<%=board_content.getBoard_photo()%>"> <br> <span>
+				src="./file/<%=board_content.getBoard_photo()%>" width="300px"> <br> <span style="color: #fff;">
 					<%=board_content.getBoard_content()%>
 			</span></td>
 		</tr>
 	</table>
 	<tr>
 		<center>
-			<button type="button" onclick="location.href='board.jsp'" style="border-radius: 8px; margin: 5px;">목록으로</button>
-		</center>
+            <div class="login-box">
+            <form id="frm">
+           	 
+           	 <a href="board.jsp">
+     		<span></span>
+    		<span></span>
+      		<span></span>
+      		<span></span>
+      		목록으로
+   			</a>
+   			</form>
+            </div>
+            </center>
 	</tr>
 
 
@@ -166,19 +280,20 @@ td {
 	<!-- <div class="media mb-4"> -->
 
 	<div class="d-flex justify-content-between align-items-center">
-		<div class="justify-content-between align-items-center" style="width: 900px">
+		<div class="justify-content-between align-items-center" style="width: 100%">
 			<%
 			for (int i = dto_com_array.size()-1; i > 0; i--) {
 				if (dto_com_array.get(i).getBoard_num() == board_nums) {
 			%>
 
-			<div class="ml-2" style="display: flex;">
+			<div class="ml-2" style="float: left; width: 100%;">
 				<div class="h5 m-0">
-					<a href="" style="color: blue;"><%=dto_com_array.get(i).getId()%>&nbsp&nbsp</a>
+					<a href="" style="color: #03e9f4; float: left;"><%=dto_com_array.get(i).getId()%>&nbsp&nbsp</a>
+					<a style="color:#fff;float: right; font-size: 13px; font-weight: normal;"><%=dto_com_array.get(i).getCom_datetime()%></a>
 				</div>
-				<h5 class="mt-0"><%=dto_com_array.get(i).getCom_content()%></h5>
+				<h5 class="mt-0" style="color: #fff;"><%=dto_com_array.get(i).getCom_content()%></h5>
+				<hr>
 			</div>
-			<hr>
 			<%
 			}
 			}

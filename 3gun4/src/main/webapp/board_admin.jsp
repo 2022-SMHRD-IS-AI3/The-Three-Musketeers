@@ -202,6 +202,9 @@ body {
 								<td>제목</td>
 								<td>작성자</td>							
 							</tr>
+						</table>
+						<div style="overflow-y:scroll;overflow-x:hidden; height: 500px;">
+						<table>
 							<% for(int i=0; i<list.size();i++){%>
 								<tr>
 									<td><%=list.get(i).getBoard_num() %></td>
@@ -211,6 +214,7 @@ body {
 								</tr>
 							<%} %>
 						</table>
+						</div>
 					</nav>		
 					<a href="main.jsp" class="button next scrolly">
 					<span></span>

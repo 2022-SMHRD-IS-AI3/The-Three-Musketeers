@@ -65,6 +65,18 @@
 		<description></description>
 		<servlet-class>com.smhrd.controller.pollcon</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>savedataCon</servlet-name>
+		<display-name>savedataCon</display-name>
+		<description></description>
+		<servlet-class>com.smhrd.controller.savedataCon</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>getdataCon</servlet-name>
+		<display-name>getdataCon</display-name>
+		<description></description>
+		<servlet-class>com.smhrd.controller.getdataCon</servlet-class>
+	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>joincon</servlet-name>
@@ -105,6 +117,14 @@
 	<servlet-mapping>
 		<servlet-name>pollcon</servlet-name>
 		<url-pattern>/pollcon</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>savedataCon</servlet-name>
+		<url-pattern>/savedataCon</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>getdataCon</servlet-name>
+		<url-pattern>/getdataCon</url-pattern>
 	</servlet-mapping>
 </web-app>
 

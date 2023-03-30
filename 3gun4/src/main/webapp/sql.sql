@@ -22,7 +22,7 @@ id varchar2(100),
 constraint id2 foreign key(id) references members(id)
 );
 
-select * from board_posts where board_num = 1;
+select * from board_posts where board_num=1;
 
 drop table board_posts;
 commit;
@@ -44,7 +44,7 @@ id varchar2(100),
 constraint id3 foreign key(id) references members(id),
 constraint board_num2 foreign key(board_num) references board_posts(board_num)
 );
-
+delete from board_comments where board_num=1;
 select * from board_posts order by board_num;
 
 CREATE SEQUENCE board_comments_num
@@ -109,3 +109,23 @@ id varchar2(100),
 vote_result varchar2(100)
 );
 
+create table schedules (
+schedule_code number(10) primary key,
+class_name varchar(100) not null,
+start_date varchar(100),
+end_date varchar(100),
+allday varchar(10)
+);
+
+CREATE SEQUENCE schdule_code_num
+start with 1
+increment by 1;
+
+
+select * from schedules;
+
+drop table schedules;
+
+
+delete from schedules;
+insert into

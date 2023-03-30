@@ -11,10 +11,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class commentDTO {
-	private int com_num;
-	private int board_num;
-	private String com_content;
-	private Timestamp com_datetime;
-	private String id;
+public class scheduleDTO {
+
+	private int schedule_code;
+	private String class_name;
+	private String start_date;
+	private String end_date;
+	private String allday;
+	
+	
+	
 }
