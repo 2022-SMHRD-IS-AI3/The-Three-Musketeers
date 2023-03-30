@@ -273,8 +273,15 @@
 							</section>
 
 					</section>
-
+			
+			
 			</div>
+			</div>
+			<div class="container" style="position:fixed; top:30px; left:1450px" >
+			<table style="position:absolute;top:100px; margin:30px; width:400px; height:600px; ">
+			<td style=" color:pink;"></td>
+			
+			</table>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>

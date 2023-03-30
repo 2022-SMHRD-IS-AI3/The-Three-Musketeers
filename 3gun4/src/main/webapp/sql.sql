@@ -109,3 +109,19 @@ id varchar2(100),
 vote_result varchar2(100)
 );
 
+
+create sequence msg_num_seq
+start with 1
+increment by 1;
+
+select * from msg;
+
+create table msg (
+msg_num number primary key,
+send_id varchar2(100),
+accept_id varchar2(100) ,
+msg_content varchar2(100) ,
+msg_datetime date not null
+);
+select * from msg
+drop table msg;
