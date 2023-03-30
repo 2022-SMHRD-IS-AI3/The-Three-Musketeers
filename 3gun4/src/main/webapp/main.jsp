@@ -175,10 +175,6 @@ body {
    String name = (String) session.getAttribute("name");
    String id = (String) session.getAttribute("id");
    %>
-
-   
-   
-   
    
 <div>
 <div style="height: 2000px;float: left;">
@@ -226,18 +222,12 @@ body {
    </div>
    <div class="login-box" style="float:left; margin-left: 50px; margin-top: 180px; width: 1100px">
       <form id="frm">
-         <iframe src='calendar_view.jsp' id="ContentUrl" name="ContentUrl" scrolling="auto" frameborder="0" onload="setFrameHeight()" title="캘린더" width="100%"
-            style="display: block;"></iframe>
+         <iframe src='calendar_view.jsp' id="ContentUrl" name="ContentUrl" scrolling="auto" frameborder="0" onload="setFrameHeight()" title="캘린더" width="100%" style="display: block;"></iframe>
       </form>
    </div>
    <div class="login-box" style="float:left; margin-left: 50px; margin-top: 50px; width: 1100px">
       <form id="frm">
          <iframe src="board.jsp" id="ContentUrl1" name="ContentUrl1" scrolling="auto" frameborder="0" onload="setFrameHeight1()" title="게시판" width="100%" style="display: block;"></iframe>
-      </form>
-   </div>
-     <div class="login-box" style="float:left; margin-left: 50px; margin-top: 50px; width: 1100px">
-      <form id="frm">
-         <iframe src="poll_list.jsp" id="ContentUrl2" name="ContentUrl1" scrolling="auto" frameborder="0" onload="setFrameHeight1()" title="게시판" width="100%" style="display: block;"></iframe>
       </form>
    </div>
 
@@ -253,6 +243,7 @@ function setFrameHeight1(){
         document.all.ContentUrl1.style.height = ContentUrl1.document.body.scrollHeight + 30 + "px";
     }
 }
+
 </script>
 </body>
 </html>

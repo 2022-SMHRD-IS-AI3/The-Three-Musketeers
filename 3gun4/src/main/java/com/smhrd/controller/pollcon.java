@@ -22,7 +22,7 @@ public class pollcon extends HttpServlet {
 		String id = request.getParameter("id");
 		int count = Integer.parseInt(request.getParameter("count"));
 		String vote_result = request.getParameter("vote_result");
-		String[] vote_content_arr = new String[vote_content.length()];
+		String[] vote_content_arr = vote_content.split(",");
 		
 		System.out.println(vote_num);
 		System.out.println(vote_content);
