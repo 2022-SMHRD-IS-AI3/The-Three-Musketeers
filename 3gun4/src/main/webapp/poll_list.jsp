@@ -22,8 +22,8 @@ th {
 	background: #fcfcfc;
 	padding: 10px 0 10px 0;
 	text-align: center;
-	border-top-width: 2px;
-	border-bottom-width: 1px;
+	border-top-width: 1px;
+	border-bottom-width: 2px;
 	border-top-style: solid;
 	border-bottom-style: solid;
 }
@@ -40,14 +40,6 @@ th {
 </style>
 </head>
 <body>
-<% 
-		int vote_nums = Integer.parseInt(request.getParameter("vote_nums")); 
-		System.out.println(vote_nums);
-		pollDTO dto = new pollDTO(vote_nums);
-		pollDAO dao = new pollDAO();
-		
-		pollDTO vote_content = dao.selectone_poll(dto);
-	%>
 	<div align="center">
 		<br />
 		<h2>투표 리스트</h2>
@@ -68,10 +60,11 @@ th {
     				pollDAO dao = new pollDAO();
     				List<pollDTO> dto_array= dao.selectAll_poll();
     				for(int i = 0;i<dto_array.size(); i++){
+    					
     					%>
-						<td><%=dto_array.get(i).getVote_num()%></td>
-						<td><a href="poll.jsp?vote_nums=<%=dto_array.get(i).getVote_num() %>"><%=dto_array.get(i).getVote_title().toString()%></a></td>
-						<td><%=dto_array.get(i).getId().toString()%></td>
+						<td align="center"><%=dto_array.get(i).getVote_num()%></td>
+						<td align="center"><a href="poll.jsp?vote_nums=<%=dto_array.get(i).getVote_num() %>"><%=dto_array.get(i).getVote_title().toString()%></a></td>
+						<td align="center"><%=dto_array.get(i).getId().toString()%></td>
 					</tr>
 					
 					<%}%>

@@ -1,3 +1,6 @@
+<%@page import="com.smhrd.model.pollDAO"%>
+<%@page import="java.util.List"%>
+<%@page import="com.smhrd.model.pollDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -46,28 +49,39 @@ td {
 </style>
 </head>
 <body>
+<%
+	int vote_nums = Integer.parseInt(request.getParameter("vote_nums")); 
+	pollDTO dto = new pollDTO(vote_nums);
+    pollDAO dao = new pollDAO();
+    pollDTO vote_content = dao.selectone_poll(dto);
+%>
 	<div align="center">
 		<br />
 		<h2>투표 결과</h2>
+		<hr width="auto" />
+		<form name="frm" method="post" action="">
 		<table border="1" width="auto">
 			<tr>
-				<th colspan="4"><b>질문 : </b></th>
+				<th colspan="2" width="50"><b>질문 : <%=vote_content.getVote_title() %></b></th>
+
 			</tr>
 			<tr>
-				<td colspan="3"><b>총 투표자 : </b></td>
-				<td width="40"><b>(%)</b></td>
+				<td><b>총 투표자</b></td>
+				<td width="100"><b>(%)</b></td>
 			</tr>
 			<tr>
-				<td><b>항목 :</b></td>
-				<td width="40"><b>(%)</b></td>
+				<td><b>항목</b></td>
+				<td width="100"><b><%=vote_content.getVote_content() %>(%)</b></td>
 			</tr>
 
 		</table>
+			</form>
 <tr>
-		<a href="poll.jsp"><button class="btn">다시투표</button></a> 
+
+		<a href="poll.jsp?vote_nums=<%=vote_nums %>"><button class="btn" >다시투표</button></a> 
 		<a href="poll_list.jsp"><button class="btn">닫기</button></a>
 	</tr>
 	</div>
-	
+
 </body>
 </html>

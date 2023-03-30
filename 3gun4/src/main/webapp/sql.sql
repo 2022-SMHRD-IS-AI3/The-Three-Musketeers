@@ -77,20 +77,23 @@ anonymous varchar2(100),
 id_vote varchar2(100),
 constraint id_vote_fk foreign key(id_vote) references members(id)
 );
-
+CREATE SEQUENCE vote_num_seq
+start with 1
+increment by 1;
 
 
 
 select * from BOARD_POSTS;
 
-drop table votes;
+drop table vote_options CASCADE CONSTRAINTS;
 
 select * from user_tables;
 
 select * from board_posts;
 
-select * from votes;
+select * from vote_options;
 
+select * from votes;
 create table votes(
 vote_num number(5) primary key,
 vote_title varchar2(100) not null,
@@ -100,12 +103,16 @@ anonymity SMALLINT NULL,
 id varchar2(100),
 foreign key(id) references members(id)
 );
+alter table votes modify vote_content varchar2(100) not null;
+ALTER TABLE 'votes' AUTO_INCREMENT = 1;
 
 create table vote_options (
 vote_num number(5), 
 foreign key(vote_num) references votes(vote_num),
 vote_cotent varchar2(100),
 id varchar2(100),
+count INT,
 vote_result varchar2(100)
 );
 
+select * from votes order by vote_num;

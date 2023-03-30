@@ -155,6 +155,7 @@
   									<%if(info.getId().equals("admin")){  %>
     								<button onclick = "location.href = 'showmember_admin.jsp'">학생관리</button>
     								<button onclick = "location.href = 'board_admin.jsp'">게시판관리</button>
+    								<button onclick = "location.href = 'poll_admin.jsp'">투표관리</button>
     								<%} %>
   								</div>
 								</div>

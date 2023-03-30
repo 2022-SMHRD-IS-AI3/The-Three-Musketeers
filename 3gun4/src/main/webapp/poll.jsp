@@ -48,27 +48,35 @@ td {
 </style>
 </head>
 <body>
-
+<% 
+		int vote_nums = Integer.parseInt(request.getParameter("vote_nums")); 
+		pollDTO dto = new pollDTO(vote_nums);
+		pollDAO dao = new pollDAO();
+		
+		pollDTO vote_content = dao.selectone_poll(dto);
+		
+	%>
 	<div align="center">
 		<br /> <b>투표</b>
 		<hr width="auto" />
-		<form name="frm" method="post" action="poll_list.jsp">
+		<form name="frm" method="post" action="pollcon">
 			<table border="1" width="100px">
 				<tr>
-					<th><b>질문</b></th>
-					<th colspan="2"><span></span></th>
+					<th width="40px"><b>질문</b></th>
+					<th colspan="2" width="60px"><span><%=vote_content.getVote_title()%></span></th>
 				</tr>
 				<tr>
 					<td rowspan="8"><b>항목</b></td>
-					<span></span>
+					<td><input type="radio" name="vote_content"><span><%=vote_content.getVote_content()%></span></td>
 				</tr>
 			</table>
 			<tr>
 				<td colspan=3>
-				<button class="btn" type="button" onclick = "location.href='poll_result.jsp'">투표하기</button>
-			    <a href="poll_list.jsp"><button class="btn">뒤로가기</button></a></td>
+				<button class="btn" type="button" onclick = "location.href='poll_result.jsp?vote_nums=<%=vote_nums %>'">투표하기</button>
+			    <button class="btn" type="button" onclick="location.href='poll_list.jsp'" >뒤로가기</button></td>
 			</tr>
-		
+				<% memberDTO info = (memberDTO)session.getAttribute("info");%>
+                    <input style="display: none" type="text" value="<%=info.getId() %>" name="id">
 		</form>
 	</div>
 </body>
