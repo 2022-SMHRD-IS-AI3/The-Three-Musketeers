@@ -10,6 +10,7 @@
 		<typeAlias type="com.smhrd.model.boardDTO" alias="boardDTO"/>
 		<typeAlias type="com.smhrd.model.commentDTO" alias="commentDTO"/>
 		<typeAlias type="com.smhrd.model.pollDTO" alias="pollDTO"/>
+		<typeAlias type="com.smhrd.model.scheduleDTO" alias="scheduleDTO"/>
 	</typeAliases>
 	
 	<environments default="development">
@@ -28,5 +29,6 @@
 		<mapper resource="com/smhrd/mapper/boardMapper.xml" />
 		<mapper resource="com/smhrd/mapper/commentMapper.xml" />
 		<mapper resource="com/smhrd/mapper/pollMapper.xml" />
+		<mapper resource="com/smhrd/mapper/scheduleMapper.xml" />
 	</mappers>
 </configuration>

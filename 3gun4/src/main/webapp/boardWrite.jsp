@@ -1,113 +1,262 @@
 <%@page import="com.smhrd.model.memberDTO"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	.pl{
-    		width: 300px;
-    		border: 1px solid #ccc;
-    		box-sizing: border-box;
-    		border-radius: 5px;
-    		padding: 12px 13px;
-    		font-family: 'Roboto';
-    		font-style: normal;
-    		font-weight: 400;
-    		font-size: 14px;
-    		line-height: 16px;
-    		margin-top:4%    		
-		}
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
 
-		.pl:focus{
-    		border: 1px solid rgba(30,30,30,.5);
-    		box-sizing: border-box;
-    		border-radius: 10px;
-    		outline: 3px solid rgba(30,30,30,.5);
-    		border-radius: 10px;
-		}
-		
-        table.table2{
-                border-collapse: separate;
-                border-spacing: 1px;
-                text-align: left;
-                line-height: 1.5;
-                border-top: 1px solid #ccc;
-                margin : 20px 10px;
-        }
-        table.table2 tr {
-                 width: 300px;
-                 padding: 10px;
-                font-weight: bold;
-                vertical-align: top;
-                border-bottom: 1px solid #ccc;
-        }
-        table.table2 td {
-                 width: 100px;            
-                 padding: 10px;
-   
-                 border-bottom: 1px solid #ccc;
-        }
-        .btn {
-        	background-color:#86acd9;
-        	color:#fff;
-        	border: 1px solid #86acd9;
-        	width: 100px;
-        	height: 50px;
-        	font-size: 18px;
-        	border-radius: 4px;
-        }
- 
+button {
+	background-color: #86acd9;
+	color: white;
+	font-weight: bold;
+	font-size: 18px;
+	padding: 12px;
+	text-align: center;
+	border: 0;
+}
+
+th {
+	background-color: #86acd9;
+	border-radius: 4px;
+	color: white;
+	font-weight: bold;
+	font-size: 18px;
+	padding: 12px;
+	text-align: center;
+}
+
+td {
+	padding: 12px;
+	border: 1px solid #ddd;
+}
+.pl{
+          width: 300px;
+          border: 1px solid #ccc;
+          box-sizing: border-box;
+          border-radius: 5px;
+          padding: 12px 13px;
+          font-family: 'Roboto';
+          font-style: normal;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 16px;  
+      }
+
+      .pl:focus{
+          border: 1px solid rgba(30,30,30,.5);
+          box-sizing: border-box;
+          border-radius: 10px;
+          outline: 3px solid rgba(30,30,30,.5);
+          border-radius: 10px;
+      }
+.board_title {
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.board_info {
+	font-size: 14px;
+	color: #999;
+	margin-bottom: 10px;
+}
+
+.board_photo {
+	max-width: 100%;
+	height: auto;
+	margin-bottom: 10px;
+}
+
+.board_content {
+	font-size: 16px;
+	line-height: 1.5;
+	margin-bottom: 20px;
+}
+
+.login-box form a {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: #03e9f4;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  margin-top: 5px;
+  letter-spacing: 4px
+}
+
+.login-box a:hover {
+  background: #03e9f4;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #03e9f4,
+              0 0 25px #03e9f4,
+              0 0 50px #03e9f4,
+              0 0 100px #03e9f4;
+}
+
+.login-box a span {
+  position: absolute;
+  display: block;
+}
+
+.login-box a span:nth-child(1) {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #03e9f4);
+  animation: btn-anim1 1s linear infinite;
+}
+
+@keyframes btn-anim1 {
+  0% {
+    left: -100%;
+  }
+  50%,100% {
+    left: 100%;
+  }
+}
+
+.login-box a span:nth-child(2) {
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #03e9f4);
+  animation: btn-anim2 1s linear infinite;
+  animation-delay: .25s
+}
+
+@keyframes btn-anim2 {
+  0% {
+    top: -100%;
+  }
+  50%,100% {
+    top: 100%;
+  }
+}
+
+.login-box a span:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, #03e9f4);
+  animation: btn-anim3 1s linear infinite;
+  animation-delay: .5s
+}
+
+@keyframes btn-anim3 {
+  0% {
+    right: -100%;
+  }
+  50%,100% {
+    right: 100%;
+  }
+}
+
+.login-box a span:nth-child(4) {
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #03e9f4);
+  animation: btn-anim4 1s linear infinite;
+  animation-delay: .75s
+}
+
+@keyframes btn-anim4 {
+  0% {
+    bottom: -100%;
+  }
+  50%,100% {
+    bottom: 100%;
+  }
+}
 </style>
 </head>
 <body>
-  <form action = "upload_boardcon" method="POST" enctype="multipart/form-data">
-        <table  style="padding-top:50px; align:center; width:1020px; border:0; cellpadding:2;" >
-                <tr>
-                <td height=50 align= center bgcolor=#86acd9 style="border-radius:4px;"><font size=5px color=white >글쓰기</font></td>
-                </tr>
-                <tr>
-                <td bgcolor=white>
-                <table class="table2">
-                        <tr>
-                        <td>카테고리</td>
-                        <td>
-        					<select name="category" id="" class="pl">
-            					<option value="0" selected>게시판 종류</option>
-            					<option value="공지">공지</option>
-            					<option value="실습">실습</option>
-            					<option value="식당후기">식당후기</option>
-        					</select>
-        					<input name="board_photo" type="file" style="float: right; align-content:center;">
-      					<label></label>
-    					</td>
-    					
-                        </tr>
- 
-                        <tr>
-                        <td>제목</td>
-                        <td><input type = text name = "board_title" size=120 ></td>
-                        </tr>
- 
-                        <tr>
-                        <td>내용</td>
-                        <td><textarea name = "board_content" cols=122 rows=18></textarea></td>
-                        </tr>
- 						
-                        </table>
-                          <center>
-                        	<button class="btn" type = "submit">작성</button>
-                        	<button class="btn" type="button" onclick = "location.href='board.jsp'">목록으로</button>
-                       	  </center>
-                </td>
-                </tr>
-        </table>
-        					<% memberDTO info = (memberDTO)session.getAttribute("info");%>
-                        	<input style="display: none" type="text" value="<%=info.getId() %>" name="id">
-        </form>
- 
+	<form action="upload_boardcon" method="POST"
+		enctype="multipart/form-data" id="frm">
+		<table>
+			<tr>
+				<th style="text-align: center;"><font size=5px color=white>글쓰기</font></th>
+			</tr>
+			<tr height="5px"></tr>
+			<tr>
+				<td>
+					<table style="color: #fff">
+						<tr>
+							<td width="70px" style="text-align: center;"><strong>카테고리</strong></td>
+							<td><select name="category" id="" class="pl">
+									<option value="0" selected>게시판 종류</option>
+									<option value="공지">공지</option>
+									<option value="실습">실습</option>
+									<option value="식당후기">식당후기</option>
+							</select></td>
+							<td width="100px"><input name="board_photo" type="file"
+								style="float: right; align-content: center;"> <label></label>
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align: center;"><strong>제목</strong></td>
+							<td colspan="2"><input type=text name="board_title" style="width: 100%; height: 30px;"></td>
+						</tr>
+
+						<tr>
+							<td style="text-align: center;"><strong>내용</strong></td>
+							<td colspan="2"><textarea name="board_content" rows=30 style="width: 100%"></textarea></td>
+						</tr>
+
+					</table>
+					
+				</td>
+			</tr>
+		</table>
+   			<input style="display: none" type="submit" id="login_btn">
+		
+					
+		<%
+		memberDTO info = (memberDTO) session.getAttribute("info");
+		%>
+		<input style="display: none" type="text" value="<%=info.getId()%>"
+			name="id">
+	</form>
+	<center>
+            <div class="login-box">
+            <form id="frm">
+           	 <a href="#" onclick="return chk_form()">
+     		<span></span>
+    		<span></span>
+      		<span></span>
+      		<span></span>
+      		작성완료
+   			</a>
+           	 <a href="board.jsp">
+     		<span></span>
+    		<span></span>
+      		<span></span>
+      		<span></span>
+      		목록으로
+   			</a>
+   			</form>
+            </div>
+            </center>
+<script>
+function chk_form() {
+document.getElementById('login_btn').click();
+}
+</script>
 </body>
 </html>

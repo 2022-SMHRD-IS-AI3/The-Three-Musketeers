@@ -246,7 +246,7 @@ body {
       <label>전화번호</label>
     </div>
     <div class="user-box">
-        <select name="class_name" id="" class="pl">
+        <select name="class_name" id="" class="pl" style="display: none;">
             <option value="0" selected>담임선생님 성함을 선택해주세요.</option>
             <option value="python">임승환</option>
             <option value="java">박우빈</option>

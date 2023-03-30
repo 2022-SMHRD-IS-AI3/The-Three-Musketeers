@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.smhrd.mapper.scheduleMapper">
+	<delete id="delete_all">
+		delete from schedules
+	</delete>
+	<insert id="insert_all">
+		insert into schedules values(schdule_code_num.nextval, #{class_name}, #{start_date}, #{end_date}, #{allday})
+	</insert>
+	<select id="selectAll_sch" resultType="scheduleDTO">
+		select * from schedules
+	</select>
+</mapper>
