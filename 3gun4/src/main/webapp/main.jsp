@@ -176,12 +176,12 @@ body {
    String id = (String) session.getAttribute("id");
    %>
 
-   
-   
-   
+  
+ <img alt="" src="./code/절절포문구.png" style="position: absolute;margin-left:500px;margin-top: 25px;">
+ 
    
 <div>
-<div style="height: 2000px;float: left;">
+<div style="height: 2000px;float: left;"> <!-- 사이드바 -->
    <div class="login-box" style="float:left; margin-left: 50px;margin-top: 180px;">
       <form id="frm">
          <%
@@ -223,6 +223,10 @@ body {
          </table>
       </form>
    </div>
+   <div class="login-box" style="position: absolute;margin-left:50px;margin-top: 400px;height: 290px;">
+   	<center><img alt="" src="./code/qr코드.png" style="position: absolute; margin-left: -99px;margin-top: 27px"></center>
+   </div>  
+ 
    </div>
    <div class="login-box" style="float:left; margin-left: 50px; margin-top: 180px; width: 1100px">
       <form id="frm">
@@ -237,7 +241,7 @@ body {
    </div>
      <div class="login-box" style="float:left; margin-left: 50px; margin-top: 50px; width: 1100px">
       <form id="frm">
-         <iframe src="poll_list.jsp" id="ContentUrl2" name="ContentUrl1" scrolling="auto" frameborder="0" onload="setFrameHeight1()" title="게시판" width="100%" style="display: block;"></iframe>
+         <iframe src="poll_list.jsp" id="ContentUrl2" name="ContentUrl1" scrolling="auto" frameborder="0" onload="setFrameHeight1()" title="투표" width="100%" style="display: block;"></iframe>
       </form>
    </div>
 
