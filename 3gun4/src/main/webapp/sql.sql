@@ -124,6 +124,22 @@ end_date varchar(100),
 allday varchar(10)
 );
 
+
+create sequence msg_num_seq
+start with 1
+increment by 1;
+
+select * from msg;
+
+create table msg (
+msg_num number primary key,
+send_id varchar2(100),
+accept_id varchar2(100) ,
+msg_content varchar2(100) ,
+msg_datetime date not null
+);
+select * from msg
+drop table msg;
 CREATE SEQUENCE schdule_code_num
 start with 1
 increment by 1;

@@ -245,6 +245,21 @@ body {
       </form>
    </div>
 
+			<div class="container" style="position:fixed; top:30px; left:1450px" >
+			<table style="position:absolute;top:100px; margin:30px; width:400px; height:600px; ">
+			<td style=" color:pink;"></td>
+			</table>
+			</div>
+			
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
 </div>
 <script>
 function setFrameHeight(){
