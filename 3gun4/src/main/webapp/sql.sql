@@ -103,6 +103,7 @@ anonymity SMALLINT NULL,
 id varchar2(100),
 foreign key(id) references members(id)
 );
+alter table votes drop COLUMN anonymity;
 alter table votes modify vote_content varchar2(100) not null;
 ALTER TABLE 'votes' AUTO_INCREMENT = 1;
 
@@ -152,3 +153,5 @@ drop table schedules;
 
 delete from schedules;
 insert into
+
+

@@ -213,6 +213,11 @@ body {
                      <span></span> 화면관리
                </a></td>
             </tr>
+            <tr>
+           		<td><a href="poll_admin.jsp"> <span></span> <span></span>
+                     <span></span> <span></span> 투표관리
+               </a></td>
+            </tr>
             <%
             }
             %>
@@ -228,6 +233,11 @@ body {
    <div class="login-box" style="float:left; margin-left: 50px; margin-top: 50px; width: 1100px">
       <form id="frm">
          <iframe src="board.jsp" id="ContentUrl1" name="ContentUrl1" scrolling="auto" frameborder="0" onload="setFrameHeight1()" title="게시판" width="100%" style="display: block;"></iframe>
+      </form>
+   </div>
+        <div class="login-box" style="float:left; margin-left: 50px;margin-top: 180px;">
+      <form id="frm">
+         <iframe src="poll_list.jsp" id="ContentUrl2" name="ContentUrl2" scrolling="auto" frameborder="0" onload="setFrameHeight2()" title="투표" width="100%" style="display: block;"></iframe>
       </form>
    </div>
 
@@ -256,6 +266,11 @@ function setFrameHeight(){
 function setFrameHeight1(){
     if (ContentUrl1.document != null) {
         document.all.ContentUrl1.style.height = ContentUrl1.document.body.scrollHeight + 30 + "px";
+    }
+}
+function setFrameHeight2(){
+    if (ContentUrl2.document != null) {
+        document.all.ContentUrl2.style.height = ContentUrl2.document.body.scrollHeight + 30 + "px";
     }
 }
 

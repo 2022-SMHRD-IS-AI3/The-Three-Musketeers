@@ -20,17 +20,15 @@ public class upload_pollcon extends HttpServlet {
 		String vote_title = request.getParameter("vote_title");
 		String[] vote_content_arr = request.getParameterValues("vote_content");
 		int overlap = Integer.parseInt(request.getParameter("overlap"));
-		int anonymity = Integer.parseInt(request.getParameter("anonymity"));
 		String id = request.getParameter("id");
 		String vote_content = Arrays.toString(vote_content_arr);
 		
 		System.out.println(vote_title);
 		System.out.println(vote_content);
 		System.out.println(overlap);
-		System.out.println(anonymity);
 		System.out.println(id);
 		
-		pollDTO dto = new pollDTO(0, vote_title, vote_content, overlap, anonymity, id);
+		pollDTO dto = new pollDTO(0, vote_title, vote_content, overlap, id);
 		pollDAO dao = new pollDAO();
 		int cnt = dao.upload_poll(dto);  
 		if(cnt > 0) {

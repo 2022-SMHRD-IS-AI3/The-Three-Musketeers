@@ -38,7 +38,6 @@ td {
 
 </head>
 <body>
-
 	<div align="center">
 		<br /> <b>투표작성</b>
 		<hr width="auto" />
@@ -68,13 +67,13 @@ td {
 					<input type="radio" name="overlap" value="0">no
 					</td>
 				</tr>
-				<tr>
+			<!-- 	<tr>
 					<td>익명</td>
 					<td colspan=2>
 					<input type="radio" name="anonymity" value="1" checked>yes 
 					<input type="radio" name="anonymity" value="0">no
 					</td>
-				</tr>
+				</tr> -->
 			</table>
 			<tr>
 				<td colspan="3">
@@ -91,13 +90,13 @@ td {
 			var table = document.querySelector("table"); // 테이블 요소 선택
 			var rowCount = table.rows.length; // 테이블의 행 개수
 
-			if (rowCount > 8) {
+			if (rowCount > 7) {
 				alert("최대 5개까지 추가할 수 있습니다!")
 				return;
 			}
 			
 			
-			var row = table.insertRow(rowCount - 3); // 새로운 행 추가
+			var row = table.insertRow(rowCount - 2); // 새로운 행 추가
 			// 새로운 셀 추가
 			var cell1 = row.insertCell(0);
 			var cell2 = row.insertCell(1);
@@ -105,7 +104,7 @@ td {
 			// 행 번호 표시 셀 추가
 			cell1.className = "a";
 			cell1.style.textAlign = "center";
-			cell1.innerHTML = rowCount - 3;
+			cell1.innerHTML = rowCount - 2;
 
 			// 입력 필드 셀 추가
 			cell2.className = "a";
@@ -118,7 +117,7 @@ td {
 			var rowCount = table.rows.length; // 테이블의 행 개수
 
 			// 마지막 행 삭제
-			if (rowCount <= 5) { // 최소 1개 이상의 입력 필드가 있도록 제한
+			if (rowCount <= 4) { // 최소 1개 이상의 입력 필드가 있도록 제한
 				alert("더 이상 삭제할 수 없습니다.");
 				return;
 			}

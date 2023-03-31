@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.smhrd.mapper.pollMapper">
 	<insert id="upload_poll" parameterType="pollDTO">
-		insert into votes values(vote_num_seq.nextval, #{vote_title}, #{vote_content,jdbcType=VARCHAR}, #{overlap}, #{anonymity}, #{id})
+		insert into votes values(vote_num_seq.nextval, #{vote_title}, #{vote_content,jdbcType=VARCHAR}, #{overlap}, #{id})
 	</insert>
 	<select id="selectAll_poll" resultType="pollDTO">
    		select * from votes order by vote_num

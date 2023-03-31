@@ -1,3 +1,4 @@
+<%@page import="com.smhrd.model.result_pollDTO"%>
 <%@page import="com.smhrd.model.pollDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="com.smhrd.model.pollDTO"%>
@@ -54,6 +55,10 @@ td {
 	pollDTO dto = new pollDTO(vote_nums);
     pollDAO dao = new pollDAO();
     pollDTO vote_content = dao.selectone_poll(dto);
+
+	String repl_vote_content = vote_content.getVote_content().replaceAll("\\[", " ");
+	repl_vote_content = repl_vote_content.replaceAll("\\]", "");
+	String[] vote_content_arr = repl_vote_content.split(",");
 %>
 	<div align="center">
 		<br />
@@ -66,12 +71,16 @@ td {
 
 			</tr>
 			<tr>
-				<td><b>총 투표자</b></td>
+				<td><b>총 투표자 수</b></td>
 				<td width="100"><b>(%)</b></td>
 			</tr>
 			<tr>
 				<td><b>항목</b></td>
-				<td width="100"><b><%=vote_content.getVote_content() %>(%)</b></td>
+				<td width="100">
+				<% for(int i=0; i<vote_content_arr.length ; i++){ %>
+				<b><%=vote_content_arr[i]%>(%)</b><br>
+				<%} %></td>
+				
 			</tr>
 
 		</table>

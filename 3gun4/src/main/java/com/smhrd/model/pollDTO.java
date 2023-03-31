@@ -16,7 +16,6 @@ public class pollDTO {
 	private String vote_title;
 	private String vote_content;
 	private int overlap;
-	private int anonymity;
 	private String id;
 	
 	public pollDTO(int vote_num) {
