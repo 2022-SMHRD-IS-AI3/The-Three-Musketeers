@@ -7,15 +7,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.smhrd.mapper.msgMapper">
 
 	<select id="selectAll_msg" parameterType="String" resultType="msgDTO">
-   		select * from msg where accept_id=#{id}	
+   		select * from msg where accept_name=#{accept_name} order by msg_num
 	</select>
 	
 	<insert id="send_msg" parameterType="msgDTO">
-		insert into msg values(msg_num_seq.nextval,#{send_id}, #{accept_id}, #{msg_content}, sysdate)
+		insert into msg values(msg_num_seq.nextval,#{send_name}, #{accept_name}, #{msg_content}, sysdate)
 	</insert>
 	
 	<select id="selectone_msg" parameterType="int" resultType="msgDTO">
-   		select * from msg where msg_num=#{msg_num}	
+   		select * from msg where msg_num=#{msg_num}
 	</select>
 
 	

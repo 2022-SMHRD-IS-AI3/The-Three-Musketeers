@@ -16,9 +16,9 @@ public class msgDTO {
 	
 	private int msg_num;
 	@NonNull
-	private String send_id;
+	private String send_name;
 	@NonNull
-	private String accept_id;
+	private String accept_name;
 	@NonNull
 	private String msg_content;
 	private Timestamp msg_datetime;

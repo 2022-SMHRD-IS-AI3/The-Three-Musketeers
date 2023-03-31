@@ -22,16 +22,15 @@ public class send_msgcon extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 			
 
-//		String send_id = request.getParameter("send_id");
-		String send_id = "asdf";
-		String accept_id = request.getParameter("msg_send");
+		String accept_name = request.getParameter("accept_name");
+		String send_name = request.getParameter("send_name");
 		String msg_content = request.getParameter("msg_content");
 		
-		System.out.println(send_id);
-		System.out.println(accept_id);
+		System.out.println(accept_name);
+		System.out.println(send_name);
 		System.out.println(msg_content);
 		
-		msgDTO dto = new msgDTO(send_id, accept_id, msg_content);
+		msgDTO dto = new msgDTO(send_name ,accept_name,  msg_content);
 		msgDAO dao = new msgDAO();
 		
 		int cnt = dao.send_msg(dto);

@@ -8,11 +8,26 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+select {
+  box-sizing: border-box;
+  height:50px;
+  width: 340px;
+  padding: 4px;
+  font-size: 20px;
+  border-radius: 6px;
+  color: #fff;
+  background-color:#FFFFFF11;
+  border-style: solid;
+}
 table {
 	border-collapse: collapse;
 	width: 100%;
 }
-
+.opt_name{
+	background-color: black;
+	max-height: 100px; /* 스크롤바 최대 높이 설정 */
+  	overflow-y: auto;
+}
 button {
 	background-color: #86acd9;
 	color: white;
@@ -189,21 +204,16 @@ td {
 <body>
 	<form action="upload_boardcon" method="POST"
 		enctype="multipart/form-data" id="frm">
-		<table>
-			<tr>
-				<th style="text-align: center;"><font size=5px color=white>글쓰기</font></th>
-			</tr>
-			<tr height="5px"></tr>
-			<tr>
-				<td>
+		<h2 style="color: #fff;">글쓰기</h2>
+			
 					<table style="color: #fff">
 						<tr>
 							<td width="70px" style="text-align: center;"><strong>카테고리</strong></td>
-							<td><select name="category" id="" class="pl">
-									<option value="0" selected>게시판 종류</option>
-									<option value="공지">공지</option>
-									<option value="실습">실습</option>
-									<option value="식당후기">식당후기</option>
+							<td><select name="category" >
+									<option class="opt_name" value="0" selected>게시판 종류</option>
+									<option class="opt_name" value="공지">공지</option>
+									<option class="opt_name" value="실습">실습</option>
+									<option class="opt_name"  value="식당후기">식당후기</option>
 							</select></td>
 							<td width="100px"><input name="board_photo" type="file"
 								style="float: right; align-content: center;"> <label></label>
@@ -211,19 +221,17 @@ td {
 						</tr>
 						<tr>
 							<td style="text-align: center;"><strong>제목</strong></td>
-							<td colspan="2"><input type=text name="board_title" style="width: 100%; height: 30px;"></td>
+							<td colspan="2"><input type=text name="board_title" style="background-color:#FFFFFF11;width: 100%; height: 30px;color: #fff;"></td>
 						</tr>
 
 						<tr>
 							<td style="text-align: center;"><strong>내용</strong></td>
-							<td colspan="2"><textarea name="board_content" rows=30 style="width: 100%"></textarea></td>
+							<td colspan="2"><textarea name="board_content" rows=30 style="background-color:#FFFFFF11;width: 100%; color: #fff;"></textarea></td>
 						</tr>
 
 					</table>
 					
-				</td>
-			</tr>
-		</table>
+				
    			<input style="display: none" type="submit" id="login_btn">
 		
 					

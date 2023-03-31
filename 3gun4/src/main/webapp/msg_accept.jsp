@@ -35,7 +35,7 @@ msgDTO info_msg = dao.selectone(msg_num);
                <table class="table2" style="width: 400px;">
 
                   <tr>
-                     <td style="width: 100%;"><span><%=info_msg.getSend_id() %></span></td>
+                     <td style="width: 100%;"><span><%=info_msg.getSend_name() %></span></td>
                   </tr>
                   <tr>
                   <tr>
