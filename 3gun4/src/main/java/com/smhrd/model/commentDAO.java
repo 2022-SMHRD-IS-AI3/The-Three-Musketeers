@@ -25,5 +25,13 @@ public class commentDAO {
 		
 		return list; 
 	}
+
+	public int delete_comm(String id) {
+		SqlSession sqlsession = sqlSessionFactory.openSession(true);
+		
+		int cnt = sqlsession.delete("delete_comm", id);
+		sqlsession.close();
+		return cnt;
+	}
 	
 }

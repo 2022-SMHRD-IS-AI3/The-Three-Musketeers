@@ -6,26 +6,18 @@ phonenum varchar2(100) not null,
 class_name varchar2(100) not null
 );
 
-select * from members;
-
-drop table members;
-
-
 create table board_posts(
 board_num number primary key,
-board_title varchar2(100) not null,
-board_content varchar2(100) not null,
-board_photo varchar2(100),
+board_title varchar2(1000) not null,
+board_content varchar2(1000) not null,
+board_photo varchar2(1000),
 board_datetime date not null,
 category varchar2(100),
 id varchar2(100),
 constraint id2 foreign key(id) references members(id)
 );
 
-select * from board_posts where board_num=1;
-
 drop table board_posts;
-commit;
 
 CREATE SEQUENCE board_posts_num
 start with 1
@@ -33,23 +25,45 @@ increment by 1;
 
 drop sequence board_posts_num;
 
-select * from board_posts;
-
 create table board_comments(
 com_num number primary key,
 board_num number,
-com_content varchar2(100),
+com_content varchar2(1000),
 com_datetime date not null,
 id varchar2(100),
 constraint id3 foreign key(id) references members(id),
 constraint board_num2 foreign key(board_num) references board_posts(board_num)
 );
+
+drop table board_comments;
+
+select * from members;
+
+drop table members;
+
+
+
+drop table board_posts;
+commit;
+
+
+
+
+
+select * from board_posts;
+
+
+
+delete from board_comments where id
+
 delete from board_comments where board_num=1;
 select * from board_posts order by board_num;
 
 CREATE SEQUENCE board_comments_num
 start with 1
 increment by 1;
+
+drop sequence board_comments_num;
 
 select * from BOARD_COMMENTS;
 
@@ -81,7 +95,7 @@ CREATE SEQUENCE vote_num_seq
 start with 1
 increment by 1;
 
-
+drop sequence vote_num_seq;
 
 select * from BOARD_POSTS;
 
@@ -129,13 +143,15 @@ create sequence msg_num_seq
 start with 1
 increment by 1;
 
+
+drop sequence msg_num_seq;
 select * from msg;
 
 create table msg (
 msg_num number primary key,
 send_name varchar2(100),
-accept_name varchar2(100) ,
-msg_content varchar2(100) ,
+accept_name varchar2(100),
+msg_content varchar2(1000),
 msg_datetime date not null
 );
 

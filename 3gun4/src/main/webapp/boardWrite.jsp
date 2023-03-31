@@ -221,12 +221,12 @@ td {
 						</tr>
 						<tr>
 							<td style="text-align: center;"><strong>제목</strong></td>
-							<td colspan="2"><input type=text name="board_title" style="background-color:#FFFFFF11;width: 100%; height: 30px;color: #fff;"></td>
+							<td colspan="2"><input type=text name="board_title" style="background-color:#FFFFFF11;width: 100%; height: 30px;color: #fff; font-size: 20px"></td>
 						</tr>
 
 						<tr>
 							<td style="text-align: center;"><strong>내용</strong></td>
-							<td colspan="2"><textarea name="board_content" rows=30 style="background-color:#FFFFFF11;width: 100%; color: #fff;"></textarea></td>
+							<td colspan="2"><textarea name="board_content" rows=30 style="background-color:#FFFFFF11;width: 100%; color: #fff; font-size: 18px"></textarea></td>
 						</tr>
 
 					</table>

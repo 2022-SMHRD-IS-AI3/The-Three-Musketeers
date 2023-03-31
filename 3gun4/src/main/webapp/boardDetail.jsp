@@ -212,12 +212,12 @@ td {
    <table>
       <tr height="5px"></tr>
       <tr>
-         <td style="text-align: center;"><span class="board_title" style="color: #fff;"><%=board_content.getBoard_title()%></span></td>
+         <td style="text-align: center;"><span class="board_title" style="color: #fff; font-size: 25px"><%=board_content.getBoard_title()%></span></td>
          <td width="25%" style="text-align: right;"><span style="color: #fff;"><%=board_content.getId()%></span><br> <span style="color: #fff;"><%=board_content.getBoard_datetime()%></span></td>
       </tr>
       <tr>
          <td colspan="2"><img alt=""
-            src="./file/<%=board_content.getBoard_photo()%>" width="300px"> <br> <span style="color: #fff;">
+            src="./file/<%=board_content.getBoard_photo()%>" width="300px"> <br> <span style="color: #fff; font-size: 20px">
                <%=board_content.getBoard_content()%>
          </span></td>
       </tr>

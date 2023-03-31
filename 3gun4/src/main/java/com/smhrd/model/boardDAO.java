@@ -55,6 +55,14 @@ public class boardDAO {
 		sqlsession.close();
 		return cnt;
 	}
+
+	public int delete_bord(String id) {
+		SqlSession sqlsession = sqlSessionFactory.openSession(true);
+		
+		int cnt = sqlsession.delete("delete_bord", id);
+		sqlsession.close();
+		return cnt;
+	}
 	
 	
 }

@@ -23,4 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    	<select id="count_poll" parameterType="pollDTO">
    		select sum(count) from votes where id=#{id}
    	</select>
+   	<delete id="delete_poll_mem" parameterType="String">
+   		delete from votes where id=#{id}
+   	</delete>
 </mapper>

@@ -72,6 +72,12 @@ public class getdataCon extends HttpServlet {
 				json.put("backgroundColor","#83a7a3");
 			}else if(dto_arr.get(i).getClass_name().equals("하둡")) {
 				json.put("backgroundColor","#acb890");
+			}else if(dto_arr.get(i).getClass_name().equals("시험")) {
+				json.put("backgroundColor","#ff3232");
+			}else if(dto_arr.get(i).getClass_name().equals("멘토링")) {
+				json.put("backgroundColor","#c3927a");
+			}else if(dto_arr.get(i).getClass_name().equals("특강")) {
+				json.put("backgroundColor","#bb8e61");
 			}
 			json.put("textColor","#000");
 			System.out.println("-------------------");

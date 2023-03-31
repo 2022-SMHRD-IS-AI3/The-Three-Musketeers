@@ -229,6 +229,11 @@ body {
  		<div class="login-box" style="height: 290px; float: right; text-align: center; margin-top: 50px"><!-- QR코드 -->
    			<img alt="" src="./code/qr코드.png" style="margin-top: 27px">
    		</div>  
+ 		<div class="login-box" style="height: 400px; float: right; text-align: center; margin-top: 50px"><!-- 줌주소 -->
+   			<img alt="" src="줌주소" style="margin-top: 10px">
+   		</div>  
+ 		
+   		
    		<div class="login-box" style="float: right; margin-top: 50px"><!-- 투표 -->
       		<form id="frm">
          		<iframe src="poll_list.jsp" id="ContentUrl2" name="ContentUrl2" scrolling="auto" frameborder="0" onload="setFrameHeight2()" title="투표" width="100%" style="display: block;"></iframe>
