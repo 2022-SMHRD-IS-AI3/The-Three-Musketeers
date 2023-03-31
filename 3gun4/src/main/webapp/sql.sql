@@ -5,6 +5,13 @@ name varchar2(100) not null,
 phonenum varchar2(100) not null,
 class_name varchar2(100) not null
 );
+select * from members order by name;
+
+ALTER TABLE members
+ADD CONSTRAINT unique_name
+UNIQUE (name);
+
+select * from members;
 
 create table board_posts(
 board_num number primary key,
@@ -170,3 +177,17 @@ drop table schedules;
 
 delete from schedules;
 insert into
+
+
+
+create table main(
+zoom varchar2(1000),
+recode varchar2(1000),
+longtime varchar2(1000)
+);
+
+delete from main;
+
+
+
+select * from main;

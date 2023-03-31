@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.smhrd.mapper.mainMapper">
+   	<delete id="delete_main">
+   		delete from main
+   	</delete>
+   	<insert id="insert_main" parameterType="mainDTO">
+		insert into main values(#{zoom}, #{recode}, #{longtime})
+	</insert>
+	<select id="selectOne_main" resultType="mainDTO">
+		select * from main
+	</select>
+</mapper>

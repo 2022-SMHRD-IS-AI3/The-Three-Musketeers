@@ -20,6 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    	<select id="selectone" parameterType="boardDTO" resultType="boardDTO">
    		select * from board_posts where board_num=#{board_num}
    	</select>
+   	
    	<delete id="delete_bord">
    		delete from board_posts where id=#{id}
    	</delete>

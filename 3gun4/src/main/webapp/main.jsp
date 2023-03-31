@@ -1,3 +1,6 @@
+<%@page import="com.smhrd.model.mainDAO"%>
+<%@page import="com.smhrd.model.mainDTO"%>
+<%@page import="java.util.List"%>
 <%@page import="com.smhrd.model.memberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
@@ -188,6 +191,7 @@ body {
       <form id="frm">
          <%
          memberDTO info = (memberDTO) session.getAttribute("info");
+         
          %>
          <h2><%=info.getName()%>(<%=info.getId()%>)<br>님 환영합니다.
          </h2>
@@ -215,7 +219,7 @@ body {
                <td><a href="calendar_admin.jsp"> <span></span> <span></span>
                      <span></span> <span></span> 일정관리
                </a></td>
-               <td><a href="#"> <span></span> <span></span> <span></span>
+               <td><a href="main_edit.jsp"> <span></span> <span></span> <span></span>
                      <span></span> 화면관리
                </a></td>
             </tr>
@@ -229,9 +233,40 @@ body {
  		<div class="login-box" style="height: 290px; float: right; text-align: center; margin-top: 50px"><!-- QR코드 -->
    			<img alt="" src="./code/qr코드.png" style="margin-top: 27px">
    		</div>  
- 		<div class="login-box" style="height: 400px; float: right; text-align: center; margin-top: 50px"><!-- 줌주소 -->
+ 		<div class="login-box" style="height: 385px; float: right; text-align: center; margin-top: 50px"><!-- 줌주소 -->
    			<form id='frm'>
+   			<%
+   			mainDAO dao_main = new mainDAO();
+   			mainDTO btn_arr = dao_main.selectOne_main();
    			
+   			%>
+   			<center>
+           			<a href="<%=btn_arr.getZoom() %>" target="_blank" style="font-size: 30px;width: 200px; height: 80px;">
+     				<span></span>
+    				<span></span>
+      				<span></span>
+      				<span></span>
+      				<p style="margin-top: 20px">줌주소</p>
+   					</a>
+   					<br>
+   					<a href="<%=btn_arr.getRecode() %>" target="_blank" style="font-size: 30px;width: 200px; height: 80px;margin-top: 10px">
+     				<span></span>
+    				<span></span>
+      				<span></span>
+      				<span></span>
+      				<p style="margin-top: 20px">녹화영상</p>
+   					</a>
+   					<br>
+   					<a href="<%=btn_arr.getLongtime() %>" target="_blank" style="font-size: 30px;width: 200px; height: 80px;margin-top: 10px">
+     				<span></span>
+    				<span></span>
+      				<span></span>
+      				<span></span>
+      				<p style="margin-top: 20px">연장신청</p>
+   					</a>
+   					</form>
+					</center>
+					
    			</form>
    		</div>  
  		

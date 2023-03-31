@@ -147,6 +147,7 @@ select {
 </style>
 </head>
 <body>
+
 	<%
 	memberDTO info = (memberDTO) session.getAttribute("info");
 	
@@ -235,7 +236,7 @@ select {
                     <tr>
                         <td style="text-align: right;color: #fff;vertical-align: top;font-size: 18px">받는사람</td>
                         <td>
-                        	<select name="accept_name">
+                        	<select name="accept_name" style="width:346px;">
                         	<%
 							for (int i = 0; i < mem_list.size(); i++) {
 							%>

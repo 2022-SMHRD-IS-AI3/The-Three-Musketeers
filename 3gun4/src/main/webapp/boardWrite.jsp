@@ -210,7 +210,7 @@ td {
 						<tr>
 							<td width="70px" style="text-align: center;"><strong>카테고리</strong></td>
 							<td><select name="category" >
-									<option class="opt_name" value="0" selected>게시판 종류</option>
+									<option class="opt_name" value="자유게시판" selected>자유게시판</option>
 									<option class="opt_name" value="공지">공지</option>
 									<option class="opt_name" value="실습">실습</option>
 									<option class="opt_name"  value="식당후기">식당후기</option>

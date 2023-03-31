@@ -143,10 +143,12 @@ memberDAO dao_m = new memberDAO();
 List<memberDTO> mem_list = dao_m.selectAll();
 %>
 
+<img alt="" src="./code/뒤로가기.png" onclick="location.href='msg.jsp'" style="position: absolute;margin-left:320px;margin-top: -2px; filter:invert(100%);width: 50px; cursor: pointer">
+<img alt="" src="./code/삭제하기.png" onclick="location.href='msg_del_con?msg_num=<%=info_msg.getMsg_num() %>'" style="position: absolute;margin-left:370px;margin-top: -6px; filter:invert(100%);width: 50px; cursor: pointer">
 
-
-      <table class="bbsList" summary="" style="color:#000; width: 405px;">
+      <table class="bbsList" summary="" style="color:#000; width: 425px;">
 		<h2 style="color: #FFF">메시지 내용</h2>
+		
 		<hr>
 		<thead class="head">		
 		<tr>	
@@ -154,7 +156,7 @@ List<memberDTO> mem_list = dao_m.selectAll();
 				<th style="color: white; background: #ffffff11; width: 50%;">보낸사람<br><%=info_msg.getSend_name() %></th>
 				<th style="color: white; background: #ffffff11; width: 50%;">보낸시간<br><%=info_msg.getMsg_datetime() %></th>
 			</tr>
-			<tr style="color: white; background: #ffffff11;" height="360px"><td colspan="2" style="vertical-align: top;padding: 9px;"><%=info_msg.getMsg_content() %><td></tr>
+			<tr style="color: white; background: #ffffff11;" height="360px"><td colspan="2" style="vertical-align: top;padding: 9px;"><%=info_msg.getMsg_content() %></td></tr>
 		</tr>
 		</thead>
 		<tbody  class="body" style="color: #fff">
@@ -170,7 +172,7 @@ List<memberDTO> mem_list = dao_m.selectAll();
                     <tr>
                         <td style="text-align: right;color: #fff;vertical-align: top;font-size: 18px">받는사람</td>
                         <td>
-                        	<select name="accept_name">
+                        	<select name="accept_name" style="width:346px;">
                         	<%
 							for (int i = 0; i < mem_list.size(); i++) {
 							%>
@@ -200,6 +202,10 @@ List<memberDTO> mem_list = dao_m.selectAll();
    					</form>
 					</center>
             		</div>
-
+<script>
+function chk_form() {
+document.getElementById('sub_btn').click();
+}
+</script>
 </body>
 </html>

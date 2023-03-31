@@ -9,7 +9,6 @@
 .fc-event {
 	margin-top: 5px;
 	cursor: move;
-	height: 25px;
 	line-height: 25px;
 	text-align: center;
 	background-color: var;

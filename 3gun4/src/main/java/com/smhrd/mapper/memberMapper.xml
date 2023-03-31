@@ -16,13 +16,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    		where id=#{id}
    	</update>
    	<select id="selectAll" resultType="memberDTO">
-   		select * from members
+   		select * from members order by name
    	</select>
    	<delete id="delete" parameterType="String">
    		delete from members where id=#{id}
    	</delete>
 	<select parameterType="String" id="check" resultType="String">
 		select id from members where id=#{id} 
+	</select>
+	<select parameterType="String" id="select_name_bor" resultType="String">
+		select name from members where id=#{id} 
 	</select>
 	
 </mapper>
