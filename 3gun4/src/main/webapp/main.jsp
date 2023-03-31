@@ -230,7 +230,9 @@ body {
    			<img alt="" src="./code/qr코드.png" style="margin-top: 27px">
    		</div>  
  		<div class="login-box" style="height: 400px; float: right; text-align: center; margin-top: 50px"><!-- 줌주소 -->
-   			<img alt="" src="줌주소" style="margin-top: 10px">
+   			<form id='frm'>
+   			
+   			</form>
    		</div>  
  		
    		

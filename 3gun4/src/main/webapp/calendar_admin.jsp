@@ -82,6 +82,8 @@
 					bg_color = "#bb8e61";
 				}else if(eventEl.innerText =="멘토링"){
 					bg_color = "#c3927a";
+				}else if(eventEl.innerText =="즐거운휴일"){
+					bg_color = "#dfd4e4";
 				}
 					
 				return {
@@ -263,6 +265,10 @@
 		<div
 			class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event' style="background-color: #bb8e61;">
 			<div class='fc-event-main'>특강</div>
+		</div>
+		<div
+			class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event' style="background-color: #dfd4e4;">
+			<div class='fc-event-main'>즐거운휴일</div>
 		</div>
 		<p>
 			<input type='checkbox' id='drop-remove' /> <label for='drop-remove'>드래그앤
