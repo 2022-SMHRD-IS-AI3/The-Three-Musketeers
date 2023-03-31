@@ -12,4 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectAll_comment" resultType="commentDTO">
    		select * from board_comments order by com_num
    	</select>
+   	<delete id="delete_comm">
+   		delete from board_comments where id=#{id}
+   	</delete>
 </mapper>

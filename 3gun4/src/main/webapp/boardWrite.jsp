@@ -210,7 +210,7 @@ td {
 						<tr>
 							<td width="70px" style="text-align: center;"><strong>카테고리</strong></td>
 							<td><select name="category" >
-									<option class="opt_name" value="0" selected>게시판 종류</option>
+									<option class="opt_name" value="자유게시판" selected>자유게시판</option>
 									<option class="opt_name" value="공지">공지</option>
 									<option class="opt_name" value="실습">실습</option>
 									<option class="opt_name"  value="식당후기">식당후기</option>
@@ -221,12 +221,12 @@ td {
 						</tr>
 						<tr>
 							<td style="text-align: center;"><strong>제목</strong></td>
-							<td colspan="2"><input type=text name="board_title" style="background-color:#FFFFFF11;width: 100%; height: 30px;color: #fff;"></td>
+							<td colspan="2"><input type=text name="board_title" style="background-color:#FFFFFF11;width: 100%; height: 30px;color: #fff; font-size: 20px"></td>
 						</tr>
 
 						<tr>
 							<td style="text-align: center;"><strong>내용</strong></td>
-							<td colspan="2"><textarea name="board_content" rows=30 style="background-color:#FFFFFF11;width: 100%; color: #fff;"></textarea></td>
+							<td colspan="2"><textarea name="board_content" rows=30 style="background-color:#FFFFFF11;width: 100%; color: #fff; font-size: 18px"></textarea></td>
 						</tr>
 
 					</table>

@@ -1,3 +1,4 @@
+<%@page import="com.smhrd.model.memberDAO"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="java.util.List"%>
 <%@page import="com.smhrd.model.boardDAO"%>
@@ -138,17 +139,20 @@
                 <tbody class="body" style="color: #fff">
     				
     				<% 
+    				memberDAO m_dao = new memberDAO();
+    				
+    				
     				boardDAO dao = new boardDAO();
     				List<boardDTO> dto_array= dao.selectAll_board();
     				int page_count = 1;
-    				for(int i = 0;i<dto_array.size()-1; i++){
+    				for(int i = 0;i<=dto_array.size()-1; i++){
     					if(dto_array.get(i).getCategory().toString().equals("공지")){%>
     				
     				<tr style="color: #03e9f4; background-color: none; font-weight: bold;" >
 						<td><%=dto_array.get(i).getBoard_num()%></td>
 						<td><%=dto_array.get(i).getCategory().toString()%></td>
 						<td><a style="color:#03e9f4;" href="boardDetail.jsp?board_nums=<%=dto_array.get(i).getBoard_num() %>"><%=dto_array.get(i).getBoard_title().toString()%></a></td>
-						<td><%=dto_array.get(i).getId().toString()%></td>
+						<td><%=m_dao.select_name_bor(dto_array.get(i).getId().toString())%></td>
 						<td><%=dto_array.get(i).getBoard_datetime().toString()%></td>
 					</tr>
 					
@@ -169,7 +173,7 @@
 						<td><%=dto_array.get(i).getBoard_num()%></td>
 						<td><%=dto_array.get(i).getCategory().toString()%></td>
 						<td><a style="color:#fff;" href="boardDetail.jsp?board_nums=<%=dto_array.get(i).getBoard_num() %>"><%=dto_array.get(i).getBoard_title().toString()%></a></td>
-						<td><%=dto_array.get(i).getId().toString()%></td>
+						<td><%=m_dao.select_name_bor(dto_array.get(i).getId().toString())%></td>
 						<td><%=dto_array.get(i).getBoard_datetime().toString()%></td>
 					</tr>
 					<%}
@@ -187,17 +191,23 @@
 						class="arrow radius-right">≪</a>
 					<!-- 맨앞으로 이동 --> <%}
                             if(page_count <= 3 && page_count >= 1){/* 1~3 */
-                           	 	for(int i = 1; i<=dto_array.size()/10+1; i++) {%>
+                            	if(dto_array.size()>50){
+                           	 	for(int i = 1; i<=5; i++) {%>
                             		<a style="color: #fff;<%if(page_count==i){%>text-decoration: underline;<%} %>" href="board.jsp?page=<%=i %>" class="num_box"><%=i %></a>
                             	<%} /* 처음꺼 다뜨기(5개) */ System.out.println("처음꺼 다뜨기(5개)");
+                            	}else{
+                            		for(int i = 1; i<=dto_array.size()/10-1; i++) {%>
+                            		<a style="color: #fff;<%if(page_count==i){%>text-decoration: underline;<%} %>" href="board.jsp?page=<%=i %>" class="num_box"><%=i %></a>
+                            	<%} /* 처음꺼 있는만큼뜨기 */
+                            	}
                             }
                             else if(dto_array.size()/10-1 <= page_count && page_count <= dto_array.size()/10+1){/* max_page-2 <= page_count <= max_page */
                             	for(int i = dto_array.size()/10-3; i<=dto_array.size()/10+1; i++) {%>
-									<a style="color: #fff<%if(page_count==i){%>text-decoration: underline;<%} %>" href="board.jsp?page=<%=i %>" class="num_box"><%=i %></a> <%} /* 뒤에꺼 다뜨기(5개) */System.out.println("뒤에꺼 다뜨기(5개)");
+									<a style="color: #fff;<%if(page_count==i){%>text-decoration: underline;<%} %>" href="board.jsp?page=<%=i %>" class="num_box"><%=i %></a> <%} /* 뒤에꺼 다뜨기(5개) */System.out.println("뒤에꺼 다뜨기(5개)");
                             }
                             else{
                             	for(int i = page_count-2; i<= page_count+2; i++) {%>
-									<a style="color: #fff<%if(page_count==i){%>text-decoration: underline;<%} %>" href="board.jsp?page=<%=i %>" class="num_box"><%=i %></a> <%} /* 자기중심5개까지만뜨기 */System.out.println("자기중심5개까지만뜨기");
+									<a style="color: #fff;<%if(page_count==i){%>text-decoration: underline;<%} %>" href="board.jsp?page=<%=i %>" class="num_box"><%=i %></a> <%} /* 자기중심5개까지만뜨기 */System.out.println("자기중심5개까지만뜨기");
                             } 
                             %>
 							<%if(dto_array.size()/10-2 >= page_count && page_count <= dto_array.size()/10+1){ %>

@@ -73,4 +73,11 @@ SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
 		
 		return info_result_poll;
 	}
+
+	public int delete_poll_mem(String id) {
+		SqlSession sqlsession = sqlSessionFactory.openSession(true);
+		int cnt = sqlsession.delete("delete_poll_mem", id);
+		sqlsession.close();
+		return cnt;
+	}
 }

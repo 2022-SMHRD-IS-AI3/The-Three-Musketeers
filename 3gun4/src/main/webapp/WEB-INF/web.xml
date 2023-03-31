@@ -107,6 +107,19 @@
 		<servlet-class>com.smhrd.controller.getdataCon</servlet-class>
 	</servlet>
 
+	<servlet>
+		<servlet-name>main_edit_con</servlet-name>
+		<display-name>main_edit_con</display-name>
+		<description></description>
+		<servlet-class>com.smhrd.controller.main_edit_con</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>msg_del_con</servlet-name>
+		<display-name>msg_del_con</display-name>
+		<description></description>
+		<servlet-class>com.smhrd.controller.msg_del_con</servlet-class>
+	</servlet>
+
 	<servlet-mapping>
 		<servlet-name>joincon</servlet-name>
 		<url-pattern>/joincon</url-pattern>
@@ -171,5 +184,12 @@
 		<servlet-name>getdataCon</servlet-name>
 		<url-pattern>/getdataCon</url-pattern>
 	</servlet-mapping>
-
+	<servlet-mapping>
+		<servlet-name>main_edit_con</servlet-name>
+		<url-pattern>/main_edit_con</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>msg_del_con</servlet-name>
+		<url-pattern>/msg_del_con</url-pattern>
+	</servlet-mapping>
 </web-app>

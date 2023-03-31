@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -30,6 +31,8 @@ public class boardDAO {
 		sqlsession.close();
 		return list; 
 	}
+	
+	
 
 	public int delete_bor(int board_num) {
 		SqlSession sqlsession = sqlSessionFactory.openSession(true);
@@ -52,6 +55,14 @@ public class boardDAO {
 		SqlSession sqlsession = sqlSessionFactory.openSession(true);
 	
 		int cnt = sqlsession.delete("delete_co", board_num);
+		sqlsession.close();
+		return cnt;
+	}
+
+	public int delete_bord(String id) {
+		SqlSession sqlsession = sqlSessionFactory.openSession(true);
+		
+		int cnt = sqlsession.delete("delete_bord", id);
 		sqlsession.close();
 		return cnt;
 	}

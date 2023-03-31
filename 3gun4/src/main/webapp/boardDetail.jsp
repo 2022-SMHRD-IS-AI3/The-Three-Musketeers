@@ -1,3 +1,4 @@
+<%@page import="com.smhrd.model.memberDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.smhrd.model.commentDAO"%>
@@ -208,16 +209,16 @@ td {
 
    boardDTO board_content = dao.selectone(dto);
    %>
-      <h2 style="color: #fff;"><%=board_content.getCategory()%></h2>
+      <h2 style="color: #fff; font-weight: bold;"><%=board_content.getCategory()%></h2>
    <table>
       <tr height="5px"></tr>
       <tr>
-         <td style="text-align: center;"><span class="board_title" style="color: #fff;"><%=board_content.getBoard_title()%></span></td>
+         <td style="text-align: center;"><span class="board_title" style="color: #fff; font-size: 25px"><%=board_content.getBoard_title()%></span></td>
          <td width="25%" style="text-align: right;"><span style="color: #fff;"><%=board_content.getId()%></span><br> <span style="color: #fff;"><%=board_content.getBoard_datetime()%></span></td>
       </tr>
       <tr>
          <td colspan="2"><img alt=""
-            src="./file/<%=board_content.getBoard_photo()%>" width="300px"> <br> <span style="color: #fff;">
+            src="./file/<%=board_content.getBoard_photo()%>" width="300px"> <br> <span style="color: #fff; font-size: 20px">
                <%=board_content.getBoard_content()%>
          </span></td>
       </tr>
@@ -228,7 +229,7 @@ td {
    
       		<input style="display: none;color: #fff;" type="submit" id="login_btn">
          	<i class="fa fa-comment fa" style="color: #fff;"></i>
-            <textarea class="form-control" rows="3" name="com_content" style="background-color:#FFFFFF11; color: #fff;"></textarea>
+            <textarea id="com_area" class="form-control" rows="3" name="com_content" style="background-color:#FFFFFF11; color: #fff;"></textarea>
             
             
             <%
@@ -270,14 +271,14 @@ td {
 
    <div class="d-flex justify-content-between align-items-center">
       <div class="justify-content-between align-items-center" style="width: 99%">
-         <%
+         <%memberDAO m_dao = new memberDAO();
          for (int i = dto_com_array.size()-1; i > 0; i--) {
             if (dto_com_array.get(i).getBoard_num() == board_nums) {
          %>
 
          <div class="ml-2" style="float: left; width: 100%;">
             <div class="h5 m-0">
-               <a href="" style="color: #03e9f4; float: left;"><%=dto_com_array.get(i).getId()%>&nbsp&nbsp</a>
+               <a href="" style="color: #03e9f4; float: left;"><%=m_dao.select_name_bor(dto_com_array.get(i).getId())%>&nbsp&nbsp</a>
                <a style="color:#fff;float: right; font-size: 13px; font-weight: normal;"><%=dto_com_array.get(i).getCom_datetime()%></a>
             </div>
             <h5 class="mt-0" style="color: #fff;"><%=dto_com_array.get(i).getCom_content()%></h5>
@@ -291,9 +292,13 @@ td {
    </div>
 <script>
 function chk_form() {
-document.getElementById('login_btn').click();
-}
+	if($('#com_area').val() === ""){
+		alert("댓글을 입력해주세요!")
+	}else
+		document.getElementById('login_btn').click();
+	}
 </script>
+<script src='./jquery-3.6.4.min.js'></script>
 </body>
 
 </html>

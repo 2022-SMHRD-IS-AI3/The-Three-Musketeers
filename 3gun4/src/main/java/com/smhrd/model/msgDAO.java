@@ -37,5 +37,13 @@ SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
 		return info_msg;
 	}
 
+	public int delete_msg(int msg_num) {
+		SqlSession sqlsession = sqlSessionFactory.openSession(true);
+		int cnt = sqlsession.delete("delete_msg", msg_num);
+		sqlsession.close();
+	
+		return cnt;
+	}
+
 	
 }

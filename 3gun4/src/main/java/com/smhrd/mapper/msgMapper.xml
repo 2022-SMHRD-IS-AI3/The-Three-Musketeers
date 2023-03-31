@@ -17,6 +17,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectone_msg" parameterType="int" resultType="msgDTO">
    		select * from msg where msg_num=#{msg_num}
 	</select>
-
+	<delete id="delete_msg">
+		delete from msg where msg_num=#{msg_num}
+	</delete>
 	
 </mapper>

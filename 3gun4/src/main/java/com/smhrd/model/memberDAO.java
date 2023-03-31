@@ -29,6 +29,13 @@ public class memberDAO {
 		
 		return info;
 	}
+	public String select_name_bor(String id) {
+		SqlSession sqlsession = sqlSessionFactory.openSession(true);
+		String name = sqlsession.selectOne("select_name_bor",id);
+		sqlsession.close();
+		
+		return name;
+	}
 
 	public int update(memberDTO dto) {
 		SqlSession sqlsession = sqlSessionFactory.openSession(true);
@@ -40,6 +47,10 @@ public class memberDAO {
 	public List<memberDTO> selectAll() {
 		SqlSession sqlsession = sqlSessionFactory.openSession(true);
 		List<memberDTO> list = sqlsession.selectList("selectAll");
+		for(int i =0;i<list.size();i++) {
+			System.out.print(list.get(i).getName());
+			System.out.print(123);
+		}
 		sqlsession.close();
 		return list;
 	}
