@@ -10,6 +10,7 @@
 		<typeAlias type="com.smhrd.model.boardDTO" alias="boardDTO"/>
 		<typeAlias type="com.smhrd.model.commentDTO" alias="commentDTO"/>
 		<typeAlias type="com.smhrd.model.pollDTO" alias="pollDTO"/>
+		<typeAlias type="com.smhrd.model.result_pollDTO" alias="result_pollDTO"/>
 		<typeAlias type="com.smhrd.model.msgDTO" alias="msgDTO"/>
 		<typeAlias type="com.smhrd.model.scheduleDTO" alias="scheduleDTO"/>
 	</typeAliases>

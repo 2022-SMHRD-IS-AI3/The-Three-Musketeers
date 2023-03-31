@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.smhrd.model.result_pollDTO"%>
 <%@page import="com.smhrd.model.pollDAO"%>
 <%@page import="java.util.List"%>
@@ -53,18 +54,116 @@ td {
 <%
 	int vote_nums = Integer.parseInt(request.getParameter("vote_nums")); 
 	pollDTO dto = new pollDTO(vote_nums);
+	result_pollDTO dtor = new result_pollDTO(vote_nums);
     pollDAO dao = new pollDAO();
-    pollDTO vote_content = dao.selectone_poll(dto);
+   
+    
+    List<result_pollDTO> vote_rcontent = dao.selectAll_resultpoll(dtor);
 
+    System.out.println("Test12 "+vote_rcontent.size());
+    
+    //투표한 사람 수 
+    //int person = dao.count_poll(id);
+    
+    //투표한 내용이 들어간 배열
+    ArrayList<String> vote_content_arr = new ArrayList<String>(); 
+    
+	for(int i=0;i<vote_rcontent.size();i++){
+		String content  = vote_rcontent.get(i).getVote_content();
+		  
+	 	String repl_vote_content = content.replaceAll("\\[", " ");
+		repl_vote_content = repl_vote_content.replaceAll("\\]", "");
+		repl_vote_content = repl_vote_content.replaceAll(" ", "");
+		vote_content_arr.add(repl_vote_content);
+	
+		// System.out.println("Content "+content);
+	}
+	
+	System.out.println("추가 이후 " +vote_content_arr);
+	
+	
+	pollDTO vote_content = dao.selectone_poll(dto);
 	String repl_vote_content = vote_content.getVote_content().replaceAll("\\[", " ");
 	repl_vote_content = repl_vote_content.replaceAll("\\]", "");
-	String[] vote_content_arr = repl_vote_content.split(",");
+	repl_vote_content = repl_vote_content.replaceAll(" ", "");
+	
+	//항목 들어간 배열
+	String[] vote_content_arr2 = repl_vote_content.split(",");
+	System.out.println("Test123 "+vote_content_arr2.length);
+	
+	//항목에 따른 갯수
+	int[] vote_content_cnt = new int[vote_content_arr2.length];
+	
+	if(vote_content.getOverlap() == 0){
+			
+	//중복x
+ 	for(int i = 0 ; i<vote_content_arr.size();i++){
+		
+		String data = vote_content_arr.get(i);
+		System.out.println(data);
+		
+		int index = 0;
+	
+		System.out.println("---------");
+		for(int j=0;j<vote_content_cnt.length;j++){
+			System.out.println(vote_content_arr2[j]);
+			
+			if(data.equals(vote_content_arr2[j])){
+				System.out.println("TResat");
+				index = j;
+			}
+		}
+		System.out.println("---------");
+		
+		vote_content_cnt[index]=vote_content_cnt[index]+1 ;
+			
+	} 
+	
+	} else {
+		//중복 o
+		System.out.println("길이 : "+vote_content_cnt.length);
+		
+	 	for(int i = 0;i<vote_content_arr.size();i++){
+			
+			String data = vote_content_arr.get(i);
+			System.out.println(data);
+			
+			int index = 0;
+		
+			System.out.println("---------");
+			for(int j=0;j<vote_content_cnt.length;j++){
+				System.out.println(vote_content_arr2[j]);
+				
+				if(data.equals(vote_content_arr2[j])){
+					System.out.println("TResat");
+					index = j;
+				}
+			}
+			System.out.println("---------");
+			
+			vote_content_cnt[index]=vote_content_cnt[index]+1 ;
+			
+				
+		} 
+	}
+
+/* 	ArrayList<String> content_list = new ArrayList<String>();
+	
+	for(int i=0;i<vote_content_arr.size();i++){
+		content_list.add(vote_content_arr.get(i));
+		
+		if(i>0&&content_list.get(i).equals(content_list.get(i-1))){
+			i--;
+		}
+	}
+	 */
+
 %>
 	<div align="center">
 		<br />
 		<h2>투표 결과</h2>
 		<hr width="auto" />
-		<form name="frm" method="post" action="">
+		<form name="frm" method="post" action="resultcon">
 		<table border="1" width="auto">
 			<tr>
 				<th colspan="2" width="50"><b>질문 : <%=vote_content.getVote_title() %></b></th>
@@ -72,13 +171,13 @@ td {
 			</tr>
 			<tr>
 				<td><b>총 투표자 수</b></td>
-				<td width="100"><b>(%)</b></td>
+				<td width="100"><b>(명)</b></td>
 			</tr>
 			<tr>
 				<td><b>항목</b></td>
 				<td width="100">
-				<% for(int i=0; i<vote_content_arr.length ; i++){ %>
-				<b><%=vote_content_arr[i]%>(%)</b><br>
+			<% for(int i=0; i<vote_content_arr2.length ; i++){ %>
+				<b><%=vote_content_arr2[i]%> :<%= vote_content_cnt[i]%> 명</b><br>
 				<%} %></td>
 				
 			</tr>

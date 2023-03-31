@@ -1,5 +1,6 @@
 package com.smhrd.model;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -47,16 +48,27 @@ SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
 	//투표 결과 업데이트
 	public int update_poll(result_pollDTO dto) {
 		SqlSession sqlsession = sqlSessionFactory.openSession(true);
-		int cnt = sqlsession.update("update_poll", dto);
+		System.out.println("Test213 "+dto.getVote_content());
+		int cnt = sqlsession.insert("update_poll", dto);
 		sqlsession.close();
 		
 		return cnt;
 	}
 	
 	//투표참여 인원 카운트
-	public result_pollDTO count_poll(result_pollDTO dto) {
+	public String count_poll(String id) {
 		SqlSession sqlsession = sqlSessionFactory.openSession(true);
-		result_pollDTO info_result_poll = sqlsession.selectOne("count_poll", dto);
+		result_pollDTO info_result_poll = sqlsession.selectOne("count_poll", id);
+		sqlsession.close();
+		
+		return id;
+	}
+	
+	//투표결과 목록 중 하나 선택
+	public List<result_pollDTO> selectAll_resultpoll(result_pollDTO dto) {
+		SqlSession sqlsession = sqlSessionFactory.openSession(true);
+		List<result_pollDTO> info_result_poll = sqlsession.selectList("selectAll_resultpoll",dto);
+	
 		sqlsession.close();
 		
 		return info_result_poll;

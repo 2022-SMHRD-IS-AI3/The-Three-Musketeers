@@ -106,6 +106,7 @@
 		<description></description>
 		<servlet-class>com.smhrd.controller.getdataCon</servlet-class>
 	</servlet>
+
 	<servlet-mapping>
 		<servlet-name>joincon</servlet-name>
 		<url-pattern>/joincon</url-pattern>
@@ -170,4 +171,5 @@
 		<servlet-name>getdataCon</servlet-name>
 		<url-pattern>/getdataCon</url-pattern>
 	</servlet-mapping>
+
 </web-app>

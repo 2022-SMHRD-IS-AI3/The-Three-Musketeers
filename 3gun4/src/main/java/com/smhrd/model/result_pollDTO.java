@@ -13,6 +13,8 @@ public class result_pollDTO {
 	private int vote_num;
 	private String vote_content;
 	private String id;
-	private int count;
-	private String vote_result;
+
+	public result_pollDTO(int vote_num) {
+		this.vote_num = vote_num;
+	}
 }

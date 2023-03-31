@@ -57,14 +57,18 @@ td {
 		pollDTO vote_content = dao.selectone_poll(dto);
 		String repl_vote_content = vote_content.getVote_content().replaceAll("\\[", " ");
 		repl_vote_content = repl_vote_content.replaceAll("\\]", "");
+		repl_vote_content = repl_vote_content.replaceAll(" ", "");
 		String[] vote_content_arr = repl_vote_content.split(",");
+		System.out.println("Test123 "+vote_content_arr.length);
 		
+		
+		session.setAttribute("content_arr", vote_content_arr);
 
 	%>
 	<div align="center">
 		<br /> <b>투표</b>
 		<hr width="auto" />
-		<form name="frm" method="post" action="">
+		<form name="frm" method="post" action="pollcon">
 			<table border="1" width="100px">
 				<tr>
 					<th width="40px"><b>질문</b></th>
@@ -74,18 +78,19 @@ td {
 					<td rowspan="8"><b>항목</b></td>
 					<td style="text-align: left">
 					<% for(int i=0; i<vote_content_arr.length ; i++){ %>
-					<input type="<% if (vote_content.getOverlap() == 0) { %>radio<% } else { %>checkbox<% } %>" name="vote_content"><span><%=vote_content_arr[i] %></span><br>
+					<input type="<% if (vote_content.getOverlap() == 0) { %>radio<% } else { %>checkbox<% } %>" name="vote_content" value="<%= vote_content_arr[i]%>"><span><%=vote_content_arr[i] %></span><br>
 					<%} %>
 					</td>
 				</tr>
 			</table>
 			<tr>
 				<td colspan=3>
-				<button class="btn" type="button" onclick = "location.href='poll_result.jsp?vote_nums=<%=vote_nums %>'">투표하기</button>
+				<button class="btn" type="submit">투표하기</button>
 			    <button class="btn" type="button" onclick="location.href='poll_list.jsp'" >뒤로가기</button></td>
 			</tr>
 				<% memberDTO info = (memberDTO)session.getAttribute("info");%>
                     <input style="display: none" type="text" value="<%=info.getId() %>" name="id">
+                    <input style="display: none" type="text" value="<%=vote_nums %>" name="vote_num">
 		</form>
 	</div>
 </body>

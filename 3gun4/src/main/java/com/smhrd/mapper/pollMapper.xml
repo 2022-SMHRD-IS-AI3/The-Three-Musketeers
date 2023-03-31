@@ -9,18 +9,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into votes values(vote_num_seq.nextval, #{vote_title}, #{vote_content,jdbcType=VARCHAR}, #{overlap}, #{id})
 	</insert>
 	<select id="selectAll_poll" resultType="pollDTO">
-   		select * from votes order by vote_num
-   	</select>
-   	<delete id="delete_poll" parameterType="String">
-   		delete from votes where vote_num=#{vote_num}
-   	</delete>
+		select * from votes order by vote_num
+	</select>
+	<delete id="delete_poll" parameterType="String">
+		delete from votes where vote_num=#{vote_num}
+	</delete>
 	<select id="selectone_poll" parameterType="pollDTO" resultType="pollDTO">
-   		select * from votes where vote_num=#{vote_num}
-   	</select>
-   	<update id="update_poll" parameterType="pollDTO">
-   		update vote_options set count=#{count}+1 where vote_num=#{vote_num} and vote_content=#{vote_content} 
-   	</update>
-   	<select id="count_poll" parameterType="pollDTO">
-   		select sum(count) from votes where id=#{id}
-   	</select>
+		select * from votes where vote_num=#{vote_num}
+	</select>
+	<insert id="update_poll" parameterType="result_pollDTO">
+		insert into vote_options values(#{vote_num}, #{vote_content}, #{id})
+	</insert>
+	<select id="count_poll" parameterType="result_pollDTO">
+		select sum(count) from vote_options where id=#{id}
+	</select>
+	<select id="selectAll_resultpoll" parameterType="result_pollDTO" resultType="result_pollDTO">
+		select * from vote_options where vote_num=#{vote_num}
+	</select>
 </mapper>

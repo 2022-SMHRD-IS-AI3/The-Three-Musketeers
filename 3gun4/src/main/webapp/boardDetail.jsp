@@ -208,11 +208,8 @@ td {
 
    boardDTO board_content = dao.selectone(dto);
    %>
+      <h2 style="color: #fff;"><%=board_content.getCategory()%></h2>
    <table>
-      <tr>
-         <th colspan="2" style="text-align: center; "><font size=5px
-            color=white><%=board_content.getCategory()%></font></th>
-      </tr>
       <tr height="5px"></tr>
       <tr>
          <td style="text-align: center;"><span class="board_title" style="color: #fff;"><%=board_content.getBoard_title()%></span></td>
@@ -225,52 +222,44 @@ td {
          </span></td>
       </tr>
    </table>
-   <tr>
-      <center>
-            <div class="login-box">
+   
+   
+   <form action="board_com_con">
+   
+      		<input style="display: none;color: #fff;" type="submit" id="login_btn">
+         	<i class="fa fa-comment fa" style="color: #fff;"></i>
+            <textarea class="form-control" rows="3" name="com_content" style="background-color:#FFFFFF11; color: #fff;"></textarea>
+            
+            
+            <%
+            memberDTO info = (memberDTO) session.getAttribute("info");
+            %>
+            <input style="display: none" type="text" value="<%=info.getId()%>" name="id"> 
+            <input style="display: none" type="text" value="<%=board_content.getBoard_num()%>" name="board_num">
+            
+	</form>
+		<center>
+			<div class="login-box">
             <form id="frm">
-               
-               <a href="board.jsp">
-           <span></span>
-          <span></span>
+            <a href="#" onclick="return chk_form()">
+           	<span></span>
+          	<span></span>
+            <span></span>
+            <span></span>
+            댓글작성
+            </a>
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <a href="board.jsp">
+           	<span></span>
+          	<span></span>
             <span></span>
             <span></span>
             목록으로
             </a>
             </form>
             </div>
-            </center>
-   </tr>
-
-
-
-   <!-- 댓글 작성-->
-   <div class="card mb-2">
-      <div class="card-header bg-light" style="color: #86acd9;">
-         <i class="fa fa-comment fa" style="color: #86acd9;"></i> 댓글
-      </div>
-      <div class="card-body">
-         <form action="board_com_con">
-            <div class="form-group">
-               <textarea class="form-control" rows="3" name="com_content"></textarea>
-
-            </div>
-            <div class="container">
-               <div class="row">
-                  <div class="col text-center">
-                     <button class="btn btn-outline-primary" type="submit">작성</button>
-                  </div>
-               </div>
-            </div>
-            <%
-            memberDTO info = (memberDTO) session.getAttribute("info");
-            %>
-            <input style="display: none" type="text" value="<%=info.getId()%>"
-               name="id"> <input style="display: none" type="text"
-               value="<%=board_content.getBoard_num()%>" name="board_num">
-         </form>
-      </div>
-   </div>
+		</center>
+   
 
    <%
    commentDAO dao_com = new commentDAO();
@@ -280,7 +269,7 @@ td {
    <!-- <div class="media mb-4"> -->
 
    <div class="d-flex justify-content-between align-items-center">
-      <div class="justify-content-between align-items-center" style="width: 100%">
+      <div class="justify-content-between align-items-center" style="width: 99%">
          <%
          for (int i = dto_com_array.size()-1; i > 0; i--) {
             if (dto_com_array.get(i).getBoard_num() == board_nums) {
@@ -300,6 +289,11 @@ td {
          %>
       </div>
    </div>
+<script>
+function chk_form() {
+document.getElementById('login_btn').click();
+}
+</script>
 </body>
 
 </html>

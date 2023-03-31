@@ -175,10 +175,16 @@ body {
    String name = (String) session.getAttribute("name");
    String id = (String) session.getAttribute("id");
    %>
+
+  
+ <img alt="" src="./code/절절포문구.png" style="position: absolute;margin-left:500px;margin-top: 25px;">
+ <img alt="" src="./code/삼총사로고.png" style="position: absolute;margin-left:6px;margin-top: 21px; width: 400px">
+ <img alt="" src="./code/채팅창위.png" style="position: fixed;margin-left:1580px;margin-top: 41px; width: 400px">
+ 
    
 <div>
-<div style="height: 2000px;float: left;">
-   <div class="login-box" style="float:left; margin-left: 50px;margin-top: 180px;">
+<div style="height: 3000px;float: left;width: 350px;"> <!-- 사이드바 -->
+   <div class="login-box" style="float:left; margin-left: 50px;margin-top: 180px;"> <!-- 프로필카드 -->
       <form id="frm">
          <%
          memberDTO info = (memberDTO) session.getAttribute("info");
@@ -223,29 +229,41 @@ body {
             %>
          </table>
       </form>
-   </div>
-   </div>
-   <div class="login-box" style="float:left; margin-left: 50px; margin-top: 180px; width: 1100px">
+   
+   	</div>
+ 		<div class="login-box" style="height: 290px; float: right; text-align: center; margin-top: 50px"><!-- QR코드 -->
+   			<img alt="" src="./code/qr코드.png" style="margin-top: 27px">
+   		</div>  
+   		<div class="login-box" style="float: right; margin-top: 50px"><!-- 투표 -->
+      		<form id="frm">
+         		<iframe src="poll_list.jsp" id="ContentUrl2" name="ContentUrl2" scrolling="auto" frameborder="0" onload="setFrameHeight2()" title="투표" width="100%" style="display: block;"></iframe>
+      		</form>
+   		</div>
+   	</div>
+   <div class="login-box" style="float:left; margin-left: 50px; margin-top: 180px; width: 1100px"> <!-- 캘린더 -->
       <form id="frm">
          <iframe src='calendar_view.jsp' id="ContentUrl" name="ContentUrl" scrolling="auto" frameborder="0" onload="setFrameHeight()" title="캘린더" width="100%" style="display: block;"></iframe>
       </form>
    </div>
-   <div class="login-box" style="float:left; margin-left: 50px; margin-top: 50px; width: 1100px">
+   <div class="login-box" style="float:left; margin-left: 50px; margin-top: 50px; width: 1100px">  <!-- 게시판 -->
       <form id="frm">
-         <iframe src="board.jsp" id="ContentUrl1" name="ContentUrl1" scrolling="auto" frameborder="0" onload="setFrameHeight1()" title="게시판" width="100%" style="display: block;"></iframe>
+         <iframe src="board.jsp" id="ContentUrl1" name="ContentUrl1" scrolling="auto" frameborder="0" onload="setFrameHeight1()" title="게시판" width="100%"; style="display: block;"></iframe>
       </form>
    </div>
-        <div class="login-box" style="float:left; margin-left: 50px;margin-top: 180px;">
-      <form id="frm">
-         <iframe src="poll_list.jsp" id="ContentUrl2" name="ContentUrl2" scrolling="auto" frameborder="0" onload="setFrameHeight2()" title="투표" width="100%" style="display: block;"></iframe>
-      </form>
+   <div class="login-box" style="position: fixed;left:1550px;top:770px; width:480px; height: 250px"> <!-- 메시지보내기 -->
+   	   <form id="frm">
+   	   		<iframe src="" id="ContentUrl4" name="ContentUrl4" scrolling="auto" frameborder="0" onload="setFrameHeight4()" title="메시지보기" width="100%"; style="display: block;"></iframe>
+   	   </form>
    </div>
+   <div class="login-box" style="position: fixed;left:1550px;top:180px; width:480px; height: 540px"> <!-- 메시지목록 -->
+   	   <form id="frm">
+   	   		<iframe src="msg.jsp" id="ContentUrl3" name="ContentUrl3" scrolling="auto" frameborder="0" onload="" title="메시지보기" width="100%"; style="display: block; height: 800px"></iframe>
+   	   </form>
+   </div>
+   
+   
 
-			<div class="container" style="position:fixed; top:30px; left:1450px" >
-			<table style="position:absolute;top:100px; margin:30px; width:400px; height:600px; ">
-			<td style=" color:pink;"></td>
-			</table>
-			</div>
+			
 			
 
 		<!-- Scripts -->

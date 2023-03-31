@@ -119,30 +119,29 @@
 </style>
 </head>
 <body>
-	<div class="container managergrounp" id="container" name="container">
-		<h3 style="color: #FFF">게시글 목록</h3>
+	<div class="container managergrounp" id="container" name="container" style="width: 100%;">
+		<h2 style="color: #FFF">게시글 목록</h2>
 		<hr>
 
-            <table class="bbsList" summary="" style="color:#000">
+            <table class="bbsList" summary="" style="color:#000; width: 1043px">
                 <caption>게시글 목록</caption>           
                 <thead class="head">
-                    <tr>
+                    
                     	 <tr>
-							<th style="width: 55px; background: #d3d3d3;">번호</th>
-							<th style="width: 95px; background: #d3d3d3;">카테고리</th>
-							<th style="width: 500px; background: #d3d3d3;">제목</th>
-							<th style="width: 75px; background: #d3d3d3;">작성자</th>
-							<th style="width: 270px; background: #d3d3d3;">등록일</th>
+							<th style="width: 55px; background: #ffffff11;color: white;">번호</th>
+							<th style="width: 95px; background: #ffffff11;color: white;">카테고리</th>
+							<th style="width: 500px; background: #ffffff11;color: white;">제목</th>
+							<th style="width: 75px; background: #ffffff11;color: white;">작성자</th>
+							<th style="width: 270px; background: #ffffff11;color: white;">등록일</th>
 						</tr>
-                    </tr>    
                 </thead>
                 <tbody class="body" style="color: #fff">
-    				<tr>
+    				
     				<% 
     				boardDAO dao = new boardDAO();
     				List<boardDTO> dto_array= dao.selectAll_board();
     				int page_count = 1;
-    				for(int i = 0;i<dto_array.size(); i++){
+    				for(int i = 0;i<dto_array.size()-1; i++){
     					if(dto_array.get(i).getCategory().toString().equals("공지")){%>
     				
     				<tr style="color: #03e9f4; background-color: none; font-weight: bold;" >
@@ -165,6 +164,7 @@
 				<%
     				try{
     				for(int i=dto_array.size()-((page_count-1)*10)-1; i>=dto_array.size()-((page_count)*10-1)-1 ; i--) {%>
+                     	<td style="display: none;"><%=dto_array.get(i).getBoard_num()%></td>
                      <tr>
 						<td><%=dto_array.get(i).getBoard_num()%></td>
 						<td><%=dto_array.get(i).getCategory().toString()%></td>
@@ -174,23 +174,15 @@
 					</tr>
 					<%}
     				}catch(Exception e){
-    					for(int i = i=dto_array.size()-((page_count-1)*10)-1;i>=dto_array.size()%10;i--){%>
-    						<tr>
-    						<td><%=dto_array.get(i).getBoard_num()%></td>
-    						<td><%=dto_array.get(i).getCategory().toString()%></td>
-    						<td><a style="color:#fff;" href="boardDetail.jsp?board_nums=<%=dto_array.get(i).getBoard_num() %>"><%=dto_array.get(i).getBoard_title().toString()%></a></td>
-    						<td><%=dto_array.get(i).getId().toString()%></td>
-    						<td><%=dto_array.get(i).getBoard_datetime().toString()%></td>
-    						</tr>
-    					<%}
+    					
     				}%>
 
 
-				</tr>
+				
 			</tbody>
 			<tfoot class="foot">
 				<tr>
-					<td colspan="9">
+					<td colspan="9" style="border-bottom: none;">
 						<%if(page_count > 3){ %> <a href="board.jsp?page=1"
 						class="arrow radius-right">≪</a>
 					<!-- 맨앞으로 이동 --> <%}

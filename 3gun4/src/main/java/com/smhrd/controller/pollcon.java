@@ -2,6 +2,7 @@ package com.smhrd.controller;
 
 import java.io.IOException;
 import java.net.URLEncoder;
+import java.util.Arrays;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,30 +19,24 @@ public class pollcon extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		int vote_num = Integer.parseInt(request.getParameter("vote_num"));
-		String vote_content = request.getParameter("vote_content");
+		String[] vote_content = request.getParameterValues("vote_content");
 		String id = request.getParameter("id");
-		int count = Integer.parseInt(request.getParameter("count"));
-		String vote_result = request.getParameter("vote_result");
-		String[] vote_content_arr = vote_content.split(",");
+		
 		
 		System.out.println(vote_num);
-		System.out.println(vote_content);
+		System.out.println(Arrays.toString(vote_content));
 		System.out.println(id);
-		System.out.println(count);
-		System.out.println(vote_result);
-		System.out.println(vote_content_arr);
 		
-		for(int i=0; i<vote_content.length();i++) {
-			vote_content_arr[i]=vote_content.toString();
-			System.out.println(vote_content_arr);
+		for(int i=0; i<vote_content.length;i++) {
+			System.out.println(vote_content[i]);
 		}
 		
-		result_pollDTO dto = new result_pollDTO(vote_num, vote_content, id, count, vote_result);
+		result_pollDTO dto = new result_pollDTO(vote_num,Arrays.toString(vote_content), id);
 		pollDAO dao = new pollDAO();
 		int cnt = dao.update_poll(dto);
 		if(cnt > 0) {
 			System.out.println("투표 성공!");
-			response.sendRedirect("poll_list.jsp");
+			response.sendRedirect("poll_result.jsp?vote_nums="+vote_num);
 		}else {
 			System.out.println("투표 실패!");
 			

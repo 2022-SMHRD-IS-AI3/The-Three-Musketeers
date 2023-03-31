@@ -85,7 +85,7 @@ increment by 1;
 
 select * from BOARD_POSTS;
 
-drop table vote_options CASCADE CONSTRAINTS;
+drop table vote_options; CASCADE CONSTRAINTS;
 
 select * from user_tables;
 
@@ -111,9 +111,7 @@ create table vote_options (
 vote_num number(5), 
 foreign key(vote_num) references votes(vote_num),
 vote_cotent varchar2(100),
-id varchar2(100),
-count INT,
-vote_result varchar2(100)
+id varchar2(100)
 );
 
 select * from votes order by vote_num;
@@ -134,11 +132,13 @@ select * from msg;
 
 create table msg (
 msg_num number primary key,
-send_id varchar2(100),
-accept_id varchar2(100) ,
+send_name varchar2(100),
+accept_name varchar2(100) ,
 msg_content varchar2(100) ,
 msg_datetime date not null
 );
+
+insert into msg values(msg_num_seq.nextval,'나나나', 'test', '안안농농', sysdate);
 select * from msg
 drop table msg;
 CREATE SEQUENCE schdule_code_num
@@ -154,4 +154,7 @@ drop table schedules;
 delete from schedules;
 insert into
 
+ALTER TABLE vote_options RENAME COLUMN vote_cotent TO vote_content;
 
+delete from vote_options;
+select * from vote_options;

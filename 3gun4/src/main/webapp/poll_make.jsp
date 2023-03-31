@@ -55,8 +55,8 @@ td {
 
 				<tr>
 					<td colspan='2' style='text-align: center;'>
-					<a href="#" onclick="addRow()">항목 추가</a> 
-					<a href="#" onclick="delRow()">항목 삭제</a>
+					<span onclick="addRow()">항목 추가</span> 
+					<span href="#" onclick="delRow()">항목 삭제</span>
 					</td>
 				</tr>
 
@@ -121,7 +121,7 @@ td {
 				alert("더 이상 삭제할 수 없습니다.");
 				return;
 			}
-			table.deleteRow(rowCount - 4);
+			table.deleteRow(rowCount - 3);
 		}
 	</script>
 
