@@ -17,4 +17,8 @@ public class result_pollDTO {
 	public result_pollDTO(int vote_num) {
 		this.vote_num = vote_num;
 	}
+	
+	public result_pollDTO(String id) {
+		this.id = id;
+	}
 }

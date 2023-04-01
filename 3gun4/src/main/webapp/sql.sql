@@ -177,13 +177,11 @@ drop table schedules;
 delete from schedules;
 insert into
 
-<<<<<<< HEAD
+
 ALTER TABLE vote_options RENAME COLUMN vote_cotent TO vote_content;
 
 delete from vote_options;
 select * from vote_options;
-=======
-
 
 create table main(
 zoom varchar2(1000),
@@ -193,7 +191,8 @@ longtime varchar2(1000)
 
 delete from main;
 
-
-
 select * from main;
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-IS-AI3/The-Three-Musketeers.git
+
+
+select count(distinct id) from vote_options;
+select * from vote_options;

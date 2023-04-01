@@ -37,31 +37,31 @@ td {
 </style>
 
 </head>
-<body>
+<body style="background:transparent;">
 	<div align="center">
-		<br /> <b>투표작성</b>
+		<h2 style="color: #fff;">투표작성</h2>
 		<hr width="auto" />
 		<form name="frm" method="post" action="upload_pollcon">
-			<table border="1" width="100px">
+			<table style="color: #fff">
 				<tr>
-					<td><b>질문</b></td>
-					<td colspan="2"><input name="vote_title" size="17"></td>
+					<td style="text-align: center;"><strong>질문</strong></td>
+					<td colspan="2"><input type=text name="vote_title" style="background-color:#FFFFFF11; color: #fff"></td>
 				</tr>
 				<tr>
-					<td rowspan="6"><b>항목</b></td>
-					<td class="a" style='text-align: center;'>1</td>
-					<td class="a" id='cont_box'><input type='text' name="vote_content" id="content" style='width: 100px'></td>
+					<td rowspan="6" style="text-align: center;"><b>항목</b></td>
+					<td class="a" style="background-color:#FFFFFF11;width: 100%; color: #fff">1</td>
+					<td class="a" id='cont_box' style="background-color:#FFFFFF11;width: 100%; color: #fff"><input type='text' name="vote_content" id="content" style="background-color:#FFFFFF11; color: #fff"'></td>
 				</tr>
 
 				<tr>
 					<td colspan='2' style='text-align: center;'>
-					<span onclick="addRow()">항목 추가</span> 
-					<span href="#" onclick="delRow()">항목 삭제</span>
+					<span><a onclick="addRow()">항목 추가</a></span> 
+					<span><a href="#" onclick="delRow()">항목 삭제</a></span>
 					</td>
 				</tr>
 
 				<tr>
-					<td>복수</td>
+					<td style='text-align: center;'>복수</td>
 					<td colspan=2>
 					<input type="radio" name="overlap" value="1" checked>yes 
 					<input type="radio" name="overlap" value="0">no
@@ -75,16 +75,21 @@ td {
 					</td>
 				</tr> -->
 			</table>
+		</form>
+	</div>
+			<center>
+            <div class="login-box">
+            <form id="frm">
 			<tr>
-				<td colspan="3">
 					<button class="btn" type="submit">작성하기</button> 
 					<button class="btn" type="button" onclick = "location.href='poll_list.jsp'">리스트</button>
 				</td>
 			</tr>
+				</form>
+            </div>
+            </center>
 					<% memberDTO info = (memberDTO)session.getAttribute("info");%>
                     <input style="display: none" type="text" value="<%=info.getId() %>" name="id">
-		</form>
-	</div>
 	<script>
 		function addRow() {
 			var table = document.querySelector("table"); // 테이블 요소 선택

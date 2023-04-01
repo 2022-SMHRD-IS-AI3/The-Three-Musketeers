@@ -56,12 +56,12 @@ SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
 	}
 	
 	//투표참여 인원 카운트
-	public String count_poll(String id) {
+	public int count_poll(String id) {
 		SqlSession sqlsession = sqlSessionFactory.openSession(true);
-		result_pollDTO info_result_poll = sqlsession.selectOne("count_poll", id);
+		int cnt = sqlsession.selectOne("count_poll", id);
 		sqlsession.close();
 		
-		return id;
+		return cnt;
 	}
 	
 	//투표결과 목록 중 하나 선택

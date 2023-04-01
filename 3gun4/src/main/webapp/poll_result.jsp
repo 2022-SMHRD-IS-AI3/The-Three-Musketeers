@@ -63,7 +63,9 @@ td {
     System.out.println("Test12 "+vote_rcontent.size());
     
     //투표한 사람 수 
-    //int person = dao.count_poll(id);
+  	String id = request.getParameter("id");
+  	result_pollDTO dr = new result_pollDTO(id);
+    int count = dao.count_poll(id);
     
     //투표한 내용이 들어간 배열
     ArrayList<String> vote_content_arr = new ArrayList<String>(); 
@@ -171,7 +173,7 @@ td {
 			</tr>
 			<tr>
 				<td><b>총 투표자 수</b></td>
-				<td width="100"><b>(명)</b></td>
+				<td width="100"><b><%=count %>(명)</b></td>
 			</tr>
 			<tr>
 				<td><b>항목</b></td>
