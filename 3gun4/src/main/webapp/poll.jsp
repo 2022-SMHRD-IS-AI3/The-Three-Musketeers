@@ -1,4 +1,4 @@
-<%@page import="com.smhrd.model.result_pollDTO"%>
+%@page import="com.smhrd.model.result_pollDTO"%>
 <%@page import="com.smhrd.model.pollDAO"%>
 <%@page import="com.smhrd.model.memberDTO"%>
 <%@page import="com.smhrd.model.pollDTO"%>

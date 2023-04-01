@@ -144,7 +144,7 @@
 		savedata(jsondata);
 	}
 
-	function loadingEvents() { //데이터불러오깅
+	function loadingEvents() { //데이터불러오기
 		var return_value = null;
 		$.ajax({
 			type : 'post',
