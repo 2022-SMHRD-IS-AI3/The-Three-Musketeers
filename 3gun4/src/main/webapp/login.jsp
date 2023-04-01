@@ -5,7 +5,8 @@
 
 <head>
 <title>로그인</title>
-<meta name="apple-mobile-web-app-capable" content="yes">
+<met
+a name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <link href="/static/package/view.min.css?1678183911374" rel="stylesheet"
 	type="text/css">

@@ -27,9 +27,10 @@ public class upload_pollcon extends HttpServlet {
 		System.out.println(vote_content);
 		System.out.println(overlap);
 		System.out.println(id);
-		
+		System.out.println("dto묶기전");
 		pollDTO dto = new pollDTO(0, vote_title, vote_content, overlap, id);
 		pollDAO dao = new pollDAO();
+		System.out.println("mapper실행전");
 		int cnt = dao.upload_poll(dto);  
 		if(cnt > 0) {
 			System.out.println("투표작성 성공!");

@@ -1,6 +1,7 @@
 package com.smhrd.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URLEncoder;
 import java.util.Arrays;
 
@@ -16,9 +17,11 @@ import com.smhrd.model.result_pollDTO;
 
 public class pollcon extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		System.out.println("[pollcon]");
 		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		int vote_num = Integer.parseInt(request.getParameter("vote_num"));
+		
 		String[] vote_content = request.getParameterValues("vote_content");
 		String id = request.getParameter("id");
 		
@@ -33,16 +36,26 @@ public class pollcon extends HttpServlet {
 		
 		result_pollDTO dto = new result_pollDTO(vote_num,Arrays.toString(vote_content), id);
 		pollDAO dao = new pollDAO();
-		int cnt = dao.update_poll(dto);
-		if(cnt > 0) {
-			System.out.println("투표 성공!");
-			response.sendRedirect("poll_result.jsp?vote_nums="+vote_num);
+		int sel_cnt = dao.overcheck(dto);
+		
+		if(sel_cnt >0) {
+			
+			 PrintWriter writer = response.getWriter(); writer.
+			 println("<script>alert('이미 해당 투표를 했습니다.'); location.href='poll_result.jsp?vote_nums="+vote_num+"';</script>"); writer.close();
+			 
 		}else {
-			System.out.println("투표 실패!");
+			int cnt = dao.update_poll(dto);
+			if(cnt > 0) {
+				System.out.println("투표 성공!");
+				response.sendRedirect("poll_result.jsp?vote_nums="+vote_num);
+			}else {
+				System.out.println("투표 실패!");
+				
+			}
 			
 		}
 		
-		
+			
 	
 }
 

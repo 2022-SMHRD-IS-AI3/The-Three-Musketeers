@@ -50,6 +50,7 @@ td {
 </head>
 <body>
 <% 
+		System.out.println("[poll]");
 		int vote_nums = Integer.parseInt(request.getParameter("vote_nums")); 
 		pollDTO dto = new pollDTO(vote_nums);
 		pollDAO dao = new pollDAO();

@@ -52,6 +52,7 @@ td {
 </head>
 <body>
 <%
+System.out.println("[poll_result]");
 	int vote_nums = Integer.parseInt(request.getParameter("vote_nums")); 
 	pollDTO dto = new pollDTO(vote_nums);
 	result_pollDTO dtor = new result_pollDTO(vote_nums);
@@ -63,16 +64,16 @@ td {
     System.out.println("Test12 "+vote_rcontent.size());
     
     //투표한 사람 수 
-  	String id = request.getParameter("id");
+/*   	String id = request.getParameter("id");
   	result_pollDTO dr = new result_pollDTO(id);
-    int count = dao.count_poll(id);
+    int count = dao.count_poll(id); */
     
     //투표한 내용이 들어간 배열
     ArrayList<String> vote_content_arr = new ArrayList<String>(); 
     
 	for(int i=0;i<vote_rcontent.size();i++){
 		String content  = vote_rcontent.get(i).getVote_content();
-		  
+		System.out.println("콘텐츠 어떤거나와"+content);
 	 	String repl_vote_content = content.replaceAll("\\[", " ");
 		repl_vote_content = repl_vote_content.replaceAll("\\]", "");
 		repl_vote_content = repl_vote_content.replaceAll(" ", "");
@@ -171,17 +172,19 @@ td {
 				<th colspan="2" width="50"><b>질문 : <%=vote_content.getVote_title() %></b></th>
 
 			</tr>
-			<tr>
-				<td><b>총 투표자 수</b></td>
-				<td width="100"><b><%=count %>(명)</b></td>
-			</tr>
+			<%int allcount=0; %>
 			<tr>
 				<td><b>항목</b></td>
 				<td width="100">
 			<% for(int i=0; i<vote_content_arr2.length ; i++){ %>
 				<b><%=vote_content_arr2[i]%> :<%= vote_content_cnt[i]%> 명</b><br>
+					<% allcount += vote_content_cnt[i]; %>
 				<%} %></td>
 				
+			</tr>
+			<tr>
+				<td><b>총 투표자 수</b></td>
+				<td width="100"><b><%=allcount %>(명)</b></td>
 			</tr>
 
 		</table>

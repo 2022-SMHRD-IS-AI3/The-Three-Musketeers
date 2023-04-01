@@ -193,7 +193,7 @@ body {
 			<div id="wrapper">
 				<!-- Menu -->
 					<nav id="Update">	
-						<table>
+						<table style="text-align: center;">
 							<caption><h2>투표관리페이지</h2></caption>
 							<tr>
 								<td>순번</td>
@@ -209,13 +209,14 @@ body {
 								</tr>
 							<%} %>
 						</table>
-					</nav>		
+					</nav>	
+					<center>	
 					<a href="main.jsp" class="button next scrolly">
 					<span></span>
     			<span></span>
       			<span></span>
       			<span></span>
-					되돌아가기</a>	
+					되돌아가기</a>	</center>
 			</div>
 </body>
 </html>
