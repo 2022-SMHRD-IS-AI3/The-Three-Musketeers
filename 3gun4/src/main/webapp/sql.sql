@@ -102,7 +102,8 @@ CREATE SEQUENCE vote_num_seq
 start with 1
 increment by 1;
 
-drop sequence vote_num_seq;
+drop table votes;
+drop table vote_options;
 
 select * from BOARD_POSTS;
 
@@ -114,16 +115,18 @@ select * from board_posts;
 
 select * from vote_options;
 
+select * from vote_options where vote_num=25 and id='kkkk';
+
 select * from votes;
 create table votes(
 vote_num number(5) primary key,
 vote_title varchar2(100) not null,
 vote_content varchar2(100) not null,
 overlap SMALLINT NULL,
-anonymity SMALLINT NULL, 
 id varchar2(100),
 foreign key(id) references members(id)
 );
+
 alter table votes drop COLUMN anonymity;
 alter table votes modify vote_content varchar2(100) not null;
 ALTER TABLE 'votes' AUTO_INCREMENT = 1;
@@ -131,9 +134,14 @@ ALTER TABLE 'votes' AUTO_INCREMENT = 1;
 create table vote_options (
 vote_num number(5), 
 foreign key(vote_num) references votes(vote_num),
-vote_cotent varchar2(100),
+vote_content varchar2(100),
 id varchar2(100)
 );
+
+ALTER TABLE vote_options
+ADD CONSTRAINT unique_id
+UNIQUE (id);
+
 
 select * from votes order by vote_num;
 create table schedules (
@@ -151,7 +159,10 @@ increment by 1;
 
 
 drop sequence msg_num_seq;
-select * from msg;
+select * from votes;
+select * from vote_options;
+
+select * from vote_options where vote_num=22;
 
 create table msg (
 msg_num number primary key,
@@ -177,13 +188,11 @@ drop table schedules;
 delete from schedules;
 insert into
 
-<<<<<<< HEAD
+
 ALTER TABLE vote_options RENAME COLUMN vote_cotent TO vote_content;
 
 delete from vote_options;
 select * from vote_options;
-=======
-
 
 create table main(
 zoom varchar2(1000),
@@ -193,7 +202,8 @@ longtime varchar2(1000)
 
 delete from main;
 
-
-
 select * from main;
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-IS-AI3/The-Three-Musketeers.git
+
+
+select count(distinct id) from vote_options;
+select * from vote_options;

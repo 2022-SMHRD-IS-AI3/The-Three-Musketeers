@@ -3,7 +3,7 @@
 <%@page import="java.util.List"%>
 <%@page import="com.smhrd.model.pollDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,9 +24,9 @@ select {
 }
 
 .opt_name{
-	background-color: black;
-	max-height: 100px; /* 스크롤바 최대 높이 설정 */
-  	overflow-y: auto;
+   background-color: black;
+   max-height: 100px; /* 스크롤바 최대 높이 설정 */
+     overflow-y: auto;
 }
 
 .login-box form a {
@@ -136,96 +136,97 @@ select {
 <title>Insert title here</title>
 <style>
 .btn {
-	background-color: #86acd9;
-	color: #fff;
-	border: 1px solid #86acd9;
-	width: 100px;
-	height: 30px;
-	font-size: 13px;
-	border-radius: 4px;
+   background-color: #86acd9;
+   color: #fff;
+   border: 1px solid #86acd9;
+   width: 100px;
+   height: 30px;
+   font-size: 13px;
+   border-radius: 4px;
 }
 </style>
 </head>
 <body>
 <% 
+System.out.println("[poll_list]");
     pollDAO dao = new pollDAO();
     List<pollDTO> dto_array= dao.selectAll_poll();
     int page_count = 1;
     memberDAO m_dao = new memberDAO();
-	try{
-		page_count = Integer.parseInt(request.getParameter("page"));
-		System.out.println(page_count);
-	}catch(Exception e){
-		
-	}
-    					
+   try{
+      page_count = Integer.parseInt(request.getParameter("page"));
+      System.out.println(page_count);
+   }catch(Exception e){
+      
+   }
+                   
 %>
 <table class="bbsList" summary="" style="color:#000; width: 245px;">
-	<h2 style="color: #FFF">투표 리스트</h2>
-	<caption>투표 리스트</caption>
-	<hr>
-	<thead class="head">
-	<tr>
-		<tr>
-			<th style="color: white; background: #ffffff11; width: 10%;">번호</th>
-			<th style="color: white; background: #ffffff11; width: 60%;">질문</th>
-			<th style="color: white; background: #ffffff11; width: 30%;">작성자</th>
-		</tr>
-	</tr>
-	</thead>
-	<tbody class="body" style="color: #fff">
-	<% for(int i = dto_array.size()-1; i >=0; i--){ %>
-	<tr>
-		<td align="center"><%=dto_array.get(i).getVote_num()%></td>
-		<td align="center"><a style="color:#fff;" href="poll.jsp?vote_nums=<%=dto_array.get(i).getVote_num() %>"><%=dto_array.get(i).getVote_title().toString()%></a></td>
-		<td align="center"><%=m_dao.select_name_bor(dto_array.get(i).getId().toString())%></td>
-	</tr>
-	<%}%>
-	</tbody>
-	<tfoot class="foot">
-			<tr>
-				<td colspan="9" style="border-bottom: none;padding-bottom: 0px">
-					<%if(page_count > 3){ %> 
-						<a href="msg.jsp?page=1" class="arrow radius-right">≪</a>
-					<%}
+   <h2 style="color: #FFF">투표 리스트</h2>
+   <caption>투표 리스트</caption>
+   <hr>
+   <thead class="head">
+   <tr>
+      <tr>
+         <th style="color: white; background: #ffffff11; width: 10%;">번호</th>
+         <th style="color: white; background: #ffffff11; width: 60%;">질문</th>
+         <th style="color: white; background: #ffffff11; width: 30%;">작성자</th>
+      </tr>
+   </tr>
+   </thead>
+   <tbody class="body" style="color: #fff">
+   <% for(int i = dto_array.size()-1; i >=0; i--){ %>
+   <tr>
+      <td align="center"><%=dto_array.get(i).getVote_num()%></td>
+      <td align="center"><a style="color:#fff;" href="poll.jsp?vote_nums=<%=dto_array.get(i).getVote_num() %>"><%=dto_array.get(i).getVote_title().toString()%></a></td>
+      <td align="center"><%=m_dao.select_name_bor(dto_array.get(i).getId().toString())%></td>
+   </tr>
+   <%}%>
+   </tbody>
+   <tfoot class="foot">
+         <tr>
+            <td colspan="9" style="border-bottom: none;padding-bottom: 0px">
+               <%if(page_count > 3){ %> 
+                  <a href="poll_list.jsp?page=1" class="arrow radius-right">≪</a>
+               <%}
                             if(page_count <= 3 && page_count >= 1){/* 1~3 */
-                           	 	for(int i = 1; i<=dto_array.size()/10+1; i++) {%>
-                            		<a style="color: #fff;<%if(page_count==i){%>text-decoration: underline;<%} %>" href="msg.jsp?page=<%=i %>" class="num_box"><%=i %></a>
-                            	<%} /* 처음꺼 다뜨기(5개) */ System.out.println("처음꺼 다뜨기(5개)");
+                                  for(int i = 1; i<=dto_array.size()/10+1; i++) {%>
+                                  <a style="color: #fff;<%if(page_count==i){%>text-decoration: underline;<%} %>" href="poll_list.jsp?page=<%=i %>" class="num_box"><%=i %></a>
+                               <%} /* 처음꺼 다뜨기(5개) */ System.out.println("처음꺼 다뜨기(5개)");
                             }
                             else if(dto_array.size()/10-1 <= page_count && page_count <= dto_array.size()/10+1){/* max_page-2 <= page_count <= max_page */
-                            	for(int i = dto_array.size()/10-3; i<=dto_array.size()/10+1; i++) {%>
-									<a style="color: #fff<%if(page_count==i){%>text-decoration: underline;<%} %>" href="msg.jsp?page=<%=i %>" class="num_box"><%=i %></a> <%} /* 뒤에꺼 다뜨기(5개) */System.out.println("뒤에꺼 다뜨기(5개)");
+                               for(int i = dto_array.size()/10-3; i<=dto_array.size()/10+1; i++) {%>
+                           <a style="color: #fff<%if(page_count==i){%>text-decoration: underline;<%} %>" href="poll_list.jsp?page=<%=i %>" class="num_box"><%=i %></a> <%} /* 뒤에꺼 다뜨기(5개) */System.out.println("뒤에꺼 다뜨기(5개)");
                             }
                             else{
-                            	for(int i = page_count-2; i<= page_count+2; i++) {%>
-									<a style="color: #fff<%if(page_count==i){%>text-decoration: underline;<%} %>" href="msg.jsp?page=<%=i %>" class="num_box"><%=i %></a> <%} /* 자기중심5개까지만뜨기 */System.out.println("자기중심5개까지만뜨기");
+                               for(int i = page_count-2; i<= page_count+2; i++) {%>
+                           <a style="color: #fff<%if(page_count==i){%>text-decoration: underline;<%} %>" href="poll_list.jsp?page=<%=i %>" class="num_box"><%=i %></a> <%} /* 자기중심5개까지만뜨기 */System.out.println("자기중심5개까지만뜨기");
                             } 
                             %>
-							<%if(dto_array.size()/10-2 >= page_count && page_count <= dto_array.size()/10+1){ %>
-                            <a href="msg.jsp?page=<%=dto_array.size()/10+1 %>" class="arrow radius-left">≫</a><!-- 맨뒤로 이동 -->
+                     <%if(dto_array.size()/10-2 >= page_count && page_count <= dto_array.size()/10+1){ %>
+                            <a href="poll_list.jsp?page=<%=dto_array.size()/10+1 %>" class="arrow radius-left">≫</a><!-- 맨뒤로 이동 -->
                             <%} %>
                         </td>
                     </tr>
                 </tfoot>
 </table>
-					<center>
-					<div class="login-box">
-					<form id="frm">
-           			<a href="poll_make.jsp">
-     				<span></span>
-    				<span></span>
-      				<span></span>
-      				<span></span>
-      				투표 작성
-   					</a>
-   					</form>
-   					</div>
-					</center>
+               <center>
+               <div class="login-box">
+               <form id="frm">
+                    <a href="poll_make.jsp">
+                 <span></span>
+                <span></span>
+                  <span></span>
+                  <span></span>
+                  투표 작성
+                  </a>
+                  </form>
+                  </div>
+               </center>
 
-						
-						
-			
-					
+                  
+                  
+         
+               
 </body>
 </html>

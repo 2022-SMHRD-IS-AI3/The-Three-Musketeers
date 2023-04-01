@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.smhrd.mapper.pollMapper">
 	<insert id="upload_poll" parameterType="pollDTO">
-		insert into votes values(vote_num_seq.nextval, #{vote_title}, #{vote_content,jdbcType=VARCHAR}, #{overlap}, #{id})
+		insert into votes values(vote_num_seq.nextval, #{vote_title}, #{vote_content}, #{overlap}, #{id})
 	</insert>
 	<select id="selectAll_poll" resultType="pollDTO">
 		select * from votes order by vote_num
@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into vote_options values(#{vote_num}, #{vote_content}, #{id})
 	</insert>
 	<select id="count_poll" parameterType="result_pollDTO">
-		select sum(count) from vote_options where id=#{id}
+		select count(distinct id=#{id}) from vote_options;
 	</select>
 	<select id="selectAll_resultpoll" parameterType="result_pollDTO" resultType="result_pollDTO">
 		select * from vote_options where vote_num=#{vote_num}
@@ -29,5 +29,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    	<delete id="delete_poll_mem" parameterType="String">
    		delete from votes where id=#{id}
    	</delete>
+   	<select id="overcheck" parameterType="result_pollDTO" resultType="result_pollDTO">
+   		select * from vote_options where vote_num=#{vote_num} and id=#{id}
+   	</select>
 
 </mapper>

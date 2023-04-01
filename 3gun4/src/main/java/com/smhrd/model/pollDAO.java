@@ -14,7 +14,9 @@ SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
 	//투표 작성
 	public int upload_poll(pollDTO dto) {
 		SqlSession sqlsession = sqlSessionFactory.openSession(true);
+		System.out.println("dao안 위");
 		int cnt = sqlsession.insert("upload_poll", dto);
+		System.out.println("dao안 아래");
 		sqlsession.close();
 		
 		return cnt;
@@ -49,20 +51,26 @@ SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
 	public int update_poll(result_pollDTO dto) {
 		SqlSession sqlsession = sqlSessionFactory.openSession(true);
 		System.out.println("Test213 "+dto.getVote_content());
-		int cnt = sqlsession.insert("update_poll", dto);
+		int cnt=0;
+		try {
+		cnt = sqlsession.insert("update_poll", dto);
 		sqlsession.close();
-		
+		}catch (Exception e) {
+			cnt = 0;
+			sqlsession.close();
+		}
 		return cnt;
 	}
 	
 	//투표참여 인원 카운트
-	public String count_poll(String id) {
-		SqlSession sqlsession = sqlSessionFactory.openSession(true);
-		result_pollDTO info_result_poll = sqlsession.selectOne("count_poll", id);
+	public int count_poll(String id) { 
+		SqlSession sqlsession = sqlSessionFactory.openSession(true); 
+		int cnt = sqlsession.selectOne("count_poll", id); 
 		sqlsession.close();
 		
-		return id;
+		return cnt; 
 	}
+	
 	
 	//투표결과 목록 중 하나 선택
 	public List<result_pollDTO> selectAll_resultpoll(result_pollDTO dto) {
@@ -78,6 +86,27 @@ SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
 		SqlSession sqlsession = sqlSessionFactory.openSession(true);
 		int cnt = sqlsession.delete("delete_poll_mem", id);
 		sqlsession.close();
+		return cnt;
+	}
+
+	public int overcheck(result_pollDTO dto) {
+		SqlSession sqlsession = sqlSessionFactory.openSession(true);
+		int cnt=0;
+		result_pollDTO resultDto =   sqlsession.selectOne("overcheck", dto);
+		 sqlsession.close();
+		 
+		if(resultDto != null) {
+			cnt=1;
+		}
+		
+//		try {
+//			
+//			cnt = 1;
+//		   
+//		}catch (Exception e) {
+//			cnt = 0;
+//			sqlsession.close();
+//		}
 		return cnt;
 	}
 }
