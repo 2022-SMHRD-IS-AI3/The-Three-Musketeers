@@ -4,11 +4,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html style="height: 500px">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
+<link href="code/css/style.css" rel="stylesheet" />
+<style>
 table {
 	display: table;
 	clear: both;
@@ -21,7 +22,6 @@ table {
 td {
 	border-color: #333333;
 	text-align: center;
-	border-top-style: solid;
 	border-bottom-style: solid;
 }
 
@@ -34,47 +34,171 @@ td {
 	font-size: 15px;
 	border-radius: 4px;
 }
+
+select {
+  box-sizing: border-box;
+  height:50px;
+  width: 340px;
+  padding: 4px;
+  font-size: 20px;
+  border-radius: 6px;
+  color: #fff;
+  background-color:#FFFFFF11;
+  border-style: solid;
+}
+
+.opt_name{
+	background-color: black;
+	max-height: 100px; /* 스크롤바 최대 높이 설정 */
+  	overflow-y: auto;
+}
+
+.login-box form a {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: #03e9f4;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  margin-top: 5px;
+  letter-spacing: 4px
+}
+
+.login-box a:hover {
+  background: #03e9f4;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #03e9f4,
+              0 0 25px #03e9f4,
+              0 0 50px #03e9f4,
+              0 0 100px #03e9f4;
+}
+
+.login-box a span {
+  position: absolute;
+  display: block;
+}
+
+.login-box a span:nth-child(1) {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #03e9f4);
+  animation: btn-anim1 1s linear infinite;
+}
+
+@keyframes btn-anim1 {
+  0% {
+    left: -100%;
+  }
+  50%,100% {
+    left: 100%;
+  }
+}
+
+.login-box a span:nth-child(2) {
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #03e9f4);
+  animation: btn-anim2 1s linear infinite;
+  animation-delay: .25s
+}
+
+@keyframes btn-anim2 {
+  0% {
+    top: -100%;
+  }
+  50%,100% {
+    top: 100%;
+  }
+}
+
+.login-box a span:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, #03e9f4);
+  animation: btn-anim3 1s linear infinite;
+  animation-delay: .5s
+}
+
+@keyframes btn-anim3 {
+  0% {
+    right: -100%;
+  }
+  50%,100% {
+    right: 100%;
+  }
+}
+
+.login-box a span:nth-child(4) {
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #03e9f4);
+  animation: btn-anim4 1s linear infinite;
+  animation-delay: .75s
+}
+
+@keyframes btn-anim4 {
+  0% {
+    bottom: -100%;
+  }
+  50%,100% {
+    bottom: 100%;
+  }
+}
 </style>
 
 </head>
 <body>
-	<div align="center">
-		<br /> <b>투표작성</b>
-		<hr width="auto" />
-		<form name="frm" method="post" action="upload_pollcon">
-			<table border="1" width="100px">
-				<tr>
-					<td><b>질문</b></td>
-					<td colspan="2"><input name="vote_title" size="17"></td>
-				</tr>
-				<tr>
-					<td rowspan="6"><b>항목</b></td>
-					<td class="a" style='text-align: center;'>1</td>
-					<td class="a" id='cont_box'><input type='text' name="vote_content" id="content" style='width: 100px'></td>
-				</tr>
+<form name="frm" method="post" action="upload_pollcon">
+<table class="bbsList" summary="" style="color:#000; width: 245px;">
 
-				<tr>
-					<td colspan='2' style='text-align: center;'>
-					<span onclick="addRow()">항목 추가</span> 
-					<span href="#" onclick="delRow()">항목 삭제</span>
-					</td>
-				</tr>
+	<h2 style="color: #FFF">투표작성</h2>
+	<caption>투표작성</caption>
+	<hr>
+	<tbody class="body" style="color: #fff ">
+	
+		<tr>
+			<td><b>질문</b></td>
+			<td colspan="2"><input name="vote_title" size="17"></td>
+		</tr>
+		<tr>
+			<td rowspan="7" style="border-right-color: #eeeeee;border-right-style: solid;border-right-width: 1px;">항목</td>
+			<td class="a" style='text-align: center;width: 10px;'>1</td>
+			<td class="a" id='cont_box'><input type='text' name="vote_content" id="content" style='width: 100px'></td>
+		</tr>
+		<tr>
+			<td colspan='2' style='text-align: center;'>
+			<span onclick="addRow()">항목 추가</span> 
+			<span href="#" onclick="delRow()">항목 삭제</span>
+			</td>
+		</tr>
+		<tr>
+			<td>복수</td>
+			<td colspan=2>
+				<input type="radio" name="overlap" value="1">yes 
+				<input type="radio" name="overlap" value="0" checked>no
+			</td>
+		</tr>
+	</tbody>
+	<tfoot class="foot">
+		
+    </tfoot>
+</table>
 
-				<tr>
-					<td>복수</td>
-					<td colspan=2>
-					<input type="radio" name="overlap" value="1" checked>yes 
-					<input type="radio" name="overlap" value="0">no
-					</td>
-				</tr>
-			<!-- 	<tr>
-					<td>익명</td>
-					<td colspan=2>
-					<input type="radio" name="anonymity" value="1" checked>yes 
-					<input type="radio" name="anonymity" value="0">no
-					</td>
-				</tr> -->
-			</table>
+
+</form>
+
 			<tr>
 				<td colspan="3">
 					<button class="btn" type="submit">작성하기</button> 
@@ -83,7 +207,7 @@ td {
 			</tr>
 					<% memberDTO info = (memberDTO)session.getAttribute("info");%>
                     <input style="display: none" type="text" value="<%=info.getId() %>" name="id">
-		</form>
+		
 	</div>
 	<script>
 		function addRow() {

@@ -186,7 +186,7 @@ body {
  
    
 <div>
-<div style="height: 3000px;float: left;width: 350px;"> <!-- 사이드바 -->
+<div style="height: 2200px;float: left;width: 350px;"> <!-- 사이드바 -->
    <div class="login-box" style="float:left; margin-left: 50px;margin-top: 180px;"> <!-- 프로필카드 -->
       <form id="frm">
          <%
@@ -220,7 +220,7 @@ body {
                      <span></span> <span></span> 일정관리
                </a></td>
                <td><a href="main_edit.jsp"> <span></span> <span></span> <span></span>
-                     <span></span> 화면관리
+                     <span></span> 링크관리
                </a></td>
             </tr>
             <tr>
@@ -276,9 +276,9 @@ body {
    		</div>  
  		
    		
-   		<div class="login-box" style="float: right; margin-top: 50px"><!-- 투표 -->
+   		<div class="login-box" style="float: right; margin-top: 50px; height: 540px;"><!-- 투표 -->
       		<form id="frm">
-         		<iframe src="poll_list.jsp" id="ContentUrl2" name="ContentUrl2" scrolling="auto" frameborder="0" onload="setFrameHeight2()" title="투표" width="100%" style="display: block;"></iframe>
+         		<iframe src="poll_list.jsp" id="ContentUrl2" name="ContentUrl2" scrolling="auto" frameborder="0" title="투표" width="100%" style="height:500px; display: block;"></iframe>
       		</form>
    		</div>
    	</div>
@@ -328,11 +328,11 @@ function setFrameHeight1(){
         document.all.ContentUrl1.style.height = ContentUrl1.document.body.scrollHeight + 30 + "px";
     }
 }
-function setFrameHeight2(){
+/* function setFrameHeight2(){
     if (ContentUrl2.document != null) {
         document.all.ContentUrl2.style.height = ContentUrl2.document.body.scrollHeight + 30 + "px";
     }
-}
+} */
 
 </script>
 </body>
