@@ -183,13 +183,13 @@ select {
          <span href="#" onclick="delRow()">항목 삭제</span>
          </td>
       </tr>
-      <tr>
+  <!--     <tr>
          <td>복수</td>
          <td colspan=2>
             <input type="radio" name="overlap" value="1">yes 
             <input type="radio" name="overlap" value="0" checked>no
          </td>
-      </tr>
+      </tr> -->
    </tbody>
    <tfoot class="foot">
       
@@ -226,13 +226,13 @@ select {
          var table = document.querySelector("table"); // 테이블 요소 선택
          var rowCount = table.rows.length; // 테이블의 행 개수
 
-         if (rowCount > 7) {
+         if (rowCount > 6) {
             alert("최대 5개까지 추가할 수 있습니다!")
             return;
          }
          
          
-         var row = table.insertRow(rowCount - 2); // 새로운 행 추가
+         var row = table.insertRow(rowCount - 1); // 새로운 행 추가
          // 새로운 셀 추가
          var cell1 = row.insertCell(0);
          var cell2 = row.insertCell(1);
