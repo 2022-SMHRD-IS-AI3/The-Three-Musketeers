@@ -183,13 +183,9 @@ select {
          <span href="#" onclick="delRow()">항목 삭제</span>
          </td>
       </tr>
-  <!--     <tr>
-         <td>복수</td>
-         <td colspan=2>
-            <input type="radio" name="overlap" value="1">yes 
-            <input type="radio" name="overlap" value="0" checked>no
-         </td>
-      </tr> -->
+      
+            <input type="radio" name="overlap" value="0" checked style="display: none" >
+
    </tbody>
    <tfoot class="foot">
       
